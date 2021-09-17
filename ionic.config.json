@@ -1,0 +1,7 @@
+{
+  "name": "peace_makers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
