@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="text">
+    <ion-text class="ion-text-center">
+      <h3>정기 후원</h3>
+    </ion-text>
+    <ion-text class="ion-text-center">
+      <h3>금액</h3>
+    </ion-text>
+  </div>
+  <div class="input">
+    <ion-item lines="none">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-input type="number" placeholder="전화번호" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input type="text" placeholder="이메일" [(ngModel)]="email"></ion-input>
+    </ion-item>
+  </div>
+  <div class="btn">
+    <ion-text color="red" class="ion-text-center">
+      <p>{{error_msg}}</p>
+    </ion-text>
+    <ion-button (click)="moveToConsent()" expand="block" shape="round">
+      후원하기
+    </ion-button>
+  </div>
+</ion-content>

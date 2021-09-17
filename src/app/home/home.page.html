@@ -1,20 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-tab-button tab="main">
+      <ion-icon [name]="selectTab == 'main' ? 'home' : 'home-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="campagin">
+      <ion-icon [name]="selectTab == 'campagin' ? 'easel' : 'easel-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="news">
+      <ion-icon [name]="selectTab == 'news' ? 'newspaper' : 'newspaper-outline'"></ion-icon>
+    </ion-tab-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-tab-button tab="participation">
+      <ion-icon [name]="selectTab == 'participation' ? 'earth' : 'earth-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="support">
+      <ion-icon [name]="selectTab == 'support' ? 'cash' : 'cash-outline'"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button [tab]="page">
+      <ion-icon [name]="selectTab == page ? 'person' : 'person-outline'"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

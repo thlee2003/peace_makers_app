@@ -1,0 +1,17 @@
+.vertical-menu {
+  width: 95%;
+  height: 75%;
+  overflow-y: auto;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.under {
+  ion-item {
+    font-size: 0.9rem;
+  }
+  p {
+    margin-top: 0%;
+    font-size: 0.8rem;
+  }
+}

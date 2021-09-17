@@ -1,0 +1,19 @@
+ion-list {
+  ion-item {
+    border: 1px solid var(--ion-color-light);
+    border-radius: 10px;
+    margin-top: 40px;
+    ion-icon {
+      color: var(--ion-color-dark);
+      font-size: 24px;
+    }
+  }
+  p {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 50px;
+  }
+  ion-button {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,31 @@
+.text {
+  margin-left: 10%;
+  margin-right: 10%;
+  ion-text {
+    h3 {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 2px solid var(--ion-color-medium);
+    }
+  }
+}
+
+.input {
+  margin-top: 30%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 2px solid var(--ion-color-medium);
+  ion-input {
+    border: 1px solid var(--ion-color-medium);
+  }
+}
+.btn {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20%;
+  p {
+    font-size: 0.8rem;
+  }
+}

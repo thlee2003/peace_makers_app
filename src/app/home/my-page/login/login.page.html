@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-list class="ion-margin" lines="none">
+    <ion-list-header>
+      <ion-label class="ion-text-center">LOGO</ion-label>
+    </ion-list-header>
+    <ion-item class="ion-margin-vertical">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input type="text" placeholder="이메일" size="6" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+      <ion-input [type]="showPw ? 'text' : 'password' " placeholder="비밀번호" class="pw" [(ngModel)]="pw"></ion-input>
+      <ion-icon slot="end" [name]="PwToggleIcon" (click)="togglepw()"></ion-icon>
+    </ion-item>
+    <ion-row class="ion-margin-bottom">
+      <ion-col size="6">
+        <ion-item class="note">
+          <ion-note (click)="moveToFind_email_pw()">비밀번호 찾기</ion-note>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="note">
+          <ion-icon slot="start" [name]="checkmark" (click)="togglecheck()"></ion-icon>
+          <ion-note>자동 로그인</ion-note>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-text class="ion-text-center">
+      <p>{{error_msg}}</p>
+    </ion-text>
+    <ion-button color="success" expand="block" shape="round" class="login-btn" (click)="moveToMain()">
+      로그인
+    </ion-button>
+  </ion-list>
+</ion-content>

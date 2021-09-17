@@ -1,0 +1,29 @@
+ion-list {
+  ion-item {
+    border: 1px solid var(--ion-color-light);
+    border-radius: 10px;
+    ion-icon {
+      color: var(--ion-color-dark);
+      font-size: 24px;
+    }
+  }
+  ion-note {
+    font-size: 0.8rem;
+  }
+  .note {
+    border: none;
+  }
+  p {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 50px;
+  }
+  .login-btn {
+    margin-top: 0px;
+    height: 50px;
+  }
+  .res-btn {
+    margin-top: 80px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,14 @@
+<ion-content>
+  <ion-list class="ion-margin" lines="none">
+    <ion-item class="ion-margin-vertical">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input type="text" placeholder="이메일" size="6" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-text class="ion-text-center">
+      <p>{{error_msg}}</p>
+    </ion-text>
+    <ion-button color="success" (click)="moveToShwo_pw()" expand="block" shape="round">
+      비밀번호 찾기
+    </ion-button>
+  </ion-list>
+</ion-content>
