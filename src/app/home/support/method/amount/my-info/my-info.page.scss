@@ -1,11 +1,16 @@
+ion-toolbar {
+  height: 25px;
+}
+
 .text {
-  margin-left: 10%;
+  margin-left: 6%;
   margin-right: 10%;
   ion-text {
     h3 {
       padding-top: 5px;
       padding-bottom: 5px;
       border: 2px solid var(--ion-color-medium);
+      border-radius: 10px;
     }
   }
 }
@@ -15,15 +20,22 @@
     border: 2px solid var(--ion-color-medium);
     width: 90%;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 3%;
+    border-radius: 10px;
   }
 }
 
 .btn {
   width: 80%;
-  margin-left: 10%;
+  margin-left: 8%;
   margin-top: 20%;
   p {
     font-size: 0.8rem;
   }
+}
+ion-button {
+  width: 80%;
+  height: 7%;
+  font-size: 1.3em;
+  margin-left: 8%;
 }

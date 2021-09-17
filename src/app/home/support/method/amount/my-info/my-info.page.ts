@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-info',
@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
 })
 export class MyInfoPage implements OnInit {
 
+  method: string;
   pay: number;
   name: string;
   phone: number;
   email: string;
   error_msg: string;
 
-  constructor(private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   moveToConsent() {
     if (this.name == undefined) {
@@ -29,7 +33,12 @@ export class MyInfoPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.method = this.router.getCurrentNavigation().extras.state.method
+        this.pay = this.router.getCurrentNavigation().extras.state.pay
+      }
+    })
   }
 
 }

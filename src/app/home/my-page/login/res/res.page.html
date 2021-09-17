@@ -39,12 +39,11 @@
       <ion-icon slot="start" name="documents-outline"></ion-icon>
       <ion-input disabled="{{isDisabled}}" type="text" placeholder="사업자등록번호" [(ngModel)]="company_regist_num"></ion-input>
     </ion-item>
-
-    <ion-text class="ion-text-center">
-      <p>{{error_msg}}</p>
-    </ion-text>
-    <ion-button expand="block" shape="round" color="success" (click)="moveToLogin()">
-      회원가입
-    </ion-button>
   </ion-list>
+  <ion-text class="ion-text-center">
+    <p>{{error_msg}}</p>
+  </ion-text>
+  <ion-button expand="block" shape="round" color="success" (click)="moveToLogin()">
+    회원가입
+  </ion-button>
 </ion-content>

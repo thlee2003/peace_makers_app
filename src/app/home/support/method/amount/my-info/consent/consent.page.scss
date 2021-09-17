@@ -1,17 +1,29 @@
+ion-toolbar {
+  height: 25px;
+}
 .vertical-menu {
-  width: 95%;
+  width: 90%;
   height: 75%;
   overflow-y: auto;
   margin-top: 2%;
-  margin-left: 2%;
+  margin-left: 4%;
 }
 
 .under {
   ion-item {
     font-size: 0.9rem;
   }
+  ion-icon {
+    margin: 0;
+  }
   p {
     margin-top: 0%;
     font-size: 0.8rem;
   }
+}
+ion-button {
+  width: 80%;
+  height: 7%;
+  font-size: 1.3em;
+  margin-left: 8%;
 }

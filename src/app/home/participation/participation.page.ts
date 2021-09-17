@@ -28,9 +28,6 @@ export class ParticipationPage implements OnInit {
         let templeta3 = a
         let templeta4 = b
         let templeta5 = c
-        console.log(templeta3)
-        console.log(templeta4)
-        console.log(templeta5)
         container3.innerHTML = templeta3
         container4.innerHTML = templeta4
         container5.innerHTML = templeta5

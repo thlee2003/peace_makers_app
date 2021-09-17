@@ -1,7 +1,12 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="text">
     <ion-text class="ion-text-center">
-      <h3>정기 후원</h3>
+      <h3>{{method}}</h3>
     </ion-text>
   </div>
   <div class="input">
@@ -18,8 +23,8 @@
     <ion-text color="red" class="ion-text-center">
       <p>{{error_msg}}</p>
     </ion-text>
-    <ion-button (click)="moveToMy_info()" expand="block" shape="round" color="success">
-      후원 하기
-    </ion-button> 
   </div>
+  <ion-button (click)="moveToMy_info()" expand="block" shape="round" color="success">
+    후원 하기
+  </ion-button> 
 </ion-content>
