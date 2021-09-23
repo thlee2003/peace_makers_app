@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ToastController } from '@ionic/angular';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
+import { AlertController, ToastController } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Crop } from '@ionic-native/crop/ngx';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 import firebase from 'firebase';
+import { templateJitUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-my-page-login',
@@ -13,15 +16,85 @@ import firebase from 'firebase';
 })
 export class MyPageLoginPage implements OnInit {
 
-  images: any[] = ["assets/imgs/profile.png"];
+  croppedImage: string;
+  percent;
+  isUploadStart = false;
   name: string;
   points: number = 0;
 
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private picker: ImagePicker
+    public base64: Base64,
+    public camera: Camera,
+    public crop: Crop,
+    public alertCtrl: AlertController,
     ) { }
+
+  async chooseImage() {
+    const alertDialog = await this.alertCtrl.create({
+      header: "사진을 선택해 주세요",
+      buttons: [
+        {
+          text: "카메라",
+          handler: () => {
+            let options: CameraOptions = {
+              sourceType: this.camera.PictureSourceType.CAMERA,
+              encodingType: this.camera.EncodingType.PNG,
+              mediaType: this.camera.MediaType.PICTURE,
+              destinationType: this.camera.DestinationType.FILE_URI
+            };
+
+            this.camera.getPicture(options).then(filePath => {
+              this.crop.crop(filePath).then((croppedPath) => {
+                this.base64.encodeFile(croppedPath).then(base64Data => {
+                  let temp = base64Data.substring(34);
+                  this.croppedImage = 'data:image/png;base64,' + temp;
+                  // 사진 업로드
+                  this.isUploadStart = true
+                  firebase.storage().ref("image/").putString(this.croppedImage, "data_url").then(function(snapshot) {
+                  })
+                  setTimeout(() => {
+                    document.getElementById("image").setAttribute("src",this.croppedImage);
+                  }, 250);
+                })
+              })
+            })
+          }
+        },
+        {
+          text: "갤러리",
+          handler: () => {
+            let options: CameraOptions = {
+              sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+              encodingType: this.camera.EncodingType.PNG,
+              mediaType: this.camera.MediaType.PICTURE,
+              destinationType: this.camera.DestinationType.FILE_URI
+            };
+
+            this.camera.getPicture(options).then(filePath => {
+              this.crop.crop(filePath).then((croppedPath) => {
+                this.base64.encodeFile(croppedPath).then(base64Data => {
+                  let temp = base64Data.substring(34);
+                  this.croppedImage = 'data:image/png;base64,' + temp
+                  // 사진 업로드
+                  this.isUploadStart = true
+                  firebase.storage().ref("profile/").putString(this.croppedImage, "data_url").then(function(snapshot) {
+                  })
+
+                  setTimeout(() => {
+                    document.getElementById("image").setAttribute("src", this.croppedImage);
+                  }, 250)
+                })
+              })
+            })
+          }
+        }
+      ]
+    });
+    alertDialog.present();
+    
+  }
 
   async ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -44,31 +117,10 @@ export class MyPageLoginPage implements OnInit {
         // ...
       }
     });
-
-    this.picker.hasReadPermission().then((val) => {
-      if (val == false) {
-        this.picker.requestReadPermission();
-      }
-    }, (err) => {
-      this.picker.requestReadPermission();
-    })
-  }
-  
-  pickImages() {
-    let options: ImagePickerOptions = {
-      maximumImagesCount: 1,
-      outputType: 1,
-    }
-
-    this.picker.getPictures(options).then((res) => {
-      for(var i=0; i< res.length; i++) {
-        let base64OfImage = "data:image/png;base64," + res[i]
-        this.images.pop()
-        this.images.push(base64OfImage)
-      }
-    }, (err) => {
-      alert(JSON.stringify(err))
-    })
+    firebase.storage().ref('profile').getDownloadURL().then((function(url) {
+      var img = (<HTMLInputElement>document.getElementById('image'))
+      img.src = url
+    }))
   }
 
   async moveToLogout() {
