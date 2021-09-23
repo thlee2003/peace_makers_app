@@ -33,18 +33,6 @@ export class MainPage implements OnInit {
         this.peace3 = doc.data().text5;
         this.peacetext3 = doc.data().text6;
       });
-
-    // var getdb = db.collection("admin").doc("mainpage");
-    // getdb.get().then((doc) => {
-    //   if (doc.exists) {
-    //     // this.peace1 = doc.data().text1
-    //     this.peacetext1 = doc.data().text2
-    //     this.peace2 = doc.data().text1
-    //     this.peacetext2 = doc.data().text2
-    //     this.peace3 = doc.data().text1
-    //     this.peacetext3 = doc.data().text2
-    //   }
-    // })
   }
 
 }

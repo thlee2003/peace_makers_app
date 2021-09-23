@@ -11,6 +11,7 @@ export class MethodPage implements OnInit {
   constructor(private router: Router) { }
 
   moveToAmount(method) {
+    // 입력값 전달
     let navigationExtras: NavigationExtras = {
       state: {
         method: method

@@ -1,10 +1,5 @@
-div {
-  ion-segment {
-    --margin-top: 5px;
-    --margin-bottom: 5px;
-  }
-}
 ion-list {
+  margin-top: 0;
   ion-item {
     border: 1px solid var(--ion-color-light);
     border-radius: 10px;
