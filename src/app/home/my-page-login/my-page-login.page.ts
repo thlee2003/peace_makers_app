@@ -15,7 +15,7 @@ export class MyPageLoginPage implements OnInit {
 
   images: any[] = ["assets/imgs/profile.png"];
   name: string;
-  points: number = 10000;
+  points: number = 0;
 
   constructor(
     private router: Router,
