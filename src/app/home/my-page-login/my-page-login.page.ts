@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ToastController } from '@ionic/angular';
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 
 import firebase from 'firebase';
 
@@ -12,12 +13,14 @@ import firebase from 'firebase';
 })
 export class MyPageLoginPage implements OnInit {
 
+  images: any[] = ["assets/imgs/profile.png"];
   name: string;
   points: number = 10000;
 
   constructor(
     private router: Router,
     private toastController: ToastController,
+    private picker: ImagePicker
     ) { }
 
   async ngOnInit() {
@@ -41,8 +44,32 @@ export class MyPageLoginPage implements OnInit {
         // ...
       }
     });
+
+    this.picker.hasReadPermission().then((val) => {
+      if (val == false) {
+        this.picker.requestReadPermission();
+      }
+    }, (err) => {
+      this.picker.requestReadPermission();
+    })
   }
   
+  pickImages() {
+    let options: ImagePickerOptions = {
+      maximumImagesCount: 1,
+      outputType: 1,
+    }
+
+    this.picker.getPictures(options).then((res) => {
+      for(var i=0; i< res.length; i++) {
+        let base64OfImage = "data:image/png;base64," + res[i]
+        this.images.pop()
+        this.images.push(base64OfImage)
+      }
+    }, (err) => {
+      alert(JSON.stringify(err))
+    })
+  }
 
   async moveToLogout() {
     const result = firebase.auth().signOut().then(() => {
