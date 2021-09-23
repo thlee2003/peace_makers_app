@@ -4,6 +4,17 @@
       <ion-icon slot="start" name="mail-outline"></ion-icon>
       <ion-input type="text" placeholder="이메일" size="6" [(ngModel)]="email"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-input type="text" placeholder="전화번호" [(ngModel)]="call_num"></ion-input>
+    </ion-item>
+
     <ion-text class="ion-text-center">
       <p>{{error_msg}}</p>
     </ion-text>
