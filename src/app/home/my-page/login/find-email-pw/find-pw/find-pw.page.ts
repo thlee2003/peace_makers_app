@@ -40,12 +40,6 @@ export class FindPwPage implements OnInit {
 
       const user = firebase.auth().currentUser;
       const uid = firebase.auth().currentUser.uid;
-
-      // var db = firebase.firestore();
-      //   db.collection("peace_makers").doc(user.uid).update({
-      //     userPW: pw
-      // })
-      
       // 재설정 이메일 보내기
       firebase.auth().sendPasswordResetEmail(this.email)
       .then(async() => {

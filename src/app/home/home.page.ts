@@ -20,14 +20,6 @@ export class HomePage implements OnInit{
   }
 
   async ngOnInit() {
-    // const user = firebase.auth().currentUser;
-    //   if(user) {
-    //     this.page = "my-page-login"
-    //   }
-    //   else {
-    //     this.page = "my-page"
-    //   }
-
       firebase.auth().onAuthStateChanged((user) => {
         if (user && user.emailVerified) {
           this.page = "my-page-login"
