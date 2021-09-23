@@ -14,6 +14,7 @@ export class ParticipationPage implements OnInit {
     private router: Router
   ) { }
   
+  // 영상 넣기
   async ngOnInit() {
     const container3 = document.querySelector('.container3')
     const container4 = document.querySelector('.container4')

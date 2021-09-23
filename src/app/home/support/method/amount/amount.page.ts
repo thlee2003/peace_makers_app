@@ -22,6 +22,7 @@ export class AmountPage implements OnInit {
     if (this.pay < 5000 || this.pay == undefined) {
       this.error_msg = "5000원 이상 입력해주세요"
     } else {
+      // 입력값 전달
       let navigationExtras: NavigationExtras = {
         state: {
           method: this.method,
@@ -33,6 +34,7 @@ export class AmountPage implements OnInit {
   }
 
   ngOnInit() {
+    // 입력값 받기
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.method = this.router.getCurrentNavigation().extras.state.method

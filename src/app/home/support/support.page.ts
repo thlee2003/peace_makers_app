@@ -16,6 +16,7 @@ export class SupportPage implements OnInit {
     ) { }
 
   moveToMethod() {
+    // 로그인 유무 확인
     firebase.auth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
         this.router.navigate(['home','support','method'])

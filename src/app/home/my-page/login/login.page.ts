@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     async ngOnInit() {
     }
   
-
+  // 아이콘 변경
   togglepw() {
     this.showPw = !this.showPw
     this.PwToggleIcon = this.showPw ? 'eye-off-outline' : 'eye-outline'
@@ -43,6 +43,7 @@ export class LoginPage implements OnInit {
     console.log(this.isDisabled)
   }
 
+  // 로그인 구현
   moveToMain() {
     if (this.email == undefined || this.email == "") {
       this.error_msg = "이메일을 입력하세요.";
