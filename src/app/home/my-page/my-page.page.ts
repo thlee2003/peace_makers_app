@@ -12,7 +12,8 @@ export class MyPagePage implements OnInit {
 
   constructor(private router: Router) { }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+  }
 
   moveToLogin() {
     this.router.navigate(['home','my-page','login'])

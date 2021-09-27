@@ -1,13 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import firebase from 'firebase';
-
+import { SwiperOptions } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  Autoplay
+} from "swiper";
+SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class MainPage implements OnInit {
+export class MainPage implements OnInit, AfterContentChecked {
+  @ViewChild('swiper') swiper: SwiperComponent;
+  config: SwiperOptions = {
+    slidesPerView: 2,
+    spaceBetween: 50,
+    pagination: true
+  }
 
   peace1: string;
   peacetext1: string;
@@ -19,7 +35,12 @@ export class MainPage implements OnInit {
 
   constructor(
   ) {}
-  
+
+  ngAfterContentChecked() {
+    if (this.swiper) {
+      this.swiper.updateSwiper({});
+    }
+  }
 
   async ngOnInit() {
     //firestore에서 해당 db 가져오기(실시간으로)

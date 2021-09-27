@@ -1,24 +1,56 @@
-ion-img {
-  width: 95%;
-  border-radius: 5px;
-  margin-left: 2.5%;
-  margin-top: 2.5%;
+.swiper {
+  width: 100%;
+  height: 100%;
 }
-.a,
-.b,
-.c {
-  position: relative;
-  ion-text {
-    position: absolute;
-    top: 3em;
-    left: 0.5em;
-    width: 90%;
-    height: 100%;
-    color: #000000;
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
-    font-weight: bold;
-    h1 {
-      font-size: 30px;
-    }
-  }
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  //   object-fit: cover;
+}
+.swiper-pagination-bullet {
+  background: wheat;
+}
+
+.mySwiper img {
+  width: 100%;
+}
+
+.peace1 img {
+  width: 80%;
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.peace2 img {
+  width: 80%;
+  margin-right: 20%;
+  margin-top: 10%;
+}
+
+.peace3 img {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
 }

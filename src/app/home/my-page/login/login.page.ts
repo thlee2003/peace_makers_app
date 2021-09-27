@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
     ) {}
 
     async ngOnInit() {
+      
     }
   
   // 아이콘 변경
@@ -120,6 +121,6 @@ export class LoginPage implements OnInit {
   
   // 비밀번호 찾기로 이동
   moveToFind_email_pw() {  
-    this.router.navigate(['home','my-page','login','find-email-pw', 'find-pw'])
+    this.router.navigate(['home','my-page','login','find-email-pw'])
   }
 }

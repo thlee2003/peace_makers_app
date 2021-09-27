@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonTabs } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { IonTabs, NavController } from '@ionic/angular';
 import firebase from 'firebase';
 @Component({
   selector: 'app-home',
@@ -13,10 +14,19 @@ export class HomePage implements OnInit{
 
   page = "my-page"
 
-  constructor() {}
+  constructor(private router: Router,) {}
 
   setCurrentTab(event) {
     this.selectTab = this.homes.getSelected();
+    console.log(this.router.url)
+  }
+
+  clickTab1() {
+    this.router.navigateByUrl('/home/support')
+  }
+
+  clickTab2() {
+    this.router.navigateByUrl('/home/'+this.page)
   }
 
   async ngOnInit() {

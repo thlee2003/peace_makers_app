@@ -15,7 +15,6 @@ export class FindPwPage implements OnInit {
   error_msg: string;
   name: string;
   email: string;
-  call: number;
   pw: string;
   call_num: number;
   

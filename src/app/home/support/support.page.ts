@@ -28,7 +28,7 @@ export class SupportPage implements OnInit {
               this.router.navigate(['home','my-page','login'])
             }
           }]
-        })
+        }).then(res => res.present())
       }  
     })
   }

@@ -1,23 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div class="a">
-    <ion-img src="assets/imgs/img11.png"></ion-img>
-    <ion-text>
-      <h1>{{peace1}}</h1>
-      <p>{{peacetext1}}</p>
-    </ion-text>
+  <swiper
+    [slidesPerView]="1"
+    [spaceBetween]="30"
+    [centeredSlides]="true"
+    [autoplay]="{
+      delay: 2500,
+      disableOnInteraction: false
+    }"
+    [loop]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [navigation]="true"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="">
+    </ng-template>
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="">
+    </ng-template>
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="">
+    </ng-template>
+  </swiper>
+  <div class="peace1">
+    <img src="assets/imgs/img1.jpg">
+    <h1>{{peace1}}</h1>
+    <p>{{peacetext1}}</p>
   </div>
-  <div class="b">
-    <ion-img src="assets/imgs/img2.jpg"></ion-img>
-    <ion-text>
-      <h1>{{peace2}}</h1>
-      <p>{{peacetext2}}</p>
-    </ion-text>
+  <div class="peace2">
+    <img src="assets/imgs/img1.jpg">
+    <h1>{{peace2}}</h1>
+    <p>{{peacetext2}}</p>
   </div>
-  <div class="c">
-    <ion-img src="assets/imgs/img3.jpg"></ion-img>
-    <ion-text>
-      <h1>{{peace3}}</h1>
-      <p>{{peacetext3}}</p>
-    </ion-text>
+  <div class="peace3">
+    <img src="assets/imgs/img1.jpg">
+    <h1>{{peace3}}</h1>
+    <p>{{peacetext3}}</p>
   </div>
+  <ion-footer>
+    <ion-toolbar>
+      
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

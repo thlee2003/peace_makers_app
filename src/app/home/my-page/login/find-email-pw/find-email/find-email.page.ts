@@ -14,7 +14,7 @@ export class FindEmailPage implements OnInit {
 
   error_msg: string;
   name: string;
-  call: string;
+  call_num: string;
 
   constructor(
     private nav: NavController,
@@ -31,12 +31,12 @@ export class FindEmailPage implements OnInit {
       
       let params: any = {
       name: this.name,
-      call: this.call
+      call_num: this.call_num
     }
     if (this.name == undefined) {
       this.error_msg = "이름을 입력하세요"
     }
-    else if (this.call == undefined) {
+    else if (this.call_num == undefined) {
       this.error_msg = "전화번호를 입력하세요"
     }
     else{
@@ -45,7 +45,7 @@ export class FindEmailPage implements OnInit {
       db.collection("peace_makers").get().then(async (querySnapshot) => {
         querySnapshot.forEach(async (doc) => {
           // console.log((doc.id, doc.data().userName == this.name, doc.data().userPhone == this.call) == true)
-          if((doc.id, doc.data().userName == this.name, doc.data().userPhone == this.call) == true) {
+          if((doc.id, doc.data().userName == this.name, doc.data().userPhone == this.call_num) == true) {
             aaa.push(doc.data().userID)
             console.log(aaa)
           }
