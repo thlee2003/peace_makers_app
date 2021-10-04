@@ -1,41 +1,56 @@
-ion-list {
-  margin: 30px 5% 0 5%;
+.input,
+.logo,
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input ion-item {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 90%;
+  margin-top: 20px;
+}
+.input ion-icon {
+  font-size: 24px;
+}
+
+.addons {
+  display: flex;
+}
+
+.addons ion-icon {
+  margin: 0;
+  font-size: 24px;
+}
+
+.addons ion-note {
+  font-size: 15px;
+}
+
+.addons .find {
+  margin-top: 3%;
+  margin-left: 18%;
+}
+
+.btn {
   // border: 1px solid red;
-  padding: 0;
-  ion-item {
-    border: 1px solid var(--ion-color-light);
-    border-radius: 10px;
-    ion-input {
-      width: 90%;
-    }
-    ion-icon {
-      color: var(--ion-color-dark);
-      font-size: 24px;
-    }
-  }
 }
-ion-row {
-  ion-note {
-    font-size: 0.9rem;
-    margin-top: 4px;
-  }
-  .note {
-    border: none;
-  }
-  ion-icon {
-    font-size: 24px;
-    color: var(--ion-color-medium);
-    margin: 0 5% 40px 35%;
-  }
-}
-p {
-  color: red;
+
+.btn ion-text {
   font-size: 0.8rem;
-  margin-top: 50px;
+  color: red;
 }
-ion-button {
+
+.btn ion-button {
   width: 80%;
-  height: 7%;
+  height: 45px;
   font-size: 1.3em;
-  margin-left: 10%;
+}
+
+.btn .res {
+  margin-top: 40%;
+  border: 1px solid var(--ion-color-success);
+  border-radius: 50px;
+  --border-radius: 50px;
 }

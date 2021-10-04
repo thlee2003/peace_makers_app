@@ -1,6 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-  </ion-toolbar>
+  <ion-toolbar> </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -9,7 +8,7 @@
     [spaceBetween]="30"
     [centeredSlides]="true"
     [autoplay]="{
-      delay: 2500,
+      delay: 4000,
       disableOnInteraction: false
     }"
     [loop]="true"
@@ -20,33 +19,30 @@
     class="mySwiper"
   >
     <ng-template swiperSlide>
-      <img src="assets/imgs/img1.jpg" alt="">
+      <img src="assets/imgs/img1.jpg" alt="" />
     </ng-template>
     <ng-template swiperSlide>
-      <img src="assets/imgs/img1.jpg" alt="">
+      <img src="assets/imgs/img1.jpg" alt="" />
     </ng-template>
     <ng-template swiperSlide>
-      <img src="assets/imgs/img1.jpg" alt="">
+      <img src="assets/imgs/img1.jpg" alt="" />
     </ng-template>
   </swiper>
-  <div class="peace1">
-    <img src="assets/imgs/img1.jpg">
-    <h1>{{peace1}}</h1>
-    <p>{{peacetext1}}</p>
-  </div>
-  <div class="peace2">
-    <img src="assets/imgs/img1.jpg">
-    <h1>{{peace2}}</h1>
-    <p>{{peacetext2}}</p>
-  </div>
-  <div class="peace3">
-    <img src="assets/imgs/img1.jpg">
-    <h1>{{peace3}}</h1>
-    <p>{{peacetext3}}</p>
+  <div class="exp">
+    <div class="one">
+      <img src="assets/imgs/img1.jpg" />
+      <p>{{peacetext1}}</p>
+    </div>
+    <div class="two">
+      <img src="assets/imgs/img2.jpg" />
+      <p>{{peacetext2}}</p>
+    </div>
   </div>
   <ion-footer>
     <ion-toolbar>
-      
+      <ion-note>전화번호 : </ion-note> <br />
+      <ion-note>이메일 : </ion-note>
+      <div></div>
     </ion-toolbar>
   </ion-footer>
 </ion-content>

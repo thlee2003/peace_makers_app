@@ -17,7 +17,6 @@ export class HomePage implements OnInit {
 
   setCurrentTab(event) {
     this.selectTab = this.homes.getSelected();
-    console.log(this.router.url);
   }
 
   clickTab1() {
@@ -33,7 +32,7 @@ export class HomePage implements OnInit {
       if (user && user.emailVerified) {
         this.page = 'my-page-login';
       } else {
-        this.page = 'my-page';
+        this.page = 'my-page/login';
       }
     });
   }

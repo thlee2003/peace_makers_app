@@ -1,6 +1,12 @@
+ion-header {
+  ion-toolbar {
+    height: 50px;
+  }
+}
+
 .swiper {
   width: 100%;
-  height: 100%;
+  height: 95%;
 }
 
 .swiper-slide {
@@ -37,20 +43,33 @@
   width: 100%;
 }
 
-.peace1 img {
-  width: 80%;
-  margin-left: 20%;
-  margin-top: 10%;
+.exp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.peace2 img {
-  width: 80%;
-  margin-right: 20%;
-  margin-top: 10%;
+.one,
+.two {
+  img {
+    width: 90%;
+  }
+  width: 95%;
+  margin-top: 20px;
+  // border-bottom: 1px solid black;
 }
 
-.peace3 img {
-  width: 80%;
+.two img {
   margin-left: 10%;
-  margin-top: 10%;
+}
+
+ion-footer {
+  ion-toolbar {
+    height: 100px;
+    img {
+      width: 25px;
+      height: 25px;
+      color: white;
+    }
+  }
 }
