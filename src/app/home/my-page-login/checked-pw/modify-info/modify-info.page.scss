@@ -16,20 +16,20 @@ ion-segment {
   }
 }
 
-.input {
+.res {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.input ion-item {
+.res ion-item {
   width: 90%;
   margin-top: 20px;
   border: 1px solid black;
   border-radius: 10px;
 }
 
-.input ion-icon {
+.res ion-icon {
   font-size: 24px;
 }
 

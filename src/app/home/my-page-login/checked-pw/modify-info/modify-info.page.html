@@ -1,0 +1,99 @@
+<ion-content [fullscreen]="true">
+  <!-- 회원 선택 -->
+  <ion-segment [(ngModel)]="selectTabs">
+    <ion-segment-button value="일반">
+      <ion-label>일반</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="사업자">
+      <ion-label>사업자</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- 일반 회원 -->
+  <div class="res">
+    <ion-item lines="none">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="이메일"
+        [(ngModel)]="email"
+        disabled
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+      <ion-input
+        [type]="showPw ? 'text' : 'password' "
+        placeholder="비밀번호"
+        class="pw"
+        [(ngModel)]="pw"
+      ></ion-input>
+      <ion-icon
+        slot="end"
+        [name]="PwToggleIcon"
+        (click)="togglepw()"
+      ></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="bag-check-outline"></ion-icon>
+      <ion-input
+        [type]="showPw ? 'text' : 'password' "
+        placeholder="비밀번호 확인"
+        class="pw"
+        [(ngModel)]="check_pw"
+      ></ion-input>
+      <ion-icon
+        slot="end"
+        [name]="PwToggleIcon"
+        (click)="togglepw()"
+      ></ion-icon>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="calendar-number-outline"></ion-icon>
+      <ion-label>생년월일</ion-label>
+      <ion-datetime
+        displayFormat="YYYY-MM-DD"
+        value="2012-12-15"
+        [(ngModel)]="date"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="전화번호"
+        [(ngModel)]="call_num"
+      ></ion-input>
+    </ion-item>
+    <!-- 사업자 회원 -->
+    <ion-item lines="none" *ngIf="selectTabs==='사업자' ">
+      <ion-icon slot="start" name="business-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="회사명"
+        [(ngModel)]="company"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" *ngIf="selectTabs==='사업자' ">
+      <ion-icon slot="start" name="documents-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="사업자등록번호"
+        [(ngModel)]="company_regist_num"
+      ></ion-input>
+    </ion-item>
+    <p>{{error_msg}}</p>
+    <ion-button
+      expand="block"
+      shape="round"
+      color="success"
+      (click)="moveToLogin()"
+    >
+      수정하기
+    </ion-button>
+  </div>
+</ion-content>

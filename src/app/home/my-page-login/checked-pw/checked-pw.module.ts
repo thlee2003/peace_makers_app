@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FindPwPageRoutingModule } from './find-pw-routing.module';
+import { CheckedPwPageRoutingModule } from './checked-pw-routing.module';
 
-import { FindPwPage } from './find-pw.page';
+import { CheckedPwPage } from './checked-pw.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FindPwPageRoutingModule
+    CheckedPwPageRoutingModule
   ],
-  declarations: [FindPwPage]
+  declarations: [CheckedPwPage]
 })
-export class FindPwPageModule {}
+export class CheckedPwPageModule {}
