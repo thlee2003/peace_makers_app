@@ -15,7 +15,7 @@ export class SupportPage implements OnInit {
     private alertCtrl: AlertController
     ) { }
 
-  moveToMethod() {
+  async moveToMethod() {
     // 로그인 유무 확인
     firebase.auth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
@@ -28,7 +28,7 @@ export class SupportPage implements OnInit {
               this.router.navigate(['home','my-page','login'])
             }
           }]
-        })
+        }).then(res => res.present());
       }  
     })
   }

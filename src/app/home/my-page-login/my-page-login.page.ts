@@ -8,6 +8,7 @@ import { Base64 } from '@ionic-native/base64/ngx';
 
 import firebase from 'firebase';
 import { templateJitUrl } from '@angular/compiler';
+import { Button } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-my-page-login',
@@ -53,7 +54,7 @@ export class MyPageLoginPage implements OnInit {
                   this.croppedImage = 'data:image/png;base64,' + temp;
                   // 사진 storage에 업로드
                   this.isUploadStart = true
-                  firebase.storage().ref("image/").putString(this.croppedImage, "data_url").then(function(snapshot) {
+                  firebase.storage().ref("userProfile/image/").putString(this.croppedImage, "data_url").then(function(snapshot) {
                   })
                   setTimeout(() => {
                     document.getElementById("image").setAttribute("src",this.croppedImage);
@@ -80,7 +81,7 @@ export class MyPageLoginPage implements OnInit {
                   this.croppedImage = 'data:image/png;base64,' + temp
                   // 사진 storage에 업로드
                   this.isUploadStart = true
-                  firebase.storage().ref("profile/").putString(this.croppedImage, "data_url").then(function(snapshot) {
+                  firebase.storage().ref("userProfile/profile/").putString(this.croppedImage, "data_url").then(function(snapshot) {
                   })
                   setTimeout(() => {
                     document.getElementById("image").setAttribute("src", this.croppedImage);
@@ -118,21 +119,41 @@ export class MyPageLoginPage implements OnInit {
       }
     });
     // storage에서 사진 가져오기
-    firebase.storage().ref('profile').getDownloadURL().then((function(url) {
+    firebase.storage().ref('userProfile/profile').getDownloadURL().then((function(url) {
       var img = (<HTMLInputElement>document.getElementById('image'))
       img.src = url
     }))
   }
 
+  //로그아웃하기
   async moveToLogout() {
-    const result = firebase.auth().signOut().then(() => {
-      // Sign-out successful.
-      this.router.navigate(['home','main'])
-    }).catch((error) => {
-      // An error happened.
-    });
-    console.log(result)
+
+    await this.alertCtrl.create({
+      header: "로그아웃을 진행하시겠습니까?",
+      buttons: [
+        {
+          text: "네",
+          handler: () => {
+            const result = firebase.auth().signOut().then(() => {
+              // Sign-out successful.
+              this.router.navigate(['home','main'])
+            }).catch((error) => {
+              // An error happened.
+            });
+            console.log(result)
+          }
+        },
+        {
+          text: '아니오',
+          handler: () => {
+            this.router.navigate(['home','my-page-login'])
+          }
+        }
+      ]
+    }).then(res => res.present());
   }
+
+  
   moveToModifiy_info() {
     this.router.navigate(['home','my-page','modify-info'])
   }
@@ -150,22 +171,37 @@ export class MyPageLoginPage implements OnInit {
     const user = firebase.auth().currentUser;
     var db = firebase.firestore();
 
-    // 회원탈퇴시 firestore 삭제
-    db.collection("peace_makers").doc(user.uid).delete().then(() => {
-      //회원탈퇴시 auth 삭제
-      user.delete().then(async () => {
-        //회원탈퇴 관련 toast
-        const toast = await this.toastController.create({
-          message: '회원탈퇴가 정상적으로 처리 되었습니다.',
-          duration: 2000
-        });
-        toast.present();
-      }).catch((error) => {
-      });
-      console.log("Document successfully deleted!");
-      this.router.navigate(['home','main'])
-    }).catch((error) => {
-      console.error("Error removing document: ", error);
-    });
+    await this.alertCtrl.create({
+      header: "회원탈퇴를 진행하시겠습니까?",
+      buttons: [
+        {
+          text: "확인", 
+          handler: async (res) => {
+            // 회원탈퇴시 firestore 삭제
+            db.collection("peace_makers").doc(user.uid).delete().then(() => {
+              //회원탈퇴시 auth 삭제
+              user.delete().then(async () => {
+                //회원탈퇴 관련 toast
+                const toast = await this.toastController.create({
+                  message: '회원탈퇴가 정상적으로 처리 되었습니다.',
+                  duration: 2000
+                });
+                toast.present();
+              }).catch((error) => {
+            });
+            console.log("Document successfully deleted!");
+            this.router.navigate(['home','main'])
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
+          });
+          }
+        }, {
+          text: '아니오',
+          handler: (res) => {
+            this.router.navigate(['home','my-page-login'])
+          }
+        }
+      ]
+    }).then(res => res.present());
   }
 }

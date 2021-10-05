@@ -50,6 +50,7 @@ export class LoginPage implements OnInit {
     } else if (this.pw == undefined || this.pw == "") {
       this.error_msg = "비밀번호를 입력하세요."
     } else {
+      this.error_msg = ""
       // 로그인
       firebase.auth().languageCode = 'ko';
       firebase.auth().signInWithEmailAndPassword(this.email, this.pw)
@@ -59,7 +60,7 @@ export class LoginPage implements OnInit {
 
         // 자동로그인 구현
         if(this.isDisabled) {
-          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
           .then(() => {
             return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
           })
