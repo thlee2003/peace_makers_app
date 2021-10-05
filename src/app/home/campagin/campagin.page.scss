@@ -1,8 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #area {
   position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
   width: 95%;
   padding-bottom: 56.25%; /* 16:9 비율 */
-  margin-left: 2.5%;
   margin-top: 2.5%;
 }
 
@@ -17,4 +22,49 @@
   h1 {
     text-align: center;
   }
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  //   object-fit: cover;
+}
+.swiper-pagination-bullet {
+  background: wheat;
+}
+
+.mySwiper img {
+  width: 100%;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 2px;
+  color: var(--ion-color-success);
 }

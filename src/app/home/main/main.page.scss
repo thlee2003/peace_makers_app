@@ -43,6 +43,12 @@ ion-header {
   width: 100%;
 }
 
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 25px;
+  color: var(--ion-color-success);
+}
+
 .exp {
   display: flex;
   flex-direction: column;
@@ -72,4 +78,13 @@ ion-footer {
       color: white;
     }
   }
+}
+
+ion-col {
+  text-align: center;
+  font-size: 15px;
+}
+.center {
+  border-left: 1px solid var(--ion-color-medium);
+  border-right: 1px solid var(--ion-color-medium);
 }

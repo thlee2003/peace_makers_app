@@ -1,10 +1,44 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div class="container">
-    <ion-button (click)="moveToAmount('정기후원')" expand="block" shape="round" size="large" color="success">
-      정기 후원
-    </ion-button>
-    <ion-button (click)="moveToAmount('일시후원')" expand="block" shape="round" size="large" color="success">
-      일시 후원
+  <ion-segment [(ngModel)]="selectTabs">
+    <ion-segment-button value="temporary">
+      <ion-label>일시 후원</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="regular">
+      <ion-label>정기 후원</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="pay">
+    <div class="input">
+      <ion-row>
+        <ion-col size="3" class="ion-text-center">
+          <p>금액</p>
+        </ion-col>
+        <ion-col size="9" class="ion-text-right">
+          <ion-input
+            type="number"
+            placeholder="후원금액을 입력하세요"
+            [(ngModel)]="pay"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="btn">
+      <ion-text color="red" class="ion-text-center">
+        <p>{{error_msg}}</p>
+      </ion-text>
+    </div>
+    <ion-button
+      (click)="moveToMy_info()"
+      expand="block"
+      shape="round"
+      color="success"
+    >
+      후원 하기
     </ion-button>
   </div>
 </ion-content>

@@ -7,38 +7,44 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./my-info.page.scss'],
 })
 export class MyInfoPage implements OnInit {
-
-  method: string;
-  pay: number;
-  name: string;
-  phone: number;
-  email: string;
+  isDisabled: boolean = false;
+  checkmark: string = 'checkmark-circle-outline';
   error_msg: string;
+  method: string;
+  pay: string;
+  name: string;
+  phone: string;
+  email: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-    ) { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  moveToConsent() {
-    if (this.name == undefined) {
-      this.error_msg = "이름을 입력하세요"
-    } else if (this.phone == undefined) {
-      this.error_msg = "전화번호를 입력하세요"
-    } else if (this.email == undefined) {
-      this.error_msg == "이메일을 입력하세요"
+  onClick() {
+    if (this.isDisabled === false) {
+      this.error_msg = '개인정보 수집 및 이용 동의에 체크하세요';
     } else {
-      this.router.navigate(['home','support','method','amount','my-info', 'consent'])
+      console.log(this.method, this.pay, this.name, this.phone, this.email);
     }
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        this.method = this.router.getCurrentNavigation().extras.state.method
-        this.pay = this.router.getCurrentNavigation().extras.state.pay
-      }
-    })
+  togglecheck() {
+    this.isDisabled = !this.isDisabled;
+    this.checkmark = this.isDisabled
+      ? 'checkmark-circle'
+      : 'checkmark-circle-outline';
+    console.log(this.isDisabled);
   }
 
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.method = this.router.getCurrentNavigation().extras.state.method;
+        this.pay = String(this.router.getCurrentNavigation().extras.state.pay);
+        this.name = this.router.getCurrentNavigation().extras.state.name;
+        this.phone = String(
+          this.router.getCurrentNavigation().extras.state.phone
+        );
+        this.email = this.router.getCurrentNavigation().extras.state.method;
+      }
+    });
+  }
 }

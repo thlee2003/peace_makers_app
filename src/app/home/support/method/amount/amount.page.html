@@ -1,25 +1,49 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="text">
     <ion-text class="ion-text-center">
-      <h3>{{method}}</h3>
+      <h3>{{sp_method}}</h3>
+    </ion-text>
+    <ion-text class="ion-text-center">
+      <h3>{{pay}}원</h3>
     </ion-text>
   </div>
   <div class="input">
-    <ion-row>
-      <ion-col size="3" class="ion-text-center">
-        <p>금액</p>
-      </ion-col>
-      <ion-col size="9" class="ion-text-right">
-        <ion-input type="number" placeholder="후원금액을 입력하세요" [(ngModel)]=pay></ion-input>
-      </ion-col>
-    </ion-row>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-input
+        type="number"
+        placeholder="전화번호"
+        [(ngModel)]="phone"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="이메일"
+        [(ngModel)]="email"
+      ></ion-input>
+    </ion-item>
   </div>
   <div class="btn">
     <ion-text color="red" class="ion-text-center">
       <p>{{error_msg}}</p>
     </ion-text>
+    <ion-button
+      (click)="moveToConsent()"
+      expand="block"
+      shape="round"
+      color="success"
+    >
+      후원하기
+    </ion-button>
   </div>
-  <ion-button (click)="moveToMy_info()" expand="block" shape="round" color="success">
-    후원 하기
-  </ion-button> 
 </ion-content>

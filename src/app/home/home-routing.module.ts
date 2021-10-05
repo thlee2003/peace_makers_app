@@ -76,18 +76,6 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'participation',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./participation/participation.module').then(
-                (m) => m.ParticipationPageModule
-              ),
-          },
-        ],
-      },
-      {
         path: '',
         redirectTo: '../home/main',
         pathMatch: 'full',

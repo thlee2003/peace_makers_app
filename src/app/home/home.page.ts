@@ -12,11 +12,13 @@ export class HomePage implements OnInit {
   @ViewChild('tabs') homes: IonTabs;
 
   page = 'my-page';
+  pages: string;
 
   constructor(private router: Router) {}
 
   setCurrentTab(event) {
     this.selectTab = this.homes.getSelected();
+    console.log(this.selectTab);
   }
 
   clickTab1() {
@@ -31,8 +33,10 @@ export class HomePage implements OnInit {
     firebase.auth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
         this.page = 'my-page-login';
+        this.pages = 'my-page-login';
       } else {
         this.page = 'my-page/login';
+        this.pages = 'my-page';
       }
     });
   }

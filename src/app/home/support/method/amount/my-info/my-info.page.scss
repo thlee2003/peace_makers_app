@@ -1,31 +1,22 @@
-.text {
+.vertical-menu {
+  width: 90%;
+  height: 75%;
+  overflow-y: auto;
+  margin-top: 2%;
   margin-left: 5%;
-  margin-right: 5%;
-  ion-text {
-    h3 {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border: 2px solid var(--ion-color-medium);
-      border-radius: 10px;
-    }
-  }
 }
 
-.input {
+.under {
   ion-item {
-    border: 2px solid var(--ion-color-medium);
-    width: 90%;
-    margin-top: 5%;
-    margin-left: 5%;
-    border-radius: 10px;
+    font-size: 0.9rem;
   }
-}
-
-.btn {
-  width: 80%;
-  margin-top: 20%;
+  ion-icon {
+    margin: 0;
+  }
   p {
+    margin-top: 0%;
     font-size: 0.8rem;
+    color: red;
   }
 }
 ion-button {
