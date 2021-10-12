@@ -24,7 +24,7 @@ export class ModifyInfoPage implements OnInit {
   call_num: number;
   company: string;
   company_regist_num: number;
-  selectTabs = '일반';
+  selectTabs = '개인';
 
   constructor(
     private router: Router,

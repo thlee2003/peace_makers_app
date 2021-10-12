@@ -4,6 +4,13 @@
     <p>누적 후원금 : {{points}}원</p>
   </div>
   <ion-button
+    (click)="moveToAuth()"
+    expand="block"
+    shape="round"
+    color="success"
+    >인증 카드</ion-button
+  >
+  <ion-button
     (click)="moveToModifiy_info()"
     expand="block"
     shape="round"

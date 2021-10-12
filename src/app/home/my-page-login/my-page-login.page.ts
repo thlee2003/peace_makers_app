@@ -40,6 +40,10 @@ export class MyPageLoginPage implements OnInit {
     });
   }
 
+  moveToAuth() {
+    this.router.navigate(['home', 'my-page-login', 'auth-card']);
+  }
+
   moveToModifiy_info() {
     this.router.navigate(['home', 'my-page-login', 'checked-pw']);
   }

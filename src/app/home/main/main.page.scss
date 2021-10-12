@@ -1,6 +1,11 @@
 ion-header {
   ion-toolbar {
     height: 50px;
+    --background: #93b358;
+    img {
+      width: 50%;
+      margin-left: 25%;
+    }
   }
 }
 
@@ -69,6 +74,11 @@ ion-header {
   margin-left: 10%;
 }
 
+.asdf img {
+  margin-left: 5%;
+  width: 90%;
+}
+
 ion-footer {
   ion-toolbar {
     height: 100px;
@@ -82,7 +92,7 @@ ion-footer {
 
 ion-col {
   text-align: center;
-  font-size: 15px;
+  font-size: 13px;
 }
 .center {
   border-left: 1px solid var(--ion-color-medium);

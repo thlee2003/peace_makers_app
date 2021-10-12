@@ -2,7 +2,6 @@ ion-segment {
   width: 90%;
   margin-top: 20px;
   margin-left: 5%;
-  // --background: none;
   ion-segment-button {
     font-size: 1rem;
     --border-width: 0;
@@ -34,7 +33,7 @@ ion-segment {
 }
 
 p {
-  margin-top: 8%;
+  margin-top: 2%;
   color: red;
   font-size: 0.8rem;
 }
@@ -43,4 +42,5 @@ ion-button {
   width: 80%;
   height: 45px;
   font-size: 1.3rem;
+  margin-bottom: 10px;
 }
