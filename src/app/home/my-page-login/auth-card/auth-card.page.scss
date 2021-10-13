@@ -1,13 +1,18 @@
-// .img {
-//   animation: rotate_image 6s linear infinite;
-//   transform-origin: 50% 50%;
-// }
+.img {
+  animation: rotate_image 6s linear infinite;
+  transform-origin: 50% 50%;
+}
 
-// @keyframes rotate_image {
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+ion-card {
+  width: 90%;
+  margin-left: 5%;
+}
+
 ion-card-content {
   border-top: 2px solid black;
 }
@@ -17,4 +22,7 @@ ion-card-content {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 20px;
+}
+h1 {
+  color: black;
 }

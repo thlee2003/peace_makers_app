@@ -16,25 +16,31 @@
 }
 
 .addons {
+  width: 90%;
+  margin-left: 5%;
   display: flex;
-  border: 1px solid red;
+  justify-content: space-between;
+  // border: 1px solid red;
 }
 
 .addons ion-icon {
   color: var(--ion-color-medium);
   margin: 0;
   font-size: 24px;
+  // border: 1px solid red;
+  margin-left: -18px;
 }
 
 .addons p {
   color: var(--ion-color-medium);
   font-size: 14px;
+  // border: 1px solid red;
 }
 
-.addons .find {
-  margin-top: 3%;
-  margin-left: 18%;
-}
+// .addons .find {
+//   margin-top: 3%;
+//   margin-left: 18%;
+// }
 
 .btn ion-text {
   font-size: 0.8rem;

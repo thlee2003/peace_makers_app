@@ -18,7 +18,6 @@ export class HomePage implements OnInit {
 
   setCurrentTab(event) {
     this.selectTab = this.homes.getSelected();
-    console.log(this.selectTab);
   }
 
   clickTab1() {
