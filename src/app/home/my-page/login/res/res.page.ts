@@ -9,6 +9,9 @@ import firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+// 2. 아임포트 코르도바 플러그인 임포트
+import { IamportCordova } from '@ionic-native/iamport-cordova';
+
 @Component({
   selector: 'app-res',
   templateUrl: './res.page.html',
@@ -36,17 +39,17 @@ export class ResPage implements OnInit {
     private toastController: ToastController,
     private alertCtrl: AlertController,
     public navCtrl: NavController,
-    public httpClient: HttpClient
-  ) {
-    // api 들고 오기
-    this.films = this.httpClient.get(
-      'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=%09Bj4ox2avWwiO9K6C%252F2zmpE9xbtfGnWi%252BW%252ByRYiGJ0P5QOTAXsRqXTEr%252BlHImSxQN3bYlRFGMY9csmnw%252Fmw%252BoeQ%253D%253D&returnType=JSON'
-    );
-    this.films.subscribe((data) => {
-      console.log('my data: ', data);
-    });
-  }
-
+    public httpClient: HttpClient,
+    ) {
+      // api 들고 오기
+      this.films = this.httpClient.get('https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=%09%20Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D');
+      this.films
+      .subscribe(data => {
+        console.log('my data: ', data)
+      })
+    }
+    
+  
   async ngOnInit() {}
 
   togglepw() {

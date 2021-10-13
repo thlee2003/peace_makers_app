@@ -11,7 +11,7 @@ import firebase from 'firebase';
 export class SupportPage implements OnInit {
   constructor(private router: Router, private alertCtrl: AlertController) {}
 
-  moveToMethod() {
+  async moveToMethod() {
     // 로그인 유무 확인
     firebase.auth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {

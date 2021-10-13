@@ -12,9 +12,19 @@ export class CheckedPwPage implements OnInit {
   error_msg: string;
   uid: string;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    ) {}
 
-  moveToinfo() {
+    async ngOnInit() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user && user.emailVerified) {
+          this.uid = user.uid;
+        }
+      });
+    }
+
+  async moveToinfo() {
     if (this.pw == undefined || this.pw == '') {
       this.error_msg = '비밀번호를 입력하세요';
     } else {
@@ -41,14 +51,6 @@ export class CheckedPwPage implements OnInit {
           });
         });
     }
-  }
-
-  ngOnInit() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user && user.emailVerified) {
-        this.uid = user.uid;
-      }
-    });
   }
 }
 // this.error_msg = '';
