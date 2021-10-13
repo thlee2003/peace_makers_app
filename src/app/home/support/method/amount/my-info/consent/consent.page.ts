@@ -42,18 +42,19 @@ export class ConsentPage implements OnInit {
       this.error_msg = "개인정보 수집 및 이용 동의에 체크하세요"
     }
     else {
+      this.error_msg = ""
       console.log('a')    
-      var userCode = 'imp22587850';                       // 가맹점 식별코드
+      var userCode = 'imp22587850';  // 가맹점 식별코드
       var data = {
-        pg: 'html5_inicis',                           // PG사
-        pay_method: 'card',                           // 결제수단
-        name: 'peace_makers test',                   // 주문명
+        pg: 'danal_tpay',  // PG사
+        pay_method: 'card',  // 결제수단
+        name: 'peace_makers test',  // 주문명
         merchant_uid: 'mid_' + new Date().getTime(),  // 주문번호
-        amount: String(this.pay),                               // 결제금액
-        buyer_name: String(this.name),                           // 구매자 이름
-        buyer_tel: String(this.phone),                     // 구매자 연락처
-        buyer_email: String(this.email),           // 구매자 이메일
-        app_scheme: 'example',                        // 앱 URL 스킴
+        amount: String(this.pay),  // 결제금액
+        buyer_name: String(this.name),  // 구매자 이름
+        buyer_tel: String(this.phone),  // 구매자 연락처
+        buyer_email: String(this.email),  // 구매자 이메일
+        app_scheme: 'example',  // 앱 URL 스킴
       };
 
       console.log(data)
