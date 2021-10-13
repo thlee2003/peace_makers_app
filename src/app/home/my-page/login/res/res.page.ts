@@ -93,10 +93,7 @@ export class ResPage implements OnInit {
     } else {
       this.error_msg = '';
       //회원가입
-
-      const result = firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.pw)
+      const result = firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
           var user = userCredential.user;

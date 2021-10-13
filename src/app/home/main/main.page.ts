@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import firebase from 'firebase';
 import { SwiperOptions } from 'swiper';
@@ -43,17 +43,22 @@ export class MainPage implements OnInit, AfterContentChecked {
   }
 
   async ngOnInit() {
-    //firestore에서 해당 db 가져오기(실시간으로)
-    var db = firebase.firestore();
-    db.collection("admin").doc("mainpage")
-      .onSnapshot((doc) => {
+    //firestore에서 해당 db 가져오기
+    const db = firebase.firestore();
+    const docRef = db.collection("admin").doc("mainpage");
+
+    docRef.get().then((doc) => {
+      if(doc.exists) {
         this.peace1 = doc.data().text1;
         this.peacetext1 = doc.data().text2;
         this.peace2 = doc.data().text3;
         this.peacetext2 = doc.data().text4;
         this.peace3 = doc.data().text5;
         this.peacetext3 = doc.data().text6;
-      });
+      }
+    }).catch((error) => {
+        console.log("Error getting document:", error)
+    });
   }
 
 }
