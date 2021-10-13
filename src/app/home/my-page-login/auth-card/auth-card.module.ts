@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ConsentPageRoutingModule } from './consent-routing.module';
+import { AuthCardPageRoutingModule } from './auth-card-routing.module';
 
-import { ConsentPage } from './consent.page';
+import { AuthCardPage } from './auth-card.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConsentPageRoutingModule
+    AuthCardPageRoutingModule
   ],
-  declarations: [ConsentPage]
+  declarations: [AuthCardPage]
 })
-export class ConsentPageModule {}
+export class AuthCardPageModule {}

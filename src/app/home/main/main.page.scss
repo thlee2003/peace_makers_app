@@ -1,6 +1,11 @@
 ion-header {
   ion-toolbar {
     height: 50px;
+    --background: #93b358;
+    img {
+      width: 50%;
+      margin-left: 25%;
+    }
   }
 }
 
@@ -43,6 +48,12 @@ ion-header {
   width: 100%;
 }
 
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 25px;
+  color: var(--ion-color-success);
+}
+
 .exp {
   display: flex;
   flex-direction: column;
@@ -63,6 +74,11 @@ ion-header {
   margin-left: 10%;
 }
 
+.asdf img {
+  margin-left: 5%;
+  width: 90%;
+}
+
 ion-footer {
   ion-toolbar {
     height: 100px;
@@ -72,4 +88,13 @@ ion-footer {
       color: white;
     }
   }
+}
+
+ion-col {
+  text-align: center;
+  font-size: 13px;
+}
+.center {
+  border-left: 1px solid var(--ion-color-medium);
+  border-right: 1px solid var(--ion-color-medium);
 }

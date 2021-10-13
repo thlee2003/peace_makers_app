@@ -1,7 +1,15 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <div class="container">
     <!-- 아이디/비밀번호 찾기 선택 -->
-    <ion-segment [(ngModel)]="selectTabs" (ionChange)="segmentChanged($event)">
+    <ion-segment
+      [(ngModel)]="selectTabs"
+      (ionChange)="segmentChanged($event)"
+      mode="ios"
+    >
       <ion-segment-button value="email">
         <ion-label>이메일 찾기</ion-label>
       </ion-segment-button>

@@ -12,30 +12,36 @@
 }
 
 .input {
-  margin-top: 30%;
+  margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
   padding-top: 30px;
   padding-bottom: 30px;
-  border: 2px solid var(--ion-color-medium);
-  border-radius: 15px;
-  ion-input {
-    border-radius: 5px;
-    border: 1px solid var(--ion-color-medium);
-  }
 }
+
+.input ion-item {
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
 .btn {
   width: 80%;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 10%;
   p {
     font-size: 0.8rem;
     color: red;
   }
 }
-ion-button {
-  width: 80%;
-  height: 7%;
+
+.btn p {
+  font-size: 0.8rem;
+  color: red;
+}
+
+.btn ion-button {
+  height: 50px;
+  height: 45px;
   font-size: 1.3em;
-  margin-left: 10%;
 }

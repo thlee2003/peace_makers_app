@@ -32,7 +32,7 @@ export class ResPage implements OnInit {
   company: string;
   company_regist_num: number;
   films: Observable<any>;
-  selectTabs = '일반';
+  selectTabs = '개인';
 
   constructor(
     private router: Router,

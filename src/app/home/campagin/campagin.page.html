@@ -1,20 +1,100 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div id="area">
-    <div id="video" class="container1"></div>
-  </div>
-  <div id="area">
-    <div id="video" class="container2"></div>
-  </div>
-  <div class="article">
-    <ion-text>
-      <h1>{{campaign1}}</h1>
-      <p>
-        {{campaigntext1}}
-      </p>
-      <h1>{{campaign2}}</h1>
-      <p>
-        {{campaigntext2}}
-      </p>
-    </ion-text>
+  <div class="container">
+    <div id="area">
+      <div id="video" class="container1"></div>
+    </div>
+    <div id="area">
+      <div id="video" class="container2"></div>
+    </div>
+    <div class="article">
+      <ion-text>
+        <h1>{{campaign1}}</h1>
+        <p>{{campaigntext1}}</p>
+        <h1>{{campaign2}}</h1>
+        <p>{{campaigntext2}}</p>
+      </ion-text>
+    </div>
+    <swiper
+      [slidesPerView]="1"
+      [spaceBetween]="30"
+      [centeredSlides]="true"
+      [autoplay]="{
+        delay: 4000,
+        disableOnInteraction: false
+      }"
+      [loop]="true"
+      [pagination]="{
+        clickable: true
+      }"
+      [navigation]="true"
+      class="mySwiper"
+    >
+      <ng-template swiperSlide>
+        <img src="assets/imgs/img1.jpg" alt="" />
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="assets/imgs/img1.jpg" alt="" />
+      </ng-template>
+      <ng-template swiperSlide>
+        <img src="assets/imgs/img1.jpg" alt="" />
+      </ng-template>
+    </swiper>
+    <div id="faq">
+      <h1>FAQ</h1>
+      <ul>
+        <li>
+          <input type="checkbox" checked />
+          <i></i>
+          <h2>Q: 질문1</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </li>
+        <li>
+          <input type="checkbox" checked />
+          <i></i>
+          <h2>Q: 질문2</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </li>
+        <li>
+          <input type="checkbox" checked />
+          <i></i>
+          <h2>Q: 질문3</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </ion-content>

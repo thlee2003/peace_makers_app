@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-method',
@@ -7,20 +7,30 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./method.page.scss'],
 })
 export class MethodPage implements OnInit {
+  selectTabs: string = 'temporary';
+  pay: number;
+  error_msg: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  moveToAmount(method) {
-    // 입력값 전달
-    let navigationExtras: NavigationExtras = {
-      state: {
-        method: method
-      }
+  moveToMy_info() {
+    if (this.pay == undefined) {
+      this.error_msg = '금액을 입력해 주세요';
+    } else {
+      let navigationExtras: NavigationExtras = {
+        state: {
+          method: this.selectTabs,
+          pay: this.pay,
+        },
+      };
+      this.router.navigate(
+        ['home', 'support', 'method', 'amount'],
+        navigationExtras
+      );
+      this.error_msg = '';
+      this.pay = undefined;
     }
-    this.router.navigate(['home','support','method','amount'], navigationExtras)
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

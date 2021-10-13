@@ -1,11 +1,14 @@
 <ion-content [fullscreen]="true">
   <!-- 회원 선택 -->
-  <ion-segment [(ngModel)]="selectTabs">
-    <ion-segment-button value="일반">
-      <ion-label>일반</ion-label>
+  <ion-segment [(ngModel)]="selectTabs" mdde="ios">
+    <ion-segment-button value="개인">
+      <ion-label>개인</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="사업자">
-      <ion-label>사업자</ion-label>
+    <ion-segment-button value="기업">
+      <ion-label>기업</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="기관">
+      <ion-label>기관</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -70,7 +73,7 @@
       ></ion-input>
     </ion-item>
     <!-- 사업자 회원 -->
-    <ion-item lines="none" *ngIf="selectTabs==='사업자' ">
+    <ion-item lines="none" *ngIf="selectTabs==='기업' ">
       <ion-icon slot="start" name="business-outline"></ion-icon>
       <ion-input
         type="text"
@@ -78,7 +81,7 @@
         [(ngModel)]="company"
       ></ion-input>
     </ion-item>
-    <ion-item lines="none" *ngIf="selectTabs==='사업자' ">
+    <ion-item lines="none" *ngIf="selectTabs==='기업' ">
       <ion-icon slot="start" name="documents-outline"></ion-icon>
       <ion-input
         type="text"

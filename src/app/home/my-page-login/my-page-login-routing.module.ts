@@ -28,7 +28,11 @@ const routes: Routes = [
       import('./checked-pw/checked-pw.module').then(
         (m) => m.CheckedPwPageModule
       ),
+  },  {
+    path: 'auth-card',
+    loadChildren: () => import('./auth-card/auth-card.module').then( m => m.AuthCardPageModule)
   },
+
 ];
 
 @NgModule({

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { SwiperModule } from 'swiper/angular';
 
 import { CampaginPageRoutingModule } from './campagin-routing.module';
 
@@ -12,8 +13,9 @@ import { CampaginPage } from './campagin.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CampaginPageRoutingModule
+    CampaginPageRoutingModule,
+    SwiperModule,
   ],
-  declarations: [CampaginPage]
+  declarations: [CampaginPage],
 })
 export class CampaginPageModule {}
