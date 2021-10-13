@@ -1,11 +1,59 @@
-
 <ion-content>
-  <ion-list class="ion-margin" lines="none">
-    <ion-button color="success" (click)="moveToFind_email()" expand="block" shape="round">
-      아이디 찾기
-    </ion-button>
-    <ion-button color="success" (click)="moveToFind_pw()" expand="block" shape="round">
-      비번 찾기
-    </ion-button>
-  </ion-list>
+  <div class="container">
+    <!-- 아이디/비밀번호 찾기 선택 -->
+    <ion-segment [(ngModel)]="selectTabs" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="email">
+        <ion-label>이메일 찾기</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="pw">
+        <ion-label>비밀번호 찾기</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="input">
+      <ion-item lines="none" *ngIf="selectTabs==='pw'">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="이메일"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="이름"
+          [(ngModel)]="name"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="전화번호"
+          [(ngModel)]="call_num"
+        ></ion-input>
+      </ion-item>
+      <p>{{error_msg}}</p>
+      <ion-button
+        expand="block"
+        shape="round"
+        color="success"
+        (click)="Find_email()"
+        *ngIf="selectTabs==='email' "
+      >
+        아이디 찾기
+      </ion-button>
+      <ion-button
+        expand="block"
+        shape="round"
+        color="success"
+        (click)="Find_pw()"
+        *ngIf="selectTabs==='pw' "
+      >
+        비밀번호 찾기
+      </ion-button>
+    </div>
+  </div>
 </ion-content>

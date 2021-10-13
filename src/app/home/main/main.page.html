@@ -1,23 +1,48 @@
+<ion-header>
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  <div class="a">
-    <ion-img src="assets/imgs/img11.png"></ion-img>
-    <ion-text>
-      <h1>{{peace1}}</h1>
+  <swiper
+    [slidesPerView]="1"
+    [spaceBetween]="30"
+    [centeredSlides]="true"
+    [autoplay]="{
+      delay: 4000,
+      disableOnInteraction: false
+    }"
+    [loop]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [navigation]="true"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="" />
+    </ng-template>
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="" />
+    </ng-template>
+    <ng-template swiperSlide>
+      <img src="assets/imgs/img1.jpg" alt="" />
+    </ng-template>
+  </swiper>
+  <div class="exp">
+    <div class="one">
+      <img src="assets/imgs/img1.jpg" />
       <p>{{peacetext1}}</p>
-    </ion-text>
-  </div>
-  <div class="b">
-    <ion-img src="assets/imgs/img2.jpg"></ion-img>
-    <ion-text>
-      <h1>{{peace2}}</h1>
+    </div>
+    <div class="two">
+      <img src="assets/imgs/img2.jpg" />
       <p>{{peacetext2}}</p>
-    </ion-text>
+    </div>
   </div>
-  <div class="c">
-    <ion-img src="assets/imgs/img3.jpg"></ion-img>
-    <ion-text>
-      <h1>{{peace3}}</h1>
-      <p>{{peacetext3}}</p>
-    </ion-text>
-  </div>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-note>전화번호 : </ion-note> <br />
+      <ion-note>이메일 : </ion-note>
+      <div></div>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

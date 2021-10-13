@@ -6,25 +6,35 @@
       </ion-col>
       <ion-col size="8">
         <ion-text>
-          <h1>{{name}}</h1><br>
+          <h1>{{name}}</h1>
+          <br />
           <p>누적후원금 : {{points}}원</p>
         </ion-text>
       </ion-col>
     </ion-row>
   </div>
-  <ion-button (click)="moveToLogout()" expand="block" shape="round" color="success">
-    로그아웃
-  </ion-button>
-  <ion-button (click)="moveToModifiy_info()" expand="block" shape="round" color="success">
+  <ion-button
+    (click)="moveToModifiy_info()"
+    expand="block"
+    shape="round"
+    color="success"
+  >
     기본정보 수정
   </ion-button>
-  <ion-button (click)="moveToPayment_info()" expand="block" shape="round" color="success">
+  <ion-button
+    (click)="moveToPayment_info()"
+    expand="block"
+    shape="round"
+    color="success"
+  >
     결제 정보
   </ion-button>
-  <ion-button (click)="moveToSetting()" expand="block" shape="round" color="success">
+  <ion-button
+    (click)="moveToSetting()"
+    expand="block"
+    shape="round"
+    color="success"
+  >
     설정
-  </ion-button>
-  <ion-button (click)="moveToDelete()" expand="block" shape="round" color="success">
-    회원탈퇴
   </ion-button>
 </ion-content>

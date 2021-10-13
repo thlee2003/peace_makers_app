@@ -17,6 +17,7 @@
         type="text"
         placeholder="이메일"
         [(ngModel)]="email"
+        disabled
       ></ion-input>
     </ion-item>
     <ion-item lines="none">
@@ -92,7 +93,7 @@
       color="success"
       (click)="moveToLogin()"
     >
-      회원가입
+      수정하기
     </ion-button>
   </div>
 </ion-content>

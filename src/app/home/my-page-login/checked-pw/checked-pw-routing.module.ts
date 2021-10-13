@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MyPagePage } from './my-page.page';
+import { CheckedPwPage } from './checked-pw.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: MyPagePage,
+    component: CheckedPwPage,
   },
   {
-    path: 'login',
+    path: 'modify-info',
     loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginPageModule),
+      import('./modify-info/modify-info.module').then(
+        (m) => m.ModifyInfoPageModule
+      ),
   },
 ];
 
@@ -19,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MyPagePageRoutingModule {}
+export class CheckedPwPageRoutingModule {}

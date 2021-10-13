@@ -4,21 +4,22 @@
     <ion-tab-button tab="main">
       <ion-icon [name]="selectTab == 'main' ? 'home' : 'home-outline'"></ion-icon>
     </ion-tab-button>
+
     <ion-tab-button tab="campagin">
       <ion-icon [name]="selectTab == 'campagin' ? 'easel' : 'easel-outline'"></ion-icon>
     </ion-tab-button>
+
     <ion-tab-button tab="news">
       <ion-icon [name]="selectTab == 'news' ? 'newspaper' : 'newspaper-outline'"></ion-icon>
     </ion-tab-button>
-
-    <ion-tab-button tab="participation">
-      <ion-icon [name]="selectTab == 'participation' ? 'earth' : 'earth-outline'"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="support">
+    
+    <ion-tab-button tab="support" (click)="clickTab1()">
       <ion-icon [name]="selectTab == 'support' ? 'cash' : 'cash-outline'"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button [tab]="page">
+
+    <ion-tab-button [tab]="page" (click)="clickTab2()">
       <ion-icon [name]="selectTab == page ? 'person' : 'person-outline'"></ion-icon>
     </ion-tab-button>
+
   </ion-tab-bar>
 </ion-tabs>

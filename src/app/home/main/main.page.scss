@@ -1,24 +1,75 @@
-ion-img {
-  width: 95%;
-  border-radius: 5px;
-  margin-left: 2.5%;
-  margin-top: 2.5%;
+ion-header {
+  ion-toolbar {
+    height: 50px;
+  }
 }
-.a,
-.b,
-.c {
-  position: relative;
-  ion-text {
-    position: absolute;
-    top: 3em;
-    left: 0.5em;
+
+.swiper {
+  width: 100%;
+  height: 95%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  //   object-fit: cover;
+}
+.swiper-pagination-bullet {
+  background: wheat;
+}
+
+.mySwiper img {
+  width: 100%;
+}
+
+.exp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.one,
+.two {
+  img {
     width: 90%;
-    height: 100%;
-    color: #000000;
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
-    font-weight: bold;
-    h1 {
-      font-size: 30px;
+  }
+  width: 95%;
+  margin-top: 20px;
+  // border-bottom: 1px solid black;
+}
+
+.two img {
+  margin-left: 10%;
+}
+
+ion-footer {
+  ion-toolbar {
+    height: 100px;
+    img {
+      width: 25px;
+      height: 25px;
+      color: white;
     }
   }
 }

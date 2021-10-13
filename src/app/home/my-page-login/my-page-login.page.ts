@@ -16,7 +16,6 @@ import { Button } from 'selenium-webdriver';
   styleUrls: ['./my-page-login.page.scss'],
 })
 export class MyPageLoginPage implements OnInit {
-
   croppedImage: string;
   percent;
   isUploadStart = false;
@@ -29,27 +28,27 @@ export class MyPageLoginPage implements OnInit {
     private base64: Base64,
     private camera: Camera,
     private crop: Crop,
-    private alertCtrl: AlertController,
-    ) { }
+    private alertCtrl: AlertController
+  ) {}
 
   // 사진 선택
   async chooseImage() {
     const alertDialog = await this.alertCtrl.create({
-      header: "사진을 선택해 주세요",
+      header: '사진을 선택해 주세요',
       buttons: [
         {
           // 카메라로 사진 짝기
-          text: "카메라",
+          text: '카메라',
           handler: () => {
             let options: CameraOptions = {
               sourceType: this.camera.PictureSourceType.CAMERA,
               encodingType: this.camera.EncodingType.PNG,
               mediaType: this.camera.MediaType.PICTURE,
-              destinationType: this.camera.DestinationType.FILE_URI
+              destinationType: this.camera.DestinationType.FILE_URI,
             };
-            this.camera.getPicture(options).then(filePath => {
+            this.camera.getPicture(options).then((filePath) => {
               this.crop.crop(filePath).then((croppedPath) => {
-                this.base64.encodeFile(croppedPath).then(base64Data => {
+                this.base64.encodeFile(croppedPath).then((base64Data) => {
                   let temp = base64Data.substring(34);
                   this.croppedImage = 'data:image/png;base64,' + temp;
                   // 사진 storage에 업로드
@@ -57,61 +56,67 @@ export class MyPageLoginPage implements OnInit {
                   firebase.storage().ref("userProfile/image/").putString(this.croppedImage, "data_url").then(function(snapshot) {
                   })
                   setTimeout(() => {
-                    document.getElementById("image").setAttribute("src",this.croppedImage);
+                    document
+                      .getElementById('image')
+                      .setAttribute('src', this.croppedImage);
                   }, 250);
-                })
-              })
-            })
-          }
+                });
+              });
+            });
+          },
         },
         {
           // 갤러리에서 사진 가져오기
-          text: "갤러리",
+          text: '갤러리',
           handler: () => {
             let options: CameraOptions = {
               sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
               encodingType: this.camera.EncodingType.PNG,
               mediaType: this.camera.MediaType.PICTURE,
-              destinationType: this.camera.DestinationType.FILE_URI
+              destinationType: this.camera.DestinationType.FILE_URI,
             };
-            this.camera.getPicture(options).then(filePath => {
+            this.camera.getPicture(options).then((filePath) => {
               this.crop.crop(filePath).then((croppedPath) => {
-                this.base64.encodeFile(croppedPath).then(base64Data => {
+                this.base64.encodeFile(croppedPath).then((base64Data) => {
                   let temp = base64Data.substring(34);
-                  this.croppedImage = 'data:image/png;base64,' + temp
+                  this.croppedImage = 'data:image/png;base64,' + temp;
                   // 사진 storage에 업로드
                   this.isUploadStart = true
                   firebase.storage().ref("userProfile/profile/").putString(this.croppedImage, "data_url").then(function(snapshot) {
                   })
                   setTimeout(() => {
-                    document.getElementById("image").setAttribute("src", this.croppedImage);
-                  }, 250)
-                })
-              })
-            })
-          }
-        }
-      ]
+                    document
+                      .getElementById('image')
+                      .setAttribute('src', this.croppedImage);
+                  }, 250);
+                });
+              });
+            });
+          },
+        },
+      ],
     });
     alertDialog.present();
-    
   }
 
   async ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const db = firebase.firestore();
-        const docRef = db.collection("peace_makers").doc(user.uid);
+        const docRef = db.collection('peace_makers').doc(user.uid);
 
-        docRef.get().then((doc) => {
-          if (doc.exists) {
-            this.name =  doc.data().userName
-          } else {
+        docRef
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              this.name = doc.data().userName;
+            } else {
               // doc.data() will be undefined in this case
-              console.log("No such document!");
+              console.log('No such document!');
             }
-          }).catch((error) => {
-            console.log("Error getting document:", error);
+          })
+          .catch((error) => {
+            console.log('Error getting document:', error);
           });
       } else {
         // User is signed out
@@ -155,16 +160,15 @@ export class MyPageLoginPage implements OnInit {
 
   
   moveToModifiy_info() {
-    this.router.navigate(['home','my-page','modify-info'])
+    this.router.navigate(['home', 'my-page-login', 'checked-pw']);
   }
 
   moveToPayment_info() {
-    this.router.navigate(['home','my-page','payment-info'])
+    this.router.navigate(['home', 'my-page-login', 'payment-info']);
   }
 
-
   moveToSetting() {
-    this.router.navigate(['home','my-page','setting'])
+    this.router.navigate(['home','my-page-login','setting'])
   }
 
   async moveToDelete() {

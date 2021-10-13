@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-info',
@@ -28,7 +28,17 @@ export class MyInfoPage implements OnInit {
     } else if (this.email == undefined) {
       this.error_msg == "이메일을 입력하세요"
     } else {
-      this.router.navigate(['home','support','method','amount','my-info', 'consent'])
+      // 입력값 전달
+      let navigationExtras: NavigationExtras = {
+        state: {
+          method: this.method,
+          pay: this.pay,
+          email: this.email,
+          name: this.name,
+          phone: this.phone
+        }
+      }
+      this.router.navigate(['home','support','method','amount','my-info', 'consent'], navigationExtras)
     }
   }
 
