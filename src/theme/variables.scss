@@ -2,7 +2,17 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+@font-face {
+  font-family: "SBAggroL";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
+  --ion-font-family: "SBAggroL";
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -207,7 +217,6 @@
 //     --ion-toolbar-border-color: var(--ion-color-step-250);
 //   }
 
-
 //   /*
 //    * Material Design Dark Theme
 //    * -------------------------------------------
@@ -250,4 +259,4 @@
 
 //     --ion-card-background: #1e1e1e;
 //   }
-// 
+//

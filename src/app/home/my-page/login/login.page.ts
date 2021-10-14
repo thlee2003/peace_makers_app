@@ -51,7 +51,9 @@ export class LoginPage implements OnInit {
     } else {
       // 로그인
       firebase.auth().languageCode = 'ko';
-      firebase.auth().signInWithEmailAndPassword(this.email, this.pw)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
           var user = userCredential.user;

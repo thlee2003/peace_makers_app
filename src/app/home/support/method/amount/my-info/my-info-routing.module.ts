@@ -6,12 +6,8 @@ import { MyInfoPage } from './my-info.page';
 const routes: Routes = [
   {
     path: '',
-    component: MyInfoPage
+    component: MyInfoPage,
   },
-  {
-    path: 'consent',
-    loadChildren: () => import('./consent/consent.module').then( m => m.ConsentPageModule)
-  }
 ];
 
 @NgModule({
