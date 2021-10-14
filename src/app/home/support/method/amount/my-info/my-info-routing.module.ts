@@ -6,7 +6,7 @@ import { MyInfoPage } from './my-info.page';
 const routes: Routes = [
   {
     path: '',
-    component: MyInfoPage
+    component: MyInfoPage,
   },
 ];
 
