@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Platform, ToastController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import firebase from 'firebase';
 import 'firebase/analytics';
@@ -16,6 +13,7 @@ import 'firebase/storage';
 })
 export class AppComponent implements OnInit {
   constructor() {}
+
   ngOnInit() {}
 }
 
@@ -30,3 +28,4 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
