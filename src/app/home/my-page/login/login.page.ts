@@ -60,21 +60,35 @@ export class LoginPage implements OnInit {
           this.email = '';
           this.pw = '';
           this.error_msg = '';
-          // // 자동로그인 구현
-          // if (this.isDisabled) {
-          //   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-          //   .then(() => {
-          //     return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
-          //   })
-          //   .catch((error) => {
-          //     // Handle Errors here.
-          //     var errorCode = error.code;
-          //     var errorMessage = error.message;
+          // 자동로그인 구현
+          if (this.isDisabled == true) {
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => {
+              return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
+            })
+            .catch((error) => {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
 
-          //     console.log(errorCode);
-          //     console.log(errorMessage);
-          //   });
-          // }
+              console.log(errorCode);
+              console.log(errorMessage);
+            });
+          }
+          else {
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+            .then(() => {
+              return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
+            })
+            .catch((error) => {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+
+              console.log(errorCode);
+              console.log(errorMessage);
+            });
+          }
 
           //화면 이동
           if (user.emailVerified) {

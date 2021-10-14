@@ -16,7 +16,7 @@ export class FindEmailPwPage implements OnInit {
 
   constructor(private router: Router, private alertCtrl: AlertController) {}
 
-  Find_email() {
+  async Find_email() {
     var aaa = [];
     if (this.name == undefined || this.name == '') {
       this.error_msg = '이름을 입력하세요';
@@ -30,11 +30,7 @@ export class FindEmailPwPage implements OnInit {
         .then(async (querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
             // console.log((doc.id, doc.data().userName == this.name, doc.data().userPhone == this.call) == true)
-            if (
-              (doc.id,
-              doc.data().userName == this.name,
-              doc.data().userPhone == this.call_num) == true
-            ) {
+            if ((doc.id && doc.data().userName == this.name && doc.data().userPhone == this.call_num) == true) {
               aaa.push(doc.data().userID);
               console.log(aaa);
             }
@@ -88,12 +84,7 @@ export class FindEmailPwPage implements OnInit {
         .then(async (querySnapshot) => {
           querySnapshot.forEach(async (doc) => {
             // console.log(doc.id, doc.data().userID == this.email, doc.data().userName == this.name, doc.data().userPhone == this.call_num)
-            if (
-              (doc.id,
-              doc.data().userID == this.email,
-              doc.data().userName == this.name,
-              doc.data().userPhone == this.call_num) == true
-            ) {
+            if ((doc.id && doc.data().userID == this.email && doc.data().userName == this.name && doc.data().userPhone == this.call_num) == true) {
               aaa.push(doc.data().userPW);
               console.log(aaa);
             }
