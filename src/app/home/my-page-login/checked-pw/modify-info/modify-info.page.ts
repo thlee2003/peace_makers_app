@@ -114,7 +114,8 @@ export class ModifyInfoPage implements OnInit {
           if (
             this.pw !== undefined &&
             this.name !== undefined &&
-            this.date !== undefined
+            this.date !== undefined &&
+            this.call_num !== undefined
           ) {
             db.collection('peace_makers')
               .doc(user.uid)
@@ -122,6 +123,7 @@ export class ModifyInfoPage implements OnInit {
                 userPW: this.pw,
                 userName: this.name,
                 userAge: this.date,
+                userPhone: this.call_num
               })
               .then(() => {
                 console.log('Document successfully updated!');
@@ -131,8 +133,7 @@ export class ModifyInfoPage implements OnInit {
                 console.error('Error updating document: ', error);
               });
             //업데이트 된 pw를 auth에 저장
-            user
-              .updatePassword(this.pw)
+            user.updatePassword(this.pw)
               .then(() => {})
               .catch((error) => {});
 
