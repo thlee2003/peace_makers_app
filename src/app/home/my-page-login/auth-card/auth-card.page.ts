@@ -11,9 +11,7 @@ export class AuthCardPage implements OnInit {
 
   name: string;
 
-  constructor(
-    
-  ) { }
+  constructor() { }
 
   async ngOnInit() {
     //현재 로그인한 사용자 가져오기
@@ -24,6 +22,7 @@ export class AuthCardPage implements OnInit {
         const docRef = db.collection('peace_makers').doc(user.uid);
         docRef.get().then((doc) => {
           if (doc.exists) {
+            //인증 카드 이름은 사용자 이름
             this.name = doc.data().userName;
           } else {
             // doc.data() will be undefined in this case

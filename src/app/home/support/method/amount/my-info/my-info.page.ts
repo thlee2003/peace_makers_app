@@ -36,8 +36,8 @@ export class MyInfoPage implements OnInit {
       this.error_msg = '개인정보 수집 및 이용 동의에 체크하세요';
     } else {
       console.log('a');
-      var userCode = 'imp22587850'; // 가맹점 식별코드
-      var data = {
+      const userCode = 'imp22587850'; // 가맹점 식별코드
+      const data = {
         pg: 'danal_tpay', // PG사
         pay_method: 'card', // 결제수단
         name: 'peace_makers test', // 주문명

@@ -20,15 +20,15 @@ export class MyPageLoginPage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    //현재 로그인한 사용자 정보 가져오기
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const db = firebase.firestore();
         const docRef = db.collection('peace_makers').doc(user.uid);
 
-        docRef
-          .get()
-          .then((doc) => {
+        docRef.get().then((doc) => {
             if (doc.exists) {
+              // 이름은 사용자 이름
               this.name = doc.data().userName;
             } else {
               // doc.data() will be undefined in this case
@@ -45,99 +45,25 @@ export class MyPageLoginPage implements OnInit {
     });
   }
 
+  //인증카드
   moveToAuth() {
     this.router.navigate(['home', 'my-page-login', 'auth-card']);
   }
 
-  //로그아웃하기
-  async moveToLogout() {
-    await this.alertCtrl
-      .create({
-        header: '로그아웃을 진행하시겠습니까?',
-        buttons: [
-          {
-            text: '네',
-            handler: () => {
-              const result = firebase
-                .auth()
-                .signOut()
-                .then(() => {
-                  // Sign-out successful.
-                  this.router.navigate(['home', 'main']);
-                })
-                .catch((error) => {
-                  // An error happened.
-                });
-              console.log(result);
-            },
-          },
-          {
-            text: '아니오',
-            handler: () => {
-              this.router.navigate(['home', 'my-page-login']);
-            },
-          },
-        ],
-      })
-      .then((res) => res.present());
-  }
-
+  //기본정보 수정하기
   moveToModifiy_info() {
     this.router.navigate(['home', 'my-page-login', 'checked-pw']);
   }
 
+  //결제정보 확인하기
   moveToPayment_info() {
+
+
     this.router.navigate(['home', 'my-page-login', 'payment-info']);
   }
 
+  //설정 페이지로 이동
   moveToSetting() {
     this.router.navigate(['home', 'my-page-login', 'setting']);
-  }
-
-  async moveToDelete() {
-    const user = firebase.auth().currentUser;
-    var db = firebase.firestore();
-
-    await this.alertCtrl
-      .create({
-        header: '회원탈퇴를 진행하시겠습니까?',
-        buttons: [
-          {
-            text: '확인',
-            handler: async (res) => {
-              // 회원탈퇴시 firestore 삭제
-              db.collection('peace_makers')
-                .doc(user.uid)
-                .delete()
-                .then(() => {
-                  //회원탈퇴시 auth 삭제
-                  user
-                    .delete()
-                    .then(async () => {
-                      //회원탈퇴 관련 toast
-                      const toast = await this.toastController.create({
-                        message: '회원탈퇴가 정상적으로 처리 되었습니다.',
-                        duration: 2000,
-                      });
-                      toast.present();
-                    })
-                    .catch((error) => {});
-                  console.log('Document successfully deleted!');
-                  this.router.navigate(['home', 'main']);
-                })
-                .catch((error) => {
-                  console.error('Error removing document: ', error);
-                });
-            },
-          },
-          {
-            text: '아니오',
-            handler: (res) => {
-              this.router.navigate(['home', 'my-page-login']);
-            },
-          },
-        ],
-      })
-      .then((res) => res.present());
   }
 }

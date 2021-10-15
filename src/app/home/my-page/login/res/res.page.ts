@@ -33,6 +33,7 @@ export class ResPage implements OnInit {
   company_regist_num: number;
   films: Observable<any>;
   selectTabs = '개인';
+  
 
   constructor(
     private router: Router,
@@ -65,14 +66,20 @@ export class ResPage implements OnInit {
   }
 
   async moveToLogin() {
+    console.log(this.moveToLogin)
+
+    let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
+
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
     } else if (this.email.includes('@') == false) {
       this.error_msg = '이메일 형식이 아닙니다.';
     } else if (this.pw == undefined) {
       this.error_msg = '비밀번호를 입력하세요.';
-    } else if (this.pw.length < 8 || this.pw.length > 16) {
-      this.error_msg = '비밀번호를 8 ~ 16자리로 입력하세요.';
+    } else if(this.pw.length<8 || this.pw.length>16) {
+      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';
+    } else if (!check.test(this.pw)) {
+      this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.';
     } else if (this.check_pw == undefined) {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
@@ -85,10 +92,7 @@ export class ResPage implements OnInit {
       this.error_msg = '비밀번호와 비밀번호 확인이 같지 않음.';
     } else if (this.company == undefined && this.isDisabled == false) {
       this.error_msg = '회사명을 입력하세요.';
-    } else if (
-      this.company_regist_num == undefined &&
-      this.isDisabled == false
-    ) {
+    } else if ( this.company_regist_num == undefined && this.isDisabled == false) {
       this.error_msg = '사업자등록번호 입력하세요.';
     } else {
       this.error_msg = '';
@@ -96,12 +100,10 @@ export class ResPage implements OnInit {
       const result = firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
-          var user = userCredential.user;
+          const user = userCredential.user;
 
           // 이메일 인증 이메일 전송
-          firebase
-            .auth()
-            .currentUser.sendEmailVerification()
+          firebase.auth().currentUser.sendEmailVerification()
             .then(async () => {
               // Email verification sent!
               await this.alertCtrl
@@ -122,13 +124,11 @@ export class ResPage implements OnInit {
             });
 
           // firestore 관련 선언
-          var db = firebase.firestore();
+          const db = firebase.firestore();
 
           // 사업자일 경우 firestore
           if (user && !this.isDisabled) {
-            db.collection('peace_makers')
-              .doc(user.uid)
-              .set({
+            db.collection('peace_makers').doc(user.uid).set({
                 userName: this.name,
                 userCompany: this.company,
                 userCompany_num: this.company_regist_num,

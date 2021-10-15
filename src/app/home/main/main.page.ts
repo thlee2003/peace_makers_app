@@ -3,20 +3,17 @@ import { AfterContentChecked, ChangeDetectorRef, Component, OnInit, ViewChild, V
 import firebase from 'firebase';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Mousewheel,
-  Keyboard,
-  Autoplay
-} from "swiper";
+import SwiperCore, { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from "swiper";
+
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class MainPage implements OnInit, AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
   config: SwiperOptions = {

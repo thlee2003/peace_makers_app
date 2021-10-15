@@ -30,8 +30,7 @@ export class CheckedPwPage implements OnInit {
     } else {
       const db = firebase.firestore();
 
-      db.collection('peace_makers')
-        .get()
+      db.collection('peace_makers').get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             if (doc.id === this.uid) {

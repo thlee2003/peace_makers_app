@@ -1,26 +1,18 @@
-import {
-  AfterContentChecked,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterContentChecked, Component, OnInit, ViewChild, } from '@angular/core';
 
 import firebase from 'firebase';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Mousewheel,
-  Keyboard,
-  Autoplay,
-} from 'swiper';
+import SwiperCore, { Navigation, Pagination, Mousewheel, Keyboard, Autoplay,} from 'swiper';
+
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
+
 @Component({
   selector: 'app-campagin',
   templateUrl: './campagin.page.html',
   styleUrls: ['./campagin.page.scss'],
 })
+
 export class CampaginPage implements OnInit, AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
   config: SwiperOptions = {
@@ -43,6 +35,7 @@ export class CampaginPage implements OnInit, AfterContentChecked {
   }
 
   async ngOnInit() {
+    //유튜브 영상 가져오기 + DB 연동
     const container1 = document.querySelector('.container1');
     const container2 = document.querySelector('.container2');
     const db = firebase.firestore();

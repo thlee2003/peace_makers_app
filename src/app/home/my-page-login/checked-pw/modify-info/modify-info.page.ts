@@ -39,9 +39,7 @@ export class ModifyInfoPage implements OnInit {
         const db = firebase.firestore();
         const docRef = db.collection('peace_makers').doc(user.uid);
 
-        docRef
-          .get()
-          .then((doc) => {
+        docRef.get().then((doc) => {
             if (doc.exists) {
               this.name = doc.data().userName;
               this.company = doc.data().userCompany;

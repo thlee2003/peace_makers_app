@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>new-pw</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <div class="res">
+  <ion-item lines="none">
+    <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+    <ion-input [type]="showPw ? 'text' : 'password' "placeholder="비밀번호" class="pw" [(ngModel)]="pw"></ion-input>
+    <ion-icon slot="end" [name]="PwToggleIcon" (click)="togglepw()"></ion-icon>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-icon slot="start" name="bag-check-outline"></ion-icon>
+    <ion-input [type]="showPw ? 'text' : 'password' " placeholder="비밀번호 확인" class="pw" [(ngModel)]="check_pw"></ion-input>
+    <ion-icon slot="end" [name]="PwToggleIcon" (click)="togglepw()"></ion-icon>
+  </ion-item>
+  <p>{{error_msg}}</p>
+  <ion-button expand="block" shape="round" color="success" (click)="moveToChange()">
+      비밀번호 수정
+  </ion-button>
+  </div>
+</ion-content>
