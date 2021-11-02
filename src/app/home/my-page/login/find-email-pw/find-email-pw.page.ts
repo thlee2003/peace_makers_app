@@ -95,41 +95,38 @@ export class FindEmailPwPage implements OnInit {
           // 배열 내 값이 0이 아니라면 비밀번호 재설정 메일 발송
           if (aaa.length > 0) {
 
-            this.router.navigate(
-              ['home', 'my-page', 'login', 'find-email-pw', 'new-pw']
-            )
-            // //이메일
-            // firebase
-            //   .auth()
-            //   .sendPasswordResetEmail(this.email)
-            //   .then(() => {
-            //     // Password reset email sent!
-            //     // ..
-            //   })
-            //   .catch((error) => {
-            //     var errorCode = error.code;
-            //     var errorMessage = error.message;
-            //     // ..
-            //   });
-            // await this.alertCtrl
-            //   .create({
-            //     header: '비밀번호 재설정 메일을 발송하였습니다!',
-            //     message:
-            //       this.name +
-            //       '님의 이메일로 비밀번호 재설정 메일을 발송드렸습니다!',
-            //     buttons: [
-            //       {
-            //         text: '확인',
-            //         handler: async (res) => {
-            //           this.router.navigate(['home', 'my-page', 'login']);
-            //         },
-            //       },
-            //     ],
-            //   })
-            //   .then((res) => res.present());
-            // this.email;
-            // this.name = '';
-            // this.call_num = '';
+            //이메일
+            firebase
+              .auth()
+              .sendPasswordResetEmail(this.email)
+              .then(() => {
+                // Password reset email sent!
+                // ..
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ..
+              });
+            await this.alertCtrl
+              .create({
+                header: '비밀번호 재설정 메일을 발송하였습니다!',
+                message:
+                  this.name +
+                  '님의 이메일로 비밀번호 재설정 메일을 발송드렸습니다!',
+                buttons: [
+                  {
+                    text: '확인',
+                    handler: async (res) => {
+                      this.router.navigate(['home', 'my-page', 'login']);
+                    },
+                  },
+                ],
+              })
+              .then((res) => res.present());
+            this.email;
+            this.name = '';
+            this.call_num = '';
           }
 
           // 값이 0이면 에러 메세지

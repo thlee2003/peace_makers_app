@@ -8,10 +8,6 @@ import firebase from 'firebase';
 
 import { Observable } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-// 2. 아임포트 코르도바 플러그인 임포트
-import { IamportCordova } from '@ionic-native/iamport-cordova';
-
 @Component({
   selector: 'app-res',
   templateUrl: './res.page.html',
@@ -41,14 +37,7 @@ export class ResPage implements OnInit {
     private alertCtrl: AlertController,
     public navCtrl: NavController,
     public httpClient: HttpClient,
-    ) {
-      // api 들고 오기
-      this.films = this.httpClient.get('https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=%09%20Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D');
-      this.films
-      .subscribe(data => {
-        console.log('my data: ', data)
-      })
-    }
+    ) {}
     
   
   async ngOnInit() {}
@@ -68,7 +57,7 @@ export class ResPage implements OnInit {
   async moveToLogin() {
     console.log(this.moveToLogin)
 
-    let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
+    // let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
 
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
@@ -77,10 +66,11 @@ export class ResPage implements OnInit {
     } else if (this.pw == undefined) {
       this.error_msg = '비밀번호를 입력하세요.';
     } else if(this.pw.length<8 || this.pw.length>16) {
-      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';
-    } else if (!check.test(this.pw)) {
-      this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.';
-    } else if (this.check_pw == undefined) {
+      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';} 
+      //else if (!check.test(this.pw)) {
+    //   this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.'; 
+    // } 
+      else if (this.check_pw == undefined) {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IamportCordova } from '@ionic-native/iamport-cordova';
 
+import firebase from 'firebase';
+
 @Component({
   selector: 'app-my-info',
   templateUrl: './my-info.page.html',
@@ -62,6 +64,15 @@ export class MyInfoPage implements OnInit {
       };
       // 5. 결제창 호출
       IamportCordova.payment(params);
+
+      if(IamportCordova.payment(params) ) {
+        const db = firebase.firestore();
+
+        db.collection('admin').doc('test').update({
+          "first.pay1" : 'mid_' + new Date().getTime(),
+          "first.pay2" : data     
+        });
+      }
     }
   }
 
