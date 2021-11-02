@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import firebase from 'firebase';
 
 @Component({
@@ -11,51 +12,81 @@ import firebase from 'firebase';
 export class SettingPage implements OnInit {
   constructor(
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alertCtrl: AlertController
   ) {}
 
   ngOnInit() {}
-
+  moveToTerms() {
+    this.router.navigate(['home', 'my-page-login', 'setting', 'terms']);
+  }
+  moveToPolicy() {
+    this.router.navigate(['home', 'my-page-login', 'setting', 'policy']);
+  }
   async moveToLogout() {
-    const result = firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        // Sign-out successful.
-        this.router.navigate(['home', 'main']);
+    this.alertCtrl
+      .create({
+        header: '로그아웃 하시겠습니까?',
+        buttons: [
+          {
+            text: '취소',
+            role: 'cancel',
+          },
+          {
+            text: '로그아웃',
+            handler: (res) => {
+              const result = firebase
+                .auth()
+                .signOut()
+                .then(() => {
+                  this.router.navigate(['home', 'main']);
+                })
+                .catch((error) => {});
+            },
+          },
+        ],
       })
-      .catch((error) => {
-        // An error happened.
-      });
-    console.log(result);
+      .then((res) => res.present());
   }
 
   async moveToDelete() {
+    // 회원탈퇴시 firestore 삭제
     const user = firebase.auth().currentUser;
     var db = firebase.firestore();
-
-    // 회원탈퇴시 firestore 삭제
-    db.collection('peace_makers')
-      .doc(user.uid)
-      .delete()
-      .then(() => {
-        //회원탈퇴시 auth 삭제
-        user
-          .delete()
-          .then(async () => {
-            //회원탈퇴 관련 toast
-            const toast = await this.toastController.create({
-              message: '회원탈퇴가 정상적으로 처리 되었습니다.',
-              duration: 2000,
-            });
-            toast.present();
-          })
-          .catch((error) => {});
-        console.log('Document successfully deleted!');
-        this.router.navigate(['home', 'main']);
+    this.alertCtrl
+      .create({
+        header: '회원탈퇴 하시겠습니까?',
+        buttons: [
+          {
+            text: '취소',
+            role: 'cancel',
+          },
+          {
+            text: '회원탈퇴',
+            handler: (res) => {
+              db.collection('peace_makers')
+                .doc(user.uid)
+                .delete()
+                .then(() => {
+                  user
+                    .delete()
+                    .then(async () => {
+                      const toast = await this.toastController.create({
+                        message: '회원탈퇴가 정상적으로 처리 되었습니다.',
+                        duration: 2000,
+                      });
+                      toast.present();
+                    })
+                    .catch((err) => {});
+                  this.router.navigate(['home', 'main']);
+                })
+                .catch((err) => {
+                  console.error('Error removing document: ', err);
+                });
+            },
+          },
+        ],
       })
-      .catch((error) => {
-        console.error('Error removing document: ', error);
-      });
+      .then((res) => res.present());
   }
 }
