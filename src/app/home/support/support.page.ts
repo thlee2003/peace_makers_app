@@ -42,9 +42,9 @@ export class SupportPage implements OnInit {
     const getdb = db.collection('admin').doc('participation');
     getdb.get().then((doc) => {
       if (doc.exists) {
-        const a = doc.data().video3;
-        const b = doc.data().video4;
-        const c = doc.data().video5;
+        const a = doc.data().video1;
+        const b = doc.data().video2;
+        const c = doc.data().video3;
         let templeta3 = a;
         let templeta4 = b;
         let templeta5 = c;
