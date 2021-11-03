@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { FindEmailPwPageRoutingModule } from './find-email-pw-routing.module';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 import { FindEmailPwPage } from './find-email-pw.page';
 
@@ -13,8 +14,8 @@ import { FindEmailPwPage } from './find-email-pw.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    FindEmailPwPageRoutingModule
+    FindEmailPwPageRoutingModule,
   ],
-  declarations: [FindEmailPwPage]
+  declarations: [FindEmailPwPage, HeaderComponent],
 })
 export class FindEmailPwPageModule {}
