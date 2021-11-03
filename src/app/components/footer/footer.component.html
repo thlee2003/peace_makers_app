@@ -2,9 +2,13 @@
   <ion-toolbar>
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="3.5"><ion-note>이용약관</ion-note></ion-col>
+        <ion-col size="3.5"
+          ><ion-note (click)="moveToTerms()">이용약관</ion-note></ion-col
+        >
         <ion-col size="5" class="center"
-          ><ion-note>개인정보처리방침</ion-note></ion-col
+          ><ion-note (click)="moveToPolicy()"
+            >개인정보처리방침</ion-note
+          ></ion-col
         >
         <ion-col size="3.5"><ion-note>인재 채용</ion-note></ion-col>
       </ion-row>
