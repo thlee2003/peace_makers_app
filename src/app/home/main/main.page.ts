@@ -46,12 +46,8 @@ export class MainPage implements OnInit, AfterContentChecked {
 
     docRef.get().then((doc) => {
       if(doc.exists) {
-        this.peace1 = doc.data().text1;
-        this.peacetext1 = doc.data().text2;
-        this.peace2 = doc.data().text3;
-        this.peacetext2 = doc.data().text4;
-        this.peace3 = doc.data().text5;
-        this.peacetext3 = doc.data().text6;
+        this.peacetext1 = doc.data().text1;
+        this.peacetext2 = doc.data().text2;
       }
     }).catch((error) => {
         console.log("Error getting document:", error)

@@ -26,6 +26,14 @@ export class CampaginPage implements OnInit, AfterContentChecked {
   campaign2: string;
   campaigntext2: string;
 
+  Q1: string;
+  Q2: string;
+  Q3: string;
+
+  A1: string;
+  A2: string;
+  A3: string;
+
   constructor() {}
 
   ngAfterContentChecked() {
@@ -44,10 +52,16 @@ export class CampaginPage implements OnInit, AfterContentChecked {
       if (doc.exists) {
         const video1 = doc.data().video1;
         const video2 = doc.data().video2;
-        this.campaign1 = doc.data().text1;
-        this.campaigntext1 = doc.data().text2;
-        this.campaign2 = doc.data().text3;
-        this.campaigntext2 = doc.data().text4;
+        this.campaign1 = doc.data().campaign1;
+        this.campaigntext1 = doc.data().campaigntext1;
+        this.campaign2 = doc.data().campaign2;
+        this.campaigntext2 = doc.data().campaigntext2;
+        this.Q1 = doc.data().Q1text;
+        this.A1 = doc.data().A1text;
+        this.Q2 = doc.data().Q2text;
+        this.A2 = doc.data().A2text;
+        this.Q3 = doc.data().Q3text;
+        this.A3 = doc.data().A3text;
         let template1 = video1;
         let template2 = video2;
         container1.innerHTML = template1;
