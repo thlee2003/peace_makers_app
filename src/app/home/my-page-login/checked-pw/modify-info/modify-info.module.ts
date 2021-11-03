@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ModifyInfoPageRoutingModule } from './modify-info-routing.module';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 import { ModifyInfoPage } from './modify-info.page';
 
@@ -13,8 +14,8 @@ import { ModifyInfoPage } from './modify-info.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ModifyInfoPageRoutingModule
+    ModifyInfoPageRoutingModule,
   ],
-  declarations: [ModifyInfoPage]
+  declarations: [ModifyInfoPage, HeaderComponent],
 })
 export class ModifyInfoPageModule {}

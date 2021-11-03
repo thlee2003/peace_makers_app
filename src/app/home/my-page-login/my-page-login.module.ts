@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MyPageLoginPageRoutingModule } from './my-page-login-routing.module';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 import { MyPageLoginPage } from './my-page-login.page';
 
@@ -13,8 +14,8 @@ import { MyPageLoginPage } from './my-page-login.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MyPageLoginPageRoutingModule
+    MyPageLoginPageRoutingModule,
   ],
-  declarations: [MyPageLoginPage]
+  declarations: [MyPageLoginPage, HeaderComponent],
 })
 export class MyPageLoginPageModule {}
