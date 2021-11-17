@@ -1,61 +1,92 @@
-.input,
-.logo,
-.btn {
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.all {
+  margin-top: 15%;
+  height: 70%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 85%;
+  }
+}
+
+.input {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.input ion-item {
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 90%;
-  margin-top: 20px;
-}
-.input ion-icon {
-  font-size: 24px;
+  justify-content: center;
+
+  ion-item {
+    width: 90%;
+    margin-top: 20px;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    ion-icon {
+      margin: 5px;
+    }
+  }
+
+  ion-item:nth-child(2) {
+    margin-bottom: var(--ion-margin, 0);
+  }
 }
 
 .addons {
   width: 90%;
+  margin-top: 0%;
   margin-left: 5%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  // border: 1px solid red;
+
+  ion-item {
+    width: 50%;
+    ion-icon {
+      color: var(--ion-color-medium);
+      margin: 0%;
+      margin-left: -18px;
+    }
+    p {
+      color: var(--ion-color-medium);
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    width: 50%;
+    text-align: right;
+  }
 }
 
-.addons ion-icon {
-  color: var(--ion-color-medium);
-  margin: 0;
-  font-size: 24px;
-  // border: 1px solid red;
-  margin-left: -18px;
-}
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.addons p {
-  color: var(--ion-color-medium);
-  font-size: 14px;
-  // border: 1px solid red;
-}
+  ion-text {
+    color: red;
+    font-size: 0.8rem;
+  }
 
-// .addons .find {
-//   margin-top: 3%;
-//   margin-left: 18%;
-// }
+  ion-button {
+    width: 80%;
+    height: 45px;
+    font-size: 1.3em;
+  }
 
-.btn ion-text {
-  font-size: 0.8rem;
-  color: red;
-}
-
-.btn ion-button {
-  width: 80%;
-  height: 45px;
-  font-size: 1.3em;
-}
-
-.btn .res {
-  margin-top: 40%;
-  border: 1px solid var(--ion-color-success);
-  border-radius: 50px;
-  --border-radius: 50px;
+  .res {
+    margin-top: 15%;
+  }
 }

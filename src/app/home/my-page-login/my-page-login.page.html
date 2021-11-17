@@ -4,35 +4,31 @@
     <h1>{{name}}</h1>
     <p>누적 후원금 : {{points}}원</p>
   </div>
-  <ion-button
-    (click)="moveToAuth()"
-    expand="block"
-    shape="round"
-    color="success"
-    >인증 카드</ion-button
+  <ion-button (click)="moveToAuth()" expand="block" shape="round" color="blue"
+    ><p class="btnText">인증 카드</p></ion-button
   >
   <ion-button
     (click)="moveToModifiy_info()"
     expand="block"
     shape="round"
-    color="success"
+    color="blue"
   >
-    기본정보 수정
+    <p class="btnText">기본정보 수정</p>
   </ion-button>
   <ion-button
     (click)="moveToPayment_info()"
     expand="block"
     shape="round"
-    color="success"
+    color="blue"
   >
-    결제 정보
+    <p class="btnText">결제 정보</p>
   </ion-button>
   <ion-button
     (click)="moveToSetting()"
     expand="block"
     shape="round"
-    color="success"
+    color="blue"
   >
-    설정
+    <p class="btnText">설정</p>
   </ion-button>
 </ion-content>
