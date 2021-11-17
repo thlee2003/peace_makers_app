@@ -6,6 +6,8 @@ import { ToastController } from '@ionic/angular';
 
 import firebase from 'firebase';
 
+import axios from 'axios';
+
 import { Observable } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
@@ -40,7 +42,11 @@ export class ResPage implements OnInit {
     ) {}
     
   
-  async ngOnInit() {}
+  async ngOnInit() {
+    axios.post('https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D').then((response) => {
+      console.log(response.data);
+    })
+  }
 
   togglepw() {
     this.showPw = !this.showPw;

@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   checkmark = 'checkmark-circle-outline';
   private email: string;
   private pw: string;
+  uid: string;
 
   constructor(
     private router: Router,
@@ -49,16 +50,13 @@ export class LoginPage implements OnInit {
     } else if (this.pw == undefined || this.pw == '') {
       this.error_msg = '비밀번호를 입력하세요.';
     } else {
+      this.error_msg = ''
       // 로그인
       firebase.auth().languageCode = 'ko';
       firebase.auth().signInWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          
-          this.email = '';
-          this.pw = '';
-          this.error_msg = '';
           // 자동로그인 구현
           if (this.isDisabled == true) {
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
@@ -74,6 +72,7 @@ export class LoginPage implements OnInit {
               console.log(errorMessage);
             });
           }
+          //자동로그인 선택 xx
           else {
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
             .then(() => {
@@ -88,6 +87,38 @@ export class LoginPage implements OnInit {
               console.log(errorMessage);
             });
           }
+
+          //비밀번호를 변경하였을 경우 DB에 업데이트 되는 내용//
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user && user.emailVerified) {
+              this.uid = user.uid;
+              console.log(this.uid)
+            }
+          });
+
+          const db = firebase.firestore();
+          
+          db.collection("peace_makers").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              if(doc.id === this.uid) {
+                if(this.pw == doc.data().userPW) {
+                  console.log("맞아요")
+                } else {
+                  console.log("틀려요")
+                  console.log(this.pw)
+                  db.collection('peace_makers').doc(user.uid).update({
+                    userPW: this.pw
+                  }).then(() => {
+                    console.log('Document successfully updated!')
+                  }).catch((error) => {
+                    // The document probably doesn't exist.
+                    console.error('Error updating document: ', error);
+                  })
+                }
+              }
+            })
+          })
+          //-------------------------------------------------//
 
           //화면 이동
           if (user.emailVerified) {
