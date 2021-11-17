@@ -4,23 +4,38 @@
       <!-- <ion-icon
         [name]="selectTab == 'main' ? 'home' : 'home-outline'"
       ></ion-icon> -->
-      <img src="../../assets/icon/Asset 1.svg" alt="" />
+      <img
+        [src]="selectTab == 'main' ? 'assets/icon/Asset 34.svg' : 'assets/icon/Asset 29.svg'"
+        alt=""
+      />
     </ion-tab-button>
 
     <ion-tab-button tab="campagin">
-      <img src="../../assets/icon/Asset 2.svg" alt="" />
+      <img
+        [src]="selectTab == 'campagin' ? 'assets/icon/Asset 33.svg' : 'assets/icon/Asset 28.svg'"
+        alt=""
+      />
     </ion-tab-button>
 
     <ion-tab-button tab="news">
-      <img src="../../assets/icon/Asset 3.svg" alt="" />
+      <img
+        [src]="selectTab == 'news' ? 'assets/icon/Asset 30.svg' : 'assets/icon/Asset 25.svg'"
+        alt=""
+      />
     </ion-tab-button>
 
     <ion-tab-button tab="support" (click)="clickTab1()">
-      <img src="../../assets/icon/Asset 4.svg" alt="" />
+      <img
+        [src]="selectTab == 'support' ? 'assets/icon/Asset 31.svg' : 'assets/icon/Asset 26.svg'"
+        alt=""
+      />
     </ion-tab-button>
 
     <ion-tab-button [tab]="page" (click)="clickTab2()">
-      <img src="../../assets/icon/Asset 5.svg" alt="" />
+      <img
+        [src]="(selectTab == 'my-page-login') || (selectTab == 'my-page') ? 'assets/icon/Asset 32.svg' : 'assets/icon/Asset 27.svg'"
+        alt=""
+      />
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

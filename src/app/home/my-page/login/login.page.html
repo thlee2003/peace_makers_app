@@ -1,71 +1,71 @@
-<app-header></app-header>
-
-<ion-content>
-  <!-- logo 이미지 -->
-  <div class="logo">
-    <img src="" alt="" />
+<ion-content class="content">
+  <div class="all">
+    <!-- logo 이미지 -->
+    <div class="logo">
+      <img src="assets/icon/Asset 22.svg" alt="" />
+    </div>
+    <!-- 입력 -->
+    <div class="input">
+      <ion-item lines="none">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="이메일"
+          size="6"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-vertical" lines="none">
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-input
+          [type]="showPw ? 'text' : 'password' "
+          placeholder="비밀번호"
+          class="pw"
+          [(ngModel)]="pw"
+        ></ion-input>
+        <ion-icon
+          slot="end"
+          [name]="PwToggleIcon"
+          (click)="togglepw()"
+        ></ion-icon>
+      </ion-item>
+    </div>
+    <!-- 부가 기능 -->
+    <div class="addons">
+      <ion-item lines="none">
+        <ion-icon
+          slot="start"
+          [name]="checkmark"
+          (click)="togglecheck()"
+        ></ion-icon>
+        <p class="auto">자동 로그인</p>
+      </ion-item>
+      <p (click)="moveToFind_email_pw()">아이디/비밀번호 찾기</p>
+    </div>
+    <!-- 버튼 -->
+    <div class="btn">
+      <ion-text class="ion-text-center">
+        <p>{{error_msg}}</p>
+      </ion-text>
+      <ion-button
+        class="login"
+        color="blue"
+        expand="block"
+        shape="round"
+        (click)="moveToMain()"
+      >
+        <p style="color: white">로그인</p>
+      </ion-button>
+      <ion-button
+        class="res"
+        expand="block"
+        color="blue"
+        shape="round"
+        fill="outline"
+        (click)="moveToRes()"
+      >
+        회원가입
+      </ion-button>
+    </div>
   </div>
-  <!-- 입력 -->
-  <div class="input">
-    <ion-item lines="none">
-      <ion-icon slot="start" name="mail-outline"></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="이메일"
-        size="6"
-        [(ngModel)]="email"
-      ></ion-input>
-    </ion-item>
-    <ion-item class="ion-margin-vertical" lines="none">
-      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-      <ion-input
-        [type]="showPw ? 'text' : 'password' "
-        placeholder="비밀번호"
-        class="pw"
-        [(ngModel)]="pw"
-      ></ion-input>
-      <ion-icon
-        slot="end"
-        [name]="PwToggleIcon"
-        (click)="togglepw()"
-      ></ion-icon>
-    </ion-item>
-  </div>
-  <!-- 자동 로그인, 아이디,비번 찾기 -->
-  <div class="addons">
-    <ion-item class="note" lines="none">
-      <ion-icon
-        slot="start"
-        [name]="checkmark"
-        (click)="togglecheck()"
-      ></ion-icon>
-      <p class="auto">자동 로그인</p>
-    </ion-item>
-    <p (click)="moveToFind_email_pw()" class="find">아이디/비밀번호 찾기</p>
-  </div>
-  <!-- 버튼 -->
-  <div class="btn">
-    <ion-text class="ion-text-center">
-      <p>{{error_msg}}</p>
-    </ion-text>
-    <ion-button
-      color="success"
-      expand="block"
-      shape="round"
-      (click)="moveToMain()"
-      class="login"
-    >
-      로그인
-    </ion-button>
-    <ion-button
-      expand="block"
-      color="success"
-      fill="outline"
-      (click)="moveToRes()"
-      class="res"
-    >
-      회원가입
-    </ion-button>
-  </div>
-  <!-- <app-footer></app-footer> -->
 </ion-content>

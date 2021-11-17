@@ -31,9 +31,12 @@
   height: 100%;
 }
 
-a {
-  margin-top: 20px;
+.news {
   width: 90%;
+  margin-top: 20px;
+}
+.news p {
+  font-size: 20px;
 }
 
 ion-button {

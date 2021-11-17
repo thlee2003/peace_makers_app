@@ -8,13 +8,20 @@
 //     transform: rotate(360deg);
 //   }
 // }
+
+.div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ion-card {
-  width: 85%;
-  margin-left: 7.5%;
+  border: 1px solid #44a4e0;
+  width: 90%;
 }
 
 ion-card-content {
-  border-top: 2px solid black;
+  border-top: 2px solid #44a4e0;
 }
 
 .top {
