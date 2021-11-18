@@ -63,8 +63,6 @@ export class ResPage implements OnInit {
   async moveToLogin() {
     console.log(this.moveToLogin)
 
-    // let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
-
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
     } else if (this.email.includes('@') == false) {
@@ -72,11 +70,8 @@ export class ResPage implements OnInit {
     } else if (this.pw == undefined) {
       this.error_msg = '비밀번호를 입력하세요.';
     } else if(this.pw.length<8 || this.pw.length>16) {
-      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';} 
-      //else if (!check.test(this.pw)) {
-    //   this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.'; 
-    // } 
-      else if (this.check_pw == undefined) {
+      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';
+    } else if (this.check_pw == undefined) {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';
@@ -92,32 +87,13 @@ export class ResPage implements OnInit {
       this.error_msg = '사업자등록번호 입력하세요.';
     } else {
       this.error_msg = '';
+
       //회원가입
       const result = firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
+
           // Signed in
           const user = userCredential.user;
-
-          // 이메일 인증 이메일 전송
-          firebase.auth().currentUser.sendEmailVerification()
-            .then(async () => {
-              // Email verification sent!
-              await this.alertCtrl
-                .create({
-                  header: '회원가입 성공! 환영합니다!',
-                  message:
-                    '해당 이메일로 이메일 주소 인증을 보냈습니다. 이메일 주소 인증 이후 로그인을 진행하여 주세요.',
-                  buttons: [
-                    {
-                      text: '확인',
-                      handler: async (res) => {
-                        this.router.navigate(['home', 'my-page', 'login']);
-                      },
-                    },
-                  ],
-                })
-                .then((res) => res.present());
-            });
 
           // firestore 관련 선언
           const db = firebase.firestore();
@@ -125,40 +101,61 @@ export class ResPage implements OnInit {
           // 사업자일 경우 firestore
           if (user && !this.isDisabled) {
             db.collection('peace_makers').doc(user.uid).set({
-                userName: this.name,
-                userCompany: this.company,
-                userCompany_num: this.company_regist_num,
-                userID: this.email,
-                userPW: this.pw,
-                userPhone: this.call_num,
-                userAge: this.date,
-              })
-              .then(function () {
-                console.log('firestore()DB, 유저 추가 성공');
-              })
-              .catch((error) => {
-                console.error('firestore()DB추가 실패', error);
-              });
+              userName: this.name,
+              userCompany: this.company,
+              userCompany_num: this.company_regist_num,
+              userID: this.email,
+              userPW: this.pw,
+              userPhone: this.call_num,
+              userAge: this.date,
+            })
+            .then(function () {
+              console.log('firestore()DB, 유저 추가 성공');
+            })
+            .catch((error) => {
+              console.error('firestore()DB추가 실패', error);
+            });
           }
 
           // 비사업자일 경우 firestore
           else if (user) {
             db.collection('peace_makers')
-              .doc(user.uid)
-              .set({
-                userName: this.name,
-                userID: this.email,
-                userPW: this.pw,
-                userPhone: this.call_num,
-                userAge: this.date,
-              })
-              .then(function () {
-                console.log('firestore()DB, 유저 추가 성공');
-              })
-              .catch((error) => {
-                console.error('firestore()DB추가 실패', error);
-              });
+            .doc(user.uid)
+            .set({
+              userName: this.name,
+              userID: this.email,
+              userPW: this.pw,
+              userPhone: this.call_num,
+              userAge: this.date,
+            })
+            .then(function () {
+              console.log('firestore()DB, 유저 추가 성공');
+            })
+            .catch((error) => {
+              console.error('firestore()DB추가 실패', error);
+            });
           }
+
+          // 이메일 인증 이메일 전송
+          firebase.auth().currentUser.sendEmailVerification()
+          .then(async () => {
+            // Email verification sent!
+            await this.alertCtrl
+            .create({
+              header: '회원가입 성공! 환영합니다!',
+              message:
+                '해당 이메일로 이메일 주소 인증을 보냈습니다. 이메일 주소 인증 이후 로그인을 진행하여 주세요.',
+              buttons: [
+                {
+                  text: '확인',
+                  handler: async (res) => {
+                    this.router.navigate(['home', 'my-page', 'login']);
+                  },
+                },
+              ],
+            })
+            .then((res) => res.present());
+          });
         })
         //에러 관련 부분
         .catch((error) => {

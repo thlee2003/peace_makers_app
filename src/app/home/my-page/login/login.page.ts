@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // 자동로그인 구현
+          //자동로그인 구현
           if (this.isDisabled == true) {
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() => {
