@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { WriteComponent } from 'src/app/components/write/write.component';
 
 @Component({
   selector: 'app-news',
@@ -119,6 +120,13 @@ export class NewsPage implements OnInit {
     });
     await modal.present();
     console.log(user);
+  }
+
+  async write() {
+    const modal = await this.modalCtrl.create({
+      component: WriteComponent,
+    });
+    await modal.present();
   }
 
   ngOnInit() {}

@@ -10,10 +10,17 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 import { NewsPage } from './news.page';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { WriteComponent } from 'src/app/components/write/write.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NewsPageRoutingModule],
-  declarations: [NewsPage, HeaderComponent, FooterComponent, ModalComponent],
-  entryComponents: [ModalComponent],
+  declarations: [
+    NewsPage,
+    HeaderComponent,
+    FooterComponent,
+    ModalComponent,
+    WriteComponent,
+  ],
+  entryComponents: [ModalComponent, WriteComponent],
 })
 export class NewsPageModule {}
