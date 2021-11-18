@@ -9,9 +9,11 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 import { NewsPage } from './news.page';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NewsPageRoutingModule],
-  declarations: [NewsPage, HeaderComponent, FooterComponent],
+  declarations: [NewsPage, HeaderComponent, FooterComponent, ModalComponent],
+  entryComponents: [ModalComponent],
 })
 export class NewsPageModule {}

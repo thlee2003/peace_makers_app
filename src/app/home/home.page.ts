@@ -22,10 +22,6 @@ export class HomePage implements OnInit {
     this.selectTab = this.homes.getSelected();
   }
 
-  onClick() {
-    alert('준비 중인 기능입니다.');
-  }
-
   clickTab1() {
     this.router.navigateByUrl('/home/support');
   }
