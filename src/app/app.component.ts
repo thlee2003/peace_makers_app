@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   }
   backButtonEvent() {
     this.platform.backButton.subscribeWithPriority(10, () => {
-      if (!this.routerOutlet.canGoBack()) {
+      if (this.routerOutlet.canGoBack()) {
         this.backButtonAlert();
       } else {
         this.location.back();
@@ -62,13 +62,13 @@ export class AppComponent implements OnInit {
 }
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA49tnwn4Y8ca7EY_7pO2mPAuVGH01l2gI",
-  authDomain: "peace-makers-f2530.firebaseapp.com",
-  projectId: "peace-makers-f2530",
-  storageBucket: "peace-makers-f2530.appspot.com",
-  messagingSenderId: "23931604864",
-  appId: "1:23931604864:web:3a1f1e00c4d4ceb93d3b65",
-  measurementId: "G-6NB8HN8CMT"
+  apiKey: 'AIzaSyA49tnwn4Y8ca7EY_7pO2mPAuVGH01l2gI',
+  authDomain: 'peace-makers-f2530.firebaseapp.com',
+  projectId: 'peace-makers-f2530',
+  storageBucket: 'peace-makers-f2530.appspot.com',
+  messagingSenderId: '23931604864',
+  appId: '1:23931604864:web:3a1f1e00c4d4ceb93d3b65',
+  measurementId: 'G-6NB8HN8CMT',
 };
 
 firebase.initializeApp(firebaseConfig);

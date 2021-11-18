@@ -8,6 +8,10 @@ import firebase from 'firebase';
   styleUrls: ['./checked-pw.page.scss'],
 })
 export class CheckedPwPage implements OnInit {
+  PwToggleIcon = 'eye-outline';
+  showPw: boolean = false;
+  isDisabled: boolean = false;
+
   pw: string;
   error_msg: string;
   uid: string;
@@ -21,6 +25,11 @@ export class CheckedPwPage implements OnInit {
         this.uid = user.uid;
       }
     });
+  }
+
+  togglepw() {
+    this.showPw = !this.showPw;
+    this.PwToggleIcon = this.showPw ? 'eye-off-outline' : 'eye-outline';
   }
 
   async moveToinfo() {
