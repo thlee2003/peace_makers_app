@@ -11,6 +11,27 @@ import firebase from 'firebase';
 export class SupportPage implements OnInit {
   constructor(private router: Router, private alertCtrl: AlertController) {}
 
+  async ngOnInit() {
+    const container3 = document.querySelector('.container3');
+    const container4 = document.querySelector('.container4');
+    const container5 = document.querySelector('.container5');
+    const db = firebase.firestore();
+    const getdb = db.collection('admin').doc('participation');
+    getdb.get().then((doc) => {
+      if (doc.exists) {
+        const a = doc.data().video1;
+        const b = doc.data().video2;
+        const c = doc.data().video3;
+        let templeta3 = a;
+        let templeta4 = b;
+        let templeta5 = c;
+        container3.innerHTML = templeta3;
+        container4.innerHTML = templeta4;
+        container5.innerHTML = templeta5;
+      }
+    });
+  }
+
   async moveToMethod() {
     // 로그인 유무 확인
     firebase.auth().onAuthStateChanged((user) => {
@@ -30,27 +51,6 @@ export class SupportPage implements OnInit {
             ],
           })
           .then((res) => res.present());
-      }
-    });
-  }
-
-  async ngOnInit() {
-    const container3 = document.querySelector('.container3');
-    const container4 = document.querySelector('.container4');
-    const container5 = document.querySelector('.container5');
-    const db = firebase.firestore();
-    const getdb = db.collection('admin').doc('participation');
-    getdb.get().then((doc) => {
-      if (doc.exists) {
-        const a = doc.data().video1;
-        const b = doc.data().video2;
-        const c = doc.data().video3;
-        let templeta3 = a;
-        let templeta4 = b;
-        let templeta5 = c;
-        container3.innerHTML = templeta3;
-        container4.innerHTML = templeta4;
-        container5.innerHTML = templeta5;
       }
     });
   }
