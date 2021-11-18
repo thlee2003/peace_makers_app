@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastController } from '@ionic/angular';
 
@@ -26,13 +26,22 @@ export class ModifyInfoPage implements OnInit {
   company_regist_num: number;
   institution: string;
   selectTabs = 'personal';
+  segmentValue: string;
 
   constructor(
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private route: ActivatedRoute
   ) {}
 
   async ngOnInit() {
+    // 정보 가져오기
+    this.route.queryParams.subscribe((params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        console.log(this.router.getCurrentNavigation().extras.state.a);
+        this.selectTabs = this.router.getCurrentNavigation().extras.state.a;
+      }
+    });
     //현재 로그인한 사용자 가져오기
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -40,7 +49,9 @@ export class ModifyInfoPage implements OnInit {
         const db = firebase.firestore();
         const docRef = db.collection('peace_makers').doc(user.uid);
 
-        docRef.get().then((doc) => {
+        docRef
+          .get()
+          .then((doc) => {
             if (doc.exists) {
               this.name = doc.data().userName;
               this.company = doc.data().userCompany;
@@ -62,6 +73,11 @@ export class ModifyInfoPage implements OnInit {
       } else {
       }
     });
+  }
+
+  segmentChanged(e) {
+    console.log(e.detail.value);
+    this.segmentValue = e.detail.value;
   }
 
   togglepw() {
@@ -123,7 +139,7 @@ export class ModifyInfoPage implements OnInit {
                 userPW: this.pw,
                 userName: this.name,
                 userAge: this.date,
-                userPhone: this.call_num
+                userPhone: this.call_num,
               })
               .then(() => {
                 console.log('Document successfully updated!');
@@ -133,7 +149,8 @@ export class ModifyInfoPage implements OnInit {
                 console.error('Error updating document: ', error);
               });
             //업데이트 된 pw를 auth에 저장
-            user.updatePassword(this.pw)
+            user
+              .updatePassword(this.pw)
               .then(() => {})
               .catch((error) => {});
 
