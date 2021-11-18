@@ -22,6 +22,8 @@ export class MyInfoPage implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+
+    // 사용자 정보 가져오기
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.method = this.router.getCurrentNavigation().extras.state.method;
@@ -33,11 +35,19 @@ export class MyInfoPage implements OnInit {
     });
   }
 
-  onClick() {
+  // 체크박스 체크 여부 확인
+  togglecheck() {
+    this.isDisabled = !this.isDisabled;
+    this.checkmark = this.isDisabled
+      ? 'checkmark-circle'
+      : 'checkmark-circle-outline';
+    console.log(this.isDisabled);
+  }
+
+  async onClick() {
     if (this.isDisabled === false) {
       this.error_msg = '개인정보 수집 및 이용 동의에 체크하세요';
     } else {
-      console.log('a');
       const userCode = 'imp22587850'; // 가맹점 식별코드
       const data = {
         pg: 'danal_tpay', // PG사
@@ -51,36 +61,19 @@ export class MyInfoPage implements OnInit {
         app_scheme: 'example', // 앱 URL 스킴
       };
 
-      console.log(data);
-
       // 4. 아임포트 코르도바 파라미터 정의
       var params = {
         userCode: userCode, // 4-1. 가맹점 식별코드 정의
         data: data, // 4-2. 결제 데이터 정의
         callback: function (response) {
-          // 4-3. 콜백 함수 정의
-          alert(JSON.stringify(response));
+          // // 4-3. 콜백 함수 정의
+          // alert(JSON.stringify(response));
         },
       };
       // 5. 결제창 호출
       IamportCordova.payment(params);
 
-      if(IamportCordova.payment(params) ) {
-        const db = firebase.firestore();
-
-        db.collection('admin').doc('test').update({
-          "first.pay1" : 'mid_' + new Date().getTime(),
-          "first.pay2" : data     
-        });
-      }
+      console.log(params)
     }
-  }
-
-  togglecheck() {
-    this.isDisabled = !this.isDisabled;
-    this.checkmark = this.isDisabled
-      ? 'checkmark-circle'
-      : 'checkmark-circle-outline';
-    console.log(this.isDisabled);
   }
 }

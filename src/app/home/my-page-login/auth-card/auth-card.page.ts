@@ -10,6 +10,8 @@ import firebase from 'firebase';
 export class AuthCardPage implements OnInit {
 
   name: string;
+  code: string;
+  belong: string;
 
   constructor() { }
 
@@ -24,6 +26,14 @@ export class AuthCardPage implements OnInit {
           if (doc.exists) {
             //인증 카드 이름은 사용자 이름
             this.name = doc.data().userName;
+            if(doc.data().userCompany_num == null && doc.data().userCompany == null ) {
+              this.code = "KP1001"
+              this.belong = "(개인회원입니다.)"
+            }
+            else if(doc.data().userCompany_num !== null && doc.data().userCompany !== null) {
+              this.code = "KC1001"
+              this.belong = doc.data().userCompany
+            }
           } else {
             // doc.data() will be undefined in this case
             console.log('No such document!');
