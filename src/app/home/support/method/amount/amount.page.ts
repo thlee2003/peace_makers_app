@@ -1,5 +1,6 @@
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import firebase from 'firebase';
 
 @Component({
   selector: 'app-amount',
@@ -24,7 +25,30 @@ export class AmountPage implements OnInit {
       this.error_msg = '전화번호를 입력하세요';
     } else if (this.email == undefined) {
       this.error_msg == '이메일을 입력하세요';
-    } else {
+    } else if (this.email.includes('@') == false) {
+      this.error_msg = '이메일 형식이 아닙니다.';
+    } 
+    else {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const db = firebase.firestore();
+          const docRef = db.collection('peace_makers').doc(user.uid);
+          docRef.get().then((doc) => {
+            if(doc.exists) {
+              if(this.name == doc.data().userName && this.email == doc.data().userID && this.phone == doc.data().userPhone) {
+                this.router.navigate(
+                  ['home', 'support', 'method', 'amount', 'my-info'],
+                  navigationExtras
+                );
+              }
+              else {
+                this.error_msg = '현재 로그인 중인 후원자님의 정보와 일치하지 않습니다.'
+              }
+            }
+          })
+        }
+      })
+
       let navigationExtras: NavigationExtras = {
         state: {
           method: this.method,
@@ -34,10 +58,10 @@ export class AmountPage implements OnInit {
           email: this.email,
         },
       };
-      this.router.navigate(
-        ['home', 'support', 'method', 'amount', 'my-info'],
-        navigationExtras
-      );
+      // this.router.navigate(
+      //   ['home', 'support', 'method', 'amount', 'my-info'],
+      //   navigationExtras
+      // );
     }
   }
 
