@@ -24,6 +24,7 @@ export class ModifyInfoPage implements OnInit {
   call_num: number;
   company: string;
   company_regist_num: number;
+  institution: string;
   selectTabs = 'personal';
 
   constructor(
@@ -49,6 +50,7 @@ export class ModifyInfoPage implements OnInit {
               this.check_pw = doc.data().userPW;
               this.call_num = doc.data().userPhone;
               this.date = doc.data().userAge;
+              this.institution = doc.data().userInstitution;
             } else {
               // doc.data() will be undefined in this case
               console.log('No such document!');
