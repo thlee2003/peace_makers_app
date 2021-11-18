@@ -18,7 +18,7 @@ export class FindEmailPwPage implements OnInit {
 
   //이메일 찾기를 누르면
   async Find_email() {
-    var aaa = [];
+    const aaa = [];
     if (this.name == undefined || this.name == '') {
       this.error_msg = '이름을 입력하세요';
     } else if (this.call_num == undefined || this.call_num == '') {
@@ -32,7 +32,7 @@ export class FindEmailPwPage implements OnInit {
             // console.log((doc.id, doc.data().userName == this.name, doc.data().userPhone == this.call) == true)
             if ((doc.id && doc.data().userName == this.name && doc.data().userPhone == this.call_num) == true) {
               aaa.push(doc.data().userID);
-              console.log(aaa);
+              // console.log(aaa);
             }
           });
           // 배열 내 값이 0이 아니라면 아이디 보여주기
@@ -88,7 +88,7 @@ export class FindEmailPwPage implements OnInit {
             // console.log(doc.id, doc.data().userID == this.email, doc.data().userName == this.name, doc.data().userPhone == this.call_num)
             if ((doc.id && doc.data().userID == this.email && doc.data().userName == this.name && doc.data().userPhone == this.call_num) == true) {
               aaa.push(doc.data().userPW);
-              console.log(aaa);
+              // console.log(aaa);
             }
           });
 

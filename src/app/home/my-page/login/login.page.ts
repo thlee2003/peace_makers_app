@@ -65,8 +65,8 @@ export class LoginPage implements OnInit {
             })
             .catch((error) => {
               // Handle Errors here.
-              var errorCode = error.code;
-              var errorMessage = error.message;
+              const errorCode = error.code;
+              const errorMessage = error.message;
 
               console.log(errorCode);
               console.log(errorMessage);
@@ -80,8 +80,8 @@ export class LoginPage implements OnInit {
             })
             .catch((error) => {
               // Handle Errors here.
-              var errorCode = error.code;
-              var errorMessage = error.message;
+              const errorCode = error.code;
+              const errorMessage = error.message;
 
               console.log(errorCode);
               console.log(errorMessage);
@@ -92,7 +92,7 @@ export class LoginPage implements OnInit {
           firebase.auth().onAuthStateChanged((user) => {
             if (user && user.emailVerified) {
               this.uid = user.uid;
-              console.log(this.uid)
+              // console.log(this.uid)
             }
           });
 
@@ -105,7 +105,7 @@ export class LoginPage implements OnInit {
                   console.log("맞아요")
                 } else {
                   console.log("틀려요")
-                  console.log(this.pw)
+                  // console.log(this.pw)
                   db.collection('peace_makers').doc(user.uid).update({
                     userPW: this.pw
                   }).then(() => {
@@ -151,8 +151,8 @@ export class LoginPage implements OnInit {
         })
         // 에러 관련 안내 부분
         .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
+          const errorCode = error.code;
+          const errorMessage = error.message;
 
           if (errorCode == 'auth/wrong-password') {
             this.error_msg = '비밀번호를 잘못 입력하였습니다.';

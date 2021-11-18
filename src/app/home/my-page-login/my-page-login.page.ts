@@ -40,7 +40,6 @@ export class MyPageLoginPage implements OnInit {
           });
       } else {
         // User is signed out
-        // ...
       }
     });
   }

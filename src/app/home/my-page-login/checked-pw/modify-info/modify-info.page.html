@@ -3,13 +3,13 @@
 <ion-content [fullscreen]="true">
   <!-- 회원 선택 -->
   <ion-segment [(ngModel)]="selectTabs" mdde="ios">
-    <ion-segment-button value="개인">
+    <ion-segment-button value="personal">
       <ion-label>개인</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="기업">
+    <ion-segment-button value="company">
       <ion-label>기업</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="기관">
+    <ion-segment-button value="institution">
       <ion-label>기관</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -53,11 +53,29 @@
         (click)="togglepw()"
       ></ion-icon>
     </ion-item>
-    <ion-item lines="none">
+    <!-- 이름 -->
+    <ion-item lines="none" *ngIf="selectTabs==='personal' ">
       <ion-icon slot="start" name="person-outline"></ion-icon>
       <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" *ngIf="selectTabs==='company' ">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="대표자 성함"
+        [(ngModel)]="name"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="none" *ngIf="selectTabs==='institution' ">
+      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="대표자 성함"
+        [(ngModel)]="name"
+      ></ion-input>
+    </ion-item>
+    <!-- 생년월일 -->
+    <ion-item lines="none" *ngIf="selectTabs==='personal' ">
       <ion-icon slot="start" name="calendar-number-outline"></ion-icon>
       <ion-label>생년월일</ion-label>
       <ion-datetime
@@ -76,8 +94,9 @@
         [(ngModel)]="call_num"
       ></ion-input>
     </ion-item>
+
     <!-- 사업자 회원 -->
-    <ion-item lines="none" *ngIf="selectTabs==='기업' ">
+    <ion-item lines="none" *ngIf="selectTabs==='company' ">
       <ion-icon slot="start" name="business-outline"></ion-icon>
       <ion-input
         type="text"
@@ -85,7 +104,7 @@
         [(ngModel)]="company"
       ></ion-input>
     </ion-item>
-    <ion-item lines="none" *ngIf="selectTabs==='기업' ">
+    <ion-item lines="none" *ngIf="selectTabs==='company' ">
       <ion-icon slot="start" name="documents-outline"></ion-icon>
       <ion-input
         type="text"
@@ -93,6 +112,17 @@
         [(ngModel)]="company_regist_num"
       ></ion-input>
     </ion-item>
+
+    <!-- institution -->
+    <ion-item lines="none" *ngIf="selectTabs==='institution' ">
+      <ion-icon slot="start" name="business-outline"></ion-icon>
+      <ion-input
+        type="text"
+        placeholder="기관명"
+        [(ngModel)]="institution"
+      ></ion-input>
+    </ion-item>
+
     <p>{{error_msg}}</p>
     <ion-button
       expand="block"

@@ -48,7 +48,6 @@ export class AuthCardPage implements OnInit {
         });
       } else {
         // User is signed out
-        // ...
       }
     });
   }
