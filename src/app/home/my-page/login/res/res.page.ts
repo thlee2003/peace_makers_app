@@ -195,29 +195,6 @@ export class ResPage implements OnInit {
                 console.error('firestore()DB추가 실패', error);
               });
           }
-
-          // 이메일 인증 이메일 전송
-          firebase
-            .auth()
-            .currentUser.sendEmailVerification()
-            .then(async () => {
-              // Email verification sent!
-              await this.alertCtrl
-                .create({
-                  header: '회원가입 성공! 환영합니다!',
-                  message:
-                    '해당 이메일로 이메일 주소 인증을 보냈습니다. 이메일 주소 인증 이후 로그인을 진행하여 주세요.',
-                  buttons: [
-                    {
-                      text: '확인',
-                      handler: async (res) => {
-                        this.router.navigate(['home', 'my-page', 'login']);
-                      },
-                    },
-                  ],
-                })
-                .then((res) => res.present());
-            });
         })
         //에러 관련 부분
         .catch((error) => {

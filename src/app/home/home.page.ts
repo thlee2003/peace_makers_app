@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonTabs, NavController } from '@ionic/angular';
 import firebase from 'firebase';
+import { NewsPage } from './news/news.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
