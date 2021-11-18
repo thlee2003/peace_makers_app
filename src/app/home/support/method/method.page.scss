@@ -26,19 +26,22 @@ ion-segment {
   margin-right: 5%;
   border: 2px solid var(--ion-color-medium);
   border-radius: 15px;
-  // .o {
-  //   margin-top: 10px;
-  //   font-size: 1em;
-  //   padding: 0%;
-  //   margin-left: 10px;
-  //   width: 20%;
-  //   padding: 0%;
-  // }
+  .cost {
+    width: 30%;
+    border: 1px solid red;
+  }
+  .input_pay {
+    width: 50%;
+    border: 1px solid red;
+  }
+  .o {
+    width: 20%;
+    border: 1px solid red;
+  }
   ion-input {
     text-align: right;
     font-size: 1em;
-    width: 90%;
-    margin: 0 10px 0 10px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid var(--ion-color-medium);
   }

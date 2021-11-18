@@ -17,7 +17,12 @@ export class HomePage implements OnInit {
   constructor(private router: Router) {}
 
   setCurrentTab(event) {
+    console.log(this.homes.getSelected());
     this.selectTab = this.homes.getSelected();
+  }
+
+  onClick() {
+    alert('준비 중인 기능입니다.');
   }
 
   clickTab1() {

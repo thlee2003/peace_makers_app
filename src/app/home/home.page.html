@@ -1,9 +1,6 @@
 <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="main">
-      <!-- <ion-icon
-        [name]="selectTab == 'main' ? 'home' : 'home-outline'"
-      ></ion-icon> -->
       <img
         [src]="selectTab == 'main' ? 'assets/icon/Asset 34.svg' : 'assets/icon/Asset 29.svg'"
         alt=""
@@ -17,7 +14,7 @@
       />
     </ion-tab-button>
 
-    <ion-tab-button tab="news">
+    <ion-tab-button (click)="onClick()">
       <img
         [src]="selectTab == 'news' ? 'assets/icon/Asset 30.svg' : 'assets/icon/Asset 25.svg'"
         alt=""
