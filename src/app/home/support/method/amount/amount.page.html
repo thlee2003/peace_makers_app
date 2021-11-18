@@ -30,11 +30,11 @@
         [(ngModel)]="email"
       ></ion-input>
     </ion-item>
+    <div class="err">
+      <p>{{error_msg}}</p>
+    </div>
   </div>
   <div class="btn">
-    <ion-text color="red" class="ion-text-center">
-      <p>{{error_msg}}</p>
-    </ion-text>
     <ion-button
       (click)="moveToConsent()"
       expand="block"

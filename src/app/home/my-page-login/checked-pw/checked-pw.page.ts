@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import firebase from 'firebase';
 
 @Component({
@@ -11,18 +11,17 @@ export class CheckedPwPage implements OnInit {
   pw: string;
   error_msg: string;
   uid: string;
+  navigationExtras: NavigationExtras = {};
 
-  constructor(
-    private router: Router,
-    ) {}
+  constructor(private router: Router) {}
 
-    async ngOnInit() {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user && user.emailVerified) {
-          this.uid = user.uid;
-        }
-      });
-    }
+  async ngOnInit() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user && user.emailVerified) {
+        this.uid = user.uid;
+      }
+    });
+  }
 
   async moveToinfo() {
     if (this.pw == undefined || this.pw == '') {
@@ -30,28 +29,49 @@ export class CheckedPwPage implements OnInit {
     } else {
       const db = firebase.firestore();
 
-      db.collection('peace_makers').get()
+      db.collection('peace_makers')
+        .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             if (doc.id === this.uid) {
               if (this.pw === doc.data().userPW) {
-                if(doc.data().userCompany_num == null && doc.data().userCompany == null && doc.data().userInstitution == null ) {
-                  console.log("개인")
-                }
-                else if(doc.data().userCompany_num !== null && doc.data().userCompany !== null && doc.data().userInstitution == null) {
-                  console.log("기업")
-                }
-                else if(doc.data().userInstitution !== null && doc.data().userCompany_num == null && doc.data().userCompany == null) {
-                  console.log("기관")
+                if (
+                  doc.data().userCompany_num == null &&
+                  doc.data().userCompany == null &&
+                  doc.data().userInstitution == null
+                ) {
+                  this.navigationExtras = {
+                    state: {
+                      a: 'personal',
+                    },
+                  };
+                } else if (
+                  doc.data().userCompany_num !== null &&
+                  doc.data().userCompany !== null &&
+                  doc.data().userInstitution == null
+                ) {
+                  this.navigationExtras = {
+                    state: {
+                      a: 'company',
+                    },
+                  };
+                } else if (
+                  doc.data().userInstitution !== null &&
+                  doc.data().userCompany_num == null &&
+                  doc.data().userCompany == null
+                ) {
+                  this.navigationExtras = {
+                    state: {
+                      a: 'institution',
+                    },
+                  };
                 }
                 this.error_msg = '';
                 this.pw = '';
-                this.router.navigate([
-                  'home',
-                  'my-page-login',
-                  'checked-pw',
-                  'modify-info',
-                ]);
+                this.router.navigate(
+                  ['home', 'my-page-login', 'checked-pw', 'modify-info'],
+                  this.navigationExtras
+                );
               } else {
                 this.error_msg = '비밀번호가 틀렸습니다.';
               }

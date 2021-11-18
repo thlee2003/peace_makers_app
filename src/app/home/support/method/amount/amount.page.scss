@@ -25,6 +25,17 @@
   margin-bottom: 15px;
 }
 
+.err {
+  width: 100%;
+  // border: 1px solid red;
+  text-align: center;
+  color: red;
+  p {
+    margin-top: 5px;
+    margin-bottom: 0%;
+  }
+}
+
 .btn {
   width: 80%;
   margin-top: 10%;

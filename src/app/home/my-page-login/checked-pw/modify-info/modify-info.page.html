@@ -2,7 +2,11 @@
 
 <ion-content [fullscreen]="true">
   <!-- 회원 선택 -->
-  <ion-segment [(ngModel)]="selectTabs" mdde="ios">
+  <ion-segment
+    [(ngModel)]="selectTabs"
+    (ionChange)="segmentChanged($event)"
+    mode="ios"
+  >
     <ion-segment-button value="personal">
       <ion-label>개인</ion-label>
     </ion-segment-button>
