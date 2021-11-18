@@ -40,7 +40,6 @@ export class MyPageLoginPage implements OnInit {
           });
       } else {
         // User is signed out
-        // ...
       }
     });
   }
@@ -58,8 +57,8 @@ export class MyPageLoginPage implements OnInit {
   //결제정보 확인하기
   moveToPayment_info() {
 
-
-    this.router.navigate(['home', 'my-page-login', 'payment-info']);
+    alert("준비 중인 기능입니다.")
+    // this.router.navigate(['home', 'my-page-login', 'payment-info']);
   }
 
   //설정 페이지로 이동

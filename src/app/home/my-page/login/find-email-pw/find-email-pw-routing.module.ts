@@ -7,11 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: FindEmailPwPage,
-  },  {
-    path: 'new-pw',
-    loadChildren: () => import('./new-pw/new-pw.module').then( m => m.NewPwPageModule)
   },
-
 ];
 
 @NgModule({

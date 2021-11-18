@@ -43,13 +43,13 @@ export class ResPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    axios
-      .post(
-        'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D'
-      )
-      .then((response) => {
-        console.log(response.data);
-      });
+    // axios
+    //   .post(
+    //     'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D'
+    //   )
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   });
   }
 
   segmentChanged(e) {
@@ -70,8 +70,6 @@ export class ResPage implements OnInit {
   }
 
   async moveToLogin() {
-    console.log(this.moveToLogin);
-
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
     } else if (this.email.includes('@') == false) {
@@ -96,11 +94,10 @@ export class ResPage implements OnInit {
       this.error_msg = '비밀번호와 비밀번호 확인이 같지 않음.';
     } else if (this.company == undefined && this.segmentValue == 'company') {
       this.error_msg = '회사명을 입력하세요.';
-    } else if (
-      this.company_regist_num == undefined &&
-      this.segmentValue == 'company'
-    ) {
+    } else if (this.company_regist_num == undefined && this.segmentValue == 'company') {
       this.error_msg = '사업자등록번호 입력하세요.';
+    } else if(this.institution == undefined && this.segmentValue == 'institution') {
+      this.error_msg = '기관명을 입력하세요.'
     } else {
       this.error_msg = '';
 
@@ -195,34 +192,11 @@ export class ResPage implements OnInit {
                 console.error('firestore()DB추가 실패', error);
               });
           }
-
-          // 이메일 인증 이메일 전송
-          firebase
-            .auth()
-            .currentUser.sendEmailVerification()
-            .then(async () => {
-              // Email verification sent!
-              await this.alertCtrl
-                .create({
-                  header: '회원가입 성공! 환영합니다!',
-                  message:
-                    '해당 이메일로 이메일 주소 인증을 보냈습니다. 이메일 주소 인증 이후 로그인을 진행하여 주세요.',
-                  buttons: [
-                    {
-                      text: '확인',
-                      handler: async (res) => {
-                        this.router.navigate(['home', 'my-page', 'login']);
-                      },
-                    },
-                  ],
-                })
-                .then((res) => res.present());
-            });
         })
         //에러 관련 부분
         .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
+          const errorCode = error.code;
+          const errorMessage = error.message;
           if (errorCode == 'auth/email-already-in-use') {
             this.error_msg = '이미 사용중인 이메일입니다.';
           } else if (errorCode == 'auth/credential-already-in-use') {

@@ -35,6 +35,15 @@ export class CheckedPwPage implements OnInit {
           querySnapshot.forEach((doc) => {
             if (doc.id === this.uid) {
               if (this.pw === doc.data().userPW) {
+                if(doc.data().userCompany_num == null && doc.data().userCompany == null && doc.data().userInstitution == null ) {
+                  console.log("개인")
+                }
+                else if(doc.data().userCompany_num !== null && doc.data().userCompany !== null && doc.data().userInstitution == null) {
+                  console.log("기업")
+                }
+                else if(doc.data().userInstitution !== null && doc.data().userCompany_num == null && doc.data().userCompany == null) {
+                  console.log("기관")
+                }
                 this.error_msg = '';
                 this.pw = '';
                 this.router.navigate([
