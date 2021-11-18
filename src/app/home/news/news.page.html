@@ -1,54 +1,25 @@
 <app-header></app-header>
 
 <ion-content>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="4">
-        <ion-img
-          src="https://www.instagram.com/p/CPqIc5MFvef/"
-          (click)="onClick()"
-        ></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img2.jpg"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img3.jpg"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/test.jpg" (click)="onClick()"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img2.jpg"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img3.jpg"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/test.jpg" (click)="onClick()"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img2.jpg"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img3.jpg"></ion-img>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/test.jpg" (click)="onClick()"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img2.jpg"></ion-img>
-      </ion-col>
-      <ion-col size="4">
-        <ion-img src="assets/imgs/img3.jpg"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="body" *ngFor="let user of users" (click)="openModal(user)">
+    <p class="name">{{user.name}}</p>
+    <p class="text">{{user.text}}</p>
+    <div class="img">
+      <img [src]="user.img[0]" alt="" />
+      <img [src]="user.img[1]" alt="" />
+    </div>
+    <div class="good">
+      <ion-item lines="none">
+        <ion-icon name="heart-sharp" color="red"></ion-icon>
+        <p>{{user.good}}</p>
+      </ion-item>
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="main" (click)="write()">
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <app-footer></app-footer>
 </ion-content>

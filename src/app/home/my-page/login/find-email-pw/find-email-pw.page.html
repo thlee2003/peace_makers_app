@@ -21,7 +21,7 @@
         <ion-item lines="none" *ngIf="selectTabs==='pw'">
           <ion-icon slot="start" name="mail-outline"></ion-icon>
           <ion-input
-            type="text"
+            type="email"
             placeholder="이메일"
             [(ngModel)]="email"
           ></ion-input>
@@ -39,7 +39,7 @@
         <ion-item lines="none">
           <ion-icon slot="start" name="call-outline"></ion-icon>
           <ion-input
-            type="text"
+            type="number"
             placeholder="전화번호(-없이 입력을 해주세요.)"
             [(ngModel)]="call_num"
           ></ion-input>

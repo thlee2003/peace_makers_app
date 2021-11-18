@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <img src="assets/icon/Asset 7.svg" alt="" />
+      <ion-button (click)="dismissModal()">
+        <ion-icon color="white" name="close-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <h2 class="name">{{ name }}</h2>
+    <p class="text">{{ text }}</p>
+    <div class="img" *ngFor="let img of imgs">
+      <img [src]="img" alt="" />
+    </div>
+    <ion-item lines="none">
+      <ion-icon name="heart-sharp" color="red"></ion-icon>
+      <p>{{ good }}</p>
+    </ion-item>
+    <div class="bottom"></div>
+  </div>
+  <div class="comment">
+    <div class="comment_num" class="comment_num">
+      <p>댓글 {{ comments.length }}개</p>
+    </div>
+    <div class="comment_text" *ngFor="let comment of comments">
+      <p>{{ comment.writer }}</p>
+      <p>{{ comment.text }}</p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="inp_tool">
+    <div class="input">
+      <ion-input
+        type="text"
+        placeholder="댓글을 작성해 주세요"
+        [(ngModel)]="comment"
+      ></ion-input>
+      <div>
+        <ion-icon
+          name="paper-plane-outline"
+          color="dark"
+          (click)="writeComment()"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

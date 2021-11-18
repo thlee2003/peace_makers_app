@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private router: Router,
     private alertController: AlertController
+<<<<<<< HEAD
   ) {}
 
   async ngOnInit() {}
@@ -54,18 +55,51 @@ export class AppComponent implements OnInit {
 
       })
     })
+=======
+  ) {
+    platform.ready().then(() => {
+      this.backButtonEvent();
+    });
+  }
+  backButtonEvent() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      if (this.routerOutlet.canGoBack()) {
+        this.backButtonAlert();
+      } else {
+        this.location.back();
+      }
+    });
+  }
+  async backButtonAlert() {
+    const alert = await this.alertController.create({
+      message: '앱을 종료하시겠습니까?',
+      buttons: [
+        {
+          text: '취소',
+          role: 'Cancel',
+        },
+        {
+          text: '확인',
+          handler: () => {
+            navigator['app'].exitApp();
+          },
+        },
+      ],
+    });
+    await alert.present();
+>>>>>>> 1e5c4e23eacad5986b3c662878253308ddc29450
   }
   
 }
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA49tnwn4Y8ca7EY_7pO2mPAuVGH01l2gI",
-  authDomain: "peace-makers-f2530.firebaseapp.com",
-  projectId: "peace-makers-f2530",
-  storageBucket: "peace-makers-f2530.appspot.com",
-  messagingSenderId: "23931604864",
-  appId: "1:23931604864:web:3a1f1e00c4d4ceb93d3b65",
-  measurementId: "G-6NB8HN8CMT"
+  apiKey: 'AIzaSyA49tnwn4Y8ca7EY_7pO2mPAuVGH01l2gI',
+  authDomain: 'peace-makers-f2530.firebaseapp.com',
+  projectId: 'peace-makers-f2530',
+  storageBucket: 'peace-makers-f2530.appspot.com',
+  messagingSenderId: '23931604864',
+  appId: '1:23931604864:web:3a1f1e00c4d4ceb93d3b65',
+  measurementId: 'G-6NB8HN8CMT',
 };
 
 firebase.initializeApp(firebaseConfig);
