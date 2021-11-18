@@ -16,36 +16,51 @@ ion-segment {
   }
 }
 
-.input {
+.all {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.input ion-item {
-  width: 90%;
-  margin-top: 20px;
-  border: 1px solid black;
-  border-radius: 10px;
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  ion-item {
+    width: 90%;
+    margin: 10px 0 10px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
+  ion-icon {
+    margin: 0%;
+    margin-right: 5px;
+    font-size: 24px;
+  }
 }
 
-.input ion-icon {
-  font-size: 24px;
-}
-
-p {
-  margin-top: 8%;
+.err {
+  width: 100%;
+  align-content: center;
+  text-align: center;
   color: red;
-  font-size: 0.8rem;
+  margin-top: -5px;
+  p {
+    margin-top: 0%;
+  }
 }
 
-ion-button {
-  width: 80%;
-  height: 45px;
-  font-size: 1.3rem;
-}
-
-.btnText {
-  color: white;
-  font-size: 1.3rem;
+.btn {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  ion-button {
+    width: 80%;
+    height: 45px;
+    font-size: 1.3rem;
+  }
 }

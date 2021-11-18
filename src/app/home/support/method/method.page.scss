@@ -17,46 +17,48 @@ ion-segment {
 }
 
 .input {
+  height: 150px;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  margin-top: 30%;
+  margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
-  padding-top: 30px;
-  padding-bottom: 30px;
   border: 2px solid var(--ion-color-medium);
   border-radius: 15px;
-  .cost {
-    margin-top: 10px;
-    font-size: 1em;
-    margin-left: 10px;
-    width: 20%;
-  }
-  .o {
-    margin-top: 10px;
-    font-size: 1em;
-    padding: 0%;
-    margin-left: 10px;
-    width: 20%;
-  }
+  // .o {
+  //   margin-top: 10px;
+  //   font-size: 1em;
+  //   padding: 0%;
+  //   margin-left: 10px;
+  //   width: 20%;
+  //   padding: 0%;
+  // }
   ion-input {
     text-align: right;
-    margin-left: 20px;
-    width: 90%;
     font-size: 1em;
+    width: 90%;
+    margin: 0 10px 0 10px;
     border-radius: 5px;
     border: 1px solid var(--ion-color-medium);
   }
 }
+
+.err {
+  width: 100%;
+  // border: 1px solid red;
+  text-align: center;
+  color: red;
+  p {
+    margin-top: 5px;
+    margin-bottom: 0%;
+  }
+}
+
 .btn {
   width: 80%;
   margin-top: 20%;
   margin-left: 10%;
-  p {
-    font-size: 0.8rem;
-    color: red;
-  }
 }
 ion-button {
   width: 80%;

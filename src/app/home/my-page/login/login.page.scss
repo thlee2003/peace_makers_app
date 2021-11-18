@@ -13,7 +13,7 @@
 .logo {
   display: flex;
   justify-content: center;
-
+  margin-bottom: 10px;
   img {
     width: 85%;
   }
@@ -27,7 +27,7 @@
 
   ion-item {
     width: 90%;
-    margin-top: 20px;
+    margin: 10px 0 10px 0;
     border: 1px solid var(--ion-color-medium);
     border-radius: 10px;
     ion-icon {
@@ -37,6 +37,17 @@
 
   ion-item:nth-child(2) {
     margin-bottom: var(--ion-margin, 0);
+  }
+}
+
+.err {
+  width: 100%;
+  // border: 1px solid red;
+  text-align: center;
+  color: red;
+  p {
+    margin-top: 5px;
+    margin-bottom: 0%;
   }
 }
 
@@ -74,11 +85,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  ion-text {
-    color: red;
-    font-size: 0.8rem;
-  }
 
   ion-button {
     width: 80%;

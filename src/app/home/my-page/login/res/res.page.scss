@@ -29,13 +29,18 @@ ion-segment {
 }
 
 .res ion-icon {
+  margin: 5px;
   font-size: 24px;
 }
 
 .err {
-  margin-top: 2%;
+  width: 100%;
+  // border: 1px solid red;
+  text-align: center;
   color: red;
-  font-size: 0.8rem;
+  p {
+    margin-top: 5px;
+  }
 }
 
 .btn {
@@ -49,9 +54,4 @@ ion-button {
   height: 45px;
   font-size: 1.3rem;
   margin-bottom: 10px;
-}
-
-.btnText {
-  color: white;
-  font-size: 1.3rem;
 }

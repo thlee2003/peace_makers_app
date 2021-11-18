@@ -29,23 +29,32 @@ export class ResPage implements OnInit {
   call_num: number;
   company: string;
   company_regist_num: number;
+  institution: string;
   films: Observable<any>;
-  selectTabs = '개인';
-  
+  selectTabs = 'personal';
+  segmentValue: string;
 
   constructor(
     private router: Router,
     private toastController: ToastController,
     private alertCtrl: AlertController,
     public navCtrl: NavController,
-    public httpClient: HttpClient,
-    ) {}
-    
-  
+    public httpClient: HttpClient
+  ) {}
+
   async ngOnInit() {
-    axios.post('https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D').then((response) => {
-      console.log(response.data);
-    })
+    axios
+      .post(
+        'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D'
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
+
+  segmentChanged(e) {
+    console.log(e.detail.value);
+    this.segmentValue = e.detail.value;
   }
 
   togglepw() {
@@ -61,7 +70,7 @@ export class ResPage implements OnInit {
   }
 
   async moveToLogin() {
-    console.log(this.moveToLogin)
+    console.log(this.moveToLogin);
 
     // let check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
 
@@ -71,35 +80,43 @@ export class ResPage implements OnInit {
       this.error_msg = '이메일 형식이 아닙니다.';
     } else if (this.pw == undefined) {
       this.error_msg = '비밀번호를 입력하세요.';
-    } else if(this.pw.length<8 || this.pw.length>16) {
-      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';} 
-      //else if (!check.test(this.pw)) {
-    //   this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.'; 
-    // } 
-      else if (this.check_pw == undefined) {
+    } else if (this.pw.length < 8 || this.pw.length > 16) {
+      this.error_msg = '비밀번호는 8 ~ 16자리로 입력해주세요.';
+    }
+    //else if (!check.test(this.pw)) {
+    //   this.error_msg = '비밀번호는 영문자, 숫자, 특수문자를 포함하여 8 ~ 16자리로 입력해주세요.';
+    // }
+    else if (this.check_pw == undefined) {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';
-    } else if (this.date == undefined) {
+    } else if (this.date == undefined && this.segmentValue == 'personal') {
       this.error_msg = '생년월일을 입력하세요.';
     } else if (this.call_num == undefined) {
       this.error_msg = '전화번호을 입력하세요.';
     } else if (this.pw != this.check_pw) {
       this.error_msg = '비밀번호와 비밀번호 확인이 같지 않음.';
-    } else if (this.company == undefined && this.isDisabled == false) {
+    } else if (this.company == undefined && this.segmentValue == 'company') {
       this.error_msg = '회사명을 입력하세요.';
-    } else if ( this.company_regist_num == undefined && this.isDisabled == false) {
+    } else if (
+      this.company_regist_num == undefined &&
+      this.segmentValue == 'company'
+    ) {
       this.error_msg = '사업자등록번호 입력하세요.';
     } else {
       this.error_msg = '';
       //회원가입
-      const result = firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
+      const result = firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
 
           // 이메일 인증 이메일 전송
-          firebase.auth().currentUser.sendEmailVerification()
+          firebase
+            .auth()
+            .currentUser.sendEmailVerification()
             .then(async () => {
               // Email verification sent!
               await this.alertCtrl
@@ -123,15 +140,16 @@ export class ResPage implements OnInit {
           const db = firebase.firestore();
 
           // 사업자일 경우 firestore
-          if (user && !this.isDisabled) {
-            db.collection('peace_makers').doc(user.uid).set({
+          if (user && this.segmentValue === 'company') {
+            db.collection('peace_makers')
+              .doc(user.uid)
+              .set({
                 userName: this.name,
                 userCompany: this.company,
                 userCompany_num: this.company_regist_num,
                 userID: this.email,
                 userPW: this.pw,
                 userPhone: this.call_num,
-                userAge: this.date,
               })
               .then(function () {
                 console.log('firestore()DB, 유저 추가 성공');
@@ -141,8 +159,27 @@ export class ResPage implements OnInit {
               });
           }
 
-          // 비사업자일 경우 firestore
-          else if (user) {
+          // 기관일 경우 firestore
+          else if (user && this.segmentValue === 'institution') {
+            db.collection('peace_makers')
+              .doc(user.uid)
+              .set({
+                userName: this.name,
+                userInstitution: this.institution,
+                userID: this.email,
+                userPW: this.pw,
+                userPhone: this.call_num,
+              })
+              .then(function () {
+                console.log('firestore()DB, 유저 추가 성공');
+              })
+              .catch((error) => {
+                console.error('firestore()DB추가 실패', error);
+              });
+          }
+
+          // 개인일 경우 firestore
+          else if (user && this.segmentValue === 'personal') {
             db.collection('peace_makers')
               .doc(user.uid)
               .set({
