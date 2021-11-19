@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   selectTab: any;
   @ViewChild('tabs') homes: IonTabs;
 
-  page = 'my-page';
+  page = 'login';
   pages: string;
 
   constructor(private router: Router) {}
@@ -40,8 +40,8 @@ export class HomePage implements OnInit {
         this.page = 'my-page-login';
         this.pages = 'my-page-login';
       } else {
-        this.page = 'my-page/login';
-        this.pages = 'my-page';
+        this.page = 'login';
+        this.pages = 'login';
       }
     });
   }
