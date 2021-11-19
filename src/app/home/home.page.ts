@@ -22,6 +22,13 @@ export class HomePage implements OnInit {
     this.selectTab = this.homes.getSelected();
   }
 
+<<<<<<< HEAD
+  // onClick() {
+  //   alert('준비 중인 기능입니다.');
+  // }
+
+=======
+>>>>>>> 1e5c4e23eacad5986b3c662878253308ddc29450
   clickTab1() {
     this.router.navigateByUrl('/home/support');
   }

@@ -14,6 +14,7 @@ import 'firebase/analytics';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,45 @@ import 'firebase/storage';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(public router: Router) {}
-  ngOnInit() {}
+  @ViewChild(IonRouterOutlet, { static: true }) routerOutlet: IonRouterOutlet;
+  constructor(
+    private location: Location,
+    private platform: Platform,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
+
+  async ngOnInit() {}
+
+  // initializeApp() {
+  //   this.platform.ready().then(() => {
+
+  //     this.platform.backButton.subscribeWithPriority(0, async() => {
+  //       if(this.routerOutlet && this.routerOutlet.canGoBack()) {
+  //         this.routerOutlet.pop();
+  //       } else if (this.router.url === 'src/home/main' ) {
+  //         const alert = await this.alertController.create({
+  //           header: "앱 종료",
+  //           message: "앱 종료를 원하시나요?",
+  //           buttons: [
+  //             {
+  //               text: "Cancel",
+  //               role: "cancel"
+  //             },
+  //             {
+  //               text: "Close App",
+  //               handler: () => {
+  //                 navigator["app"].exitApp();
+  //               }
+  //             }
+  //           ]
+  //         });
+  //         await alert.present();
+  //       }
+
+  //     })
+  //   })
+  // }
 }
 
 const firebaseConfig = {

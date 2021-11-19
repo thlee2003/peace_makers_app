@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IamportCordova } from '@ionic-native/iamport-cordova';
 
+import { LoadingController } from '@ionic/angular';
+
 import firebase from 'firebase';
 
 @Component({
@@ -19,7 +21,11 @@ export class MyInfoPage implements OnInit {
   phone: number;
   name: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    public loadingController: LoadingController
+    ) {}
 
   ngOnInit() {
 
@@ -70,10 +76,9 @@ export class MyInfoPage implements OnInit {
           // alert(JSON.stringify(response));
         },
       };
+      
       // 5. 결제창 호출
       IamportCordova.payment(params);
-
-      console.log(params)
     }
   }
 }
