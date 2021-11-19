@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private router: Router,
     private alertController: AlertController
-<<<<<<< HEAD
   ) {}
 
   async ngOnInit() {}
@@ -55,39 +54,6 @@ export class AppComponent implements OnInit {
 
       })
     })
-=======
-  ) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      if (this.routerOutlet.canGoBack()) {
-        this.backButtonAlert();
-      } else {
-        this.location.back();
-      }
-    });
-  }
-  async backButtonAlert() {
-    const alert = await this.alertController.create({
-      message: '앱을 종료하시겠습니까?',
-      buttons: [
-        {
-          text: '취소',
-          role: 'Cancel',
-        },
-        {
-          text: '확인',
-          handler: () => {
-            navigator['app'].exitApp();
-          },
-        },
-      ],
-    });
-    await alert.present();
->>>>>>> 1e5c4e23eacad5986b3c662878253308ddc29450
   }
   
 }
