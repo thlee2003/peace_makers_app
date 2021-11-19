@@ -50,42 +50,52 @@ export class LoginPage implements OnInit {
     } else if (this.pw == undefined || this.pw == '') {
       this.error_msg = '비밀번호를 입력하세요.';
     } else {
-      this.error_msg = ''
+      this.error_msg = '';
       // 로그인
       firebase.auth().languageCode = 'ko';
-      firebase.auth().signInWithEmailAndPassword(this.email, this.pw)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
           const user = userCredential.user;
           //자동로그인 구현
           if (this.isDisabled == true) {
-            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-            .then(() => {
-              return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
-            })
-            .catch((error) => {
-              // Handle Errors here.
-              const errorCode = error.code;
-              const errorMessage = error.message;
+            firebase
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+              .then(() => {
+                return firebase
+                  .auth()
+                  .signInWithEmailAndPassword(this.email, this.pw);
+              })
+              .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-              console.log(errorCode);
-              console.log(errorMessage);
-            });
+                console.log(errorCode);
+                console.log(errorMessage);
+              });
           }
           //자동로그인 선택 xx
           else {
-            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
-            .then(() => {
-              return firebase.auth().signInWithEmailAndPassword(this.email, this.pw);
-            })
-            .catch((error) => {
-              // Handle Errors here.
-              const errorCode = error.code;
-              const errorMessage = error.message;
+            firebase
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.NONE)
+              .then(() => {
+                return firebase
+                  .auth()
+                  .signInWithEmailAndPassword(this.email, this.pw);
+              })
+              .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-              console.log(errorCode);
-              console.log(errorMessage);
-            });
+                console.log(errorCode);
+                console.log(errorMessage);
+              });
           }
 
           //비밀번호를 변경하였을 경우 DB에 업데이트 되는 내용//
@@ -97,27 +107,33 @@ export class LoginPage implements OnInit {
           });
 
           const db = firebase.firestore();
-          
-          db.collection("peace_makers").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              if(doc.id === this.uid) {
-                if(this.pw == doc.data().userPW) {
-                  console.log("맞아요")
-                } else {
-                  console.log("틀려요")
-                  // console.log(this.pw)
-                  db.collection('peace_makers').doc(user.uid).update({
-                    userPW: this.pw
-                  }).then(() => {
-                    console.log('Document successfully updated!')
-                  }).catch((error) => {
-                    // The document probably doesn't exist.
-                    console.error('Error updating document: ', error);
-                  })
+
+          db.collection('peace_makers')
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                if (doc.id === this.uid) {
+                  if (this.pw == doc.data().userPW) {
+                    console.log('맞아요');
+                  } else {
+                    console.log('틀려요');
+                    // console.log(this.pw)
+                    db.collection('peace_makers')
+                      .doc(user.uid)
+                      .update({
+                        userPW: this.pw,
+                      })
+                      .then(() => {
+                        console.log('Document successfully updated!');
+                      })
+                      .catch((error) => {
+                        // The document probably doesn't exist.
+                        console.error('Error updating document: ', error);
+                      });
+                  }
                 }
-              }
-            })
-          })
+              });
+            });
           //-------------------------------------------------//
 
           //화면 이동
@@ -125,12 +141,14 @@ export class LoginPage implements OnInit {
             console.log(
               '유저 로그인 성공, 유저 eamil 인증여부:' + user.emailVerified
             );
-            this.router.navigate(['home', 'main']);
             const toast = await this.toastController.create({
               message: '환영합니다!',
               duration: 2000,
             });
             toast.present();
+            this.email = null;
+            (this.pw = null), (this.error_msg = null);
+            this.router.navigate(['home', 'main']);
           } else {
             await this.alertCtrl
               .create({
