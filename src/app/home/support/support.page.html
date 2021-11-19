@@ -2,6 +2,15 @@
 
 <ion-content>
   <div class="container">
+    <ion-button
+      (click)="moveToMethod()"
+      expand="block"
+      shape="round"
+      color="blue"
+    >
+      <p style="color: white">후원하기</p>
+    </ion-button>
+    <h1 style="font-weight: bold">홍보 영상</h1>
     <div id="group">
       <h1>인터뷰</h1>
       <div id="area">
@@ -14,24 +23,12 @@
         <div id="video" class="container4"></div>
       </div>
     </div>
-    <div id="group">
+    <div id="group" style="margin-bottom: 20px">
       <h1>인터뷰</h1>
       <div id="area">
         <div id="video" class="container5"></div>
       </div>
     </div>
-    <div class="news">
-      <p>뉴스</p>
-      <a href="http://naver.me/xYQHj0VM"><img src="assets/imgs/img12.jpg" /></a>
-    </div>
-    <ion-button
-      (click)="moveToMethod()"
-      expand="block"
-      shape="round"
-      color="blue"
-    >
-      <p style="color: white">후원하기</p>
-    </ion-button>
   </div>
   <app-footer></app-footer>
 </ion-content>
