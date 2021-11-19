@@ -52,9 +52,6 @@ export class SupportPage implements OnInit {
             buttons: [
               {
                 text: '확인',
-                handler: (res) => {
-                  this.router.navigate(['home', 'my-page', 'login']);
-                },
               },
             ],
           })

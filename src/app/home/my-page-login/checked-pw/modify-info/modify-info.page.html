@@ -61,13 +61,13 @@
       ></ion-icon>
     </ion-item>
     <!-- 이름 -->
-    <ion-item lines="none" *ngIf="selectTabs==='personal' ">
+    <ion-item lines="none">
       <ion-icon slot="start" name="person-outline"></ion-icon>
       <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
     </ion-item>
     <!-- 직급 -->
     <ion-item lines="none" *ngIf="selectTabs!=='personal' ">
-      <ion-icon slot="start" name="person-outline"></ion-icon>
+      <ion-icon slot="start" name="pricetag-outline"></ion-icon>
       <ion-input type="text" placeholder="직급" [(ngModel)]="rank"></ion-input>
     </ion-item>
     <!-- 생년월일 -->
