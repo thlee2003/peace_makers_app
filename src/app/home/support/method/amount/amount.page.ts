@@ -29,25 +29,29 @@ export class AmountPage implements OnInit {
       this.error_msg = '이메일 형식이 아닙니다.';
     } 
     else {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          const db = firebase.firestore();
-          const docRef = db.collection('peace_makers').doc(user.uid);
-          docRef.get().then((doc) => {
-            if(doc.exists) {
-              if(this.name == doc.data().userName && this.email == doc.data().userID && this.phone == doc.data().userPhone) {
-                this.router.navigate(
-                  ['home', 'support', 'method', 'amount', 'my-info'],
-                  navigationExtras
-                );
-              }
-              else {
-                this.error_msg = '현재 로그인 중인 후원자님의 정보와 일치하지 않습니다.'
-              }
-            }
-          })
-        }
-      })
+      // firebase.auth().onAuthStateChanged((user) => {
+      //   if (user) {
+      //     const db = firebase.firestore();
+      //     const docRef = db.collection('peace_makers').doc(user.uid);
+      //     docRef.get().then((doc) => {
+      //       if(doc.exists) {
+      //         console.log(doc.data())
+      //         this.name = doc.data().userName;
+      //         this.phone = doc.data().userPhone;
+      //         this.email = doc.data().userID;
+      //       } else {
+      //         console.log('no such')
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.log(error);
+      //     });
+      //   } else {
+
+      //   }
+      // })
+
+      
 
       let navigationExtras: NavigationExtras = {
         state: {
@@ -58,6 +62,10 @@ export class AmountPage implements OnInit {
           email: this.email,
         },
       };
+      this.router.navigate(
+        ['home', 'support', 'method', 'amount', 'my-info'],
+        navigationExtras
+      );
       // this.router.navigate(
       //   ['home', 'support', 'method', 'amount', 'my-info'],
       //   navigationExtras
@@ -66,6 +74,29 @@ export class AmountPage implements OnInit {
   }
 
   ngOnInit() {
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const db = firebase.firestore();
+        const docRef = db.collection('peace_makers').doc(user.uid);
+        docRef.get().then((doc) => {
+          if(doc.exists) {
+            console.log(doc.data())
+            this.name = doc.data().userName;
+            this.phone = doc.data().userPhone;
+            this.email = doc.data().userID;
+          } else {
+            console.log('no such')
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      } else {
+
+      }
+    })
+
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.method = this.router.getCurrentNavigation().extras.state.method;
