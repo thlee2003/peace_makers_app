@@ -37,6 +37,9 @@ ion-header {
   margin-left: 2%;
   margin-top: 10px;
   margin-bottom: 10px;
+  ion-textarea {
+    width: 100%;
+  }
 }
 
 .err {

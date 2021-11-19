@@ -1,9 +1,22 @@
-import { AfterContentChecked, Component, OnInit, ViewChild, } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 import firebase from 'firebase';
 import { SwiperOptions } from 'swiper';
 import { SwiperComponent } from 'swiper/angular';
-import SwiperCore, { Navigation, Pagination, Mousewheel, Keyboard, Autoplay,} from 'swiper';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+  Autoplay,
+} from 'swiper';
+import { AlertController, Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
 
@@ -12,7 +25,6 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
   templateUrl: './campagin.page.html',
   styleUrls: ['./campagin.page.scss'],
 })
-
 export class CampaginPage implements OnInit, AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
   config: SwiperOptions = {
@@ -34,12 +46,10 @@ export class CampaginPage implements OnInit, AfterContentChecked {
   A2: string;
   A3: string;
 
-  constructor() {}
-
-  ngAfterContentChecked() {
-    if (this.swiper) {
-      this.swiper.updateSwiper({});
-    }
+  constructor(private platform: Platform, private router: Router) {
+    platform.ready().then(() => {
+      this.backButtonEvent();
+    });
   }
 
   async ngOnInit() {
@@ -68,6 +78,22 @@ export class CampaginPage implements OnInit, AfterContentChecked {
         container2.innerHTML = template2;
       }
     });
+  }
+
+  backButtonEvent() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.backButtonAlert();
+    });
+  }
+
+  async backButtonAlert() {
+    this.router.navigate(['home', 'main']);
+  }
+
+  ngAfterContentChecked() {
+    if (this.swiper) {
+      this.swiper.updateSwiper({});
+    }
   }
 
   ionViewDidLoad() {

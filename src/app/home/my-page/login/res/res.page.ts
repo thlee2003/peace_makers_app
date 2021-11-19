@@ -25,6 +25,7 @@ export class ResPage implements OnInit {
   pw: string;
   check_pw: string;
   name: string;
+  rank: string;
   date: string;
   call_num: number;
   company: string;
@@ -86,18 +87,26 @@ export class ResPage implements OnInit {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';
-    } else if (this.date == undefined && this.segmentValue == 'personal') {
+    } else if (this.rank == undefined && this.segmentValue !== 'personal') {
+      this.error_msg = '직급을 입력하세요.';
+    } else if (this.date == undefined && this.segmentValue === 'personal') {
       this.error_msg = '생년월일을 입력하세요.';
     } else if (this.call_num == undefined) {
       this.error_msg = '전화번호을 입력하세요.';
     } else if (this.pw != this.check_pw) {
       this.error_msg = '비밀번호와 비밀번호 확인이 같지 않음.';
-    } else if (this.company == undefined && this.segmentValue == 'company') {
+    } else if (this.company == undefined && this.segmentValue === 'company') {
       this.error_msg = '회사명을 입력하세요.';
-    } else if (this.company_regist_num == undefined && this.segmentValue == 'company') {
+    } else if (
+      this.company_regist_num == undefined &&
+      this.segmentValue == 'company'
+    ) {
       this.error_msg = '사업자등록번호 입력하세요.';
-    } else if(this.institution == undefined && this.segmentValue == 'institution') {
-      this.error_msg = '기관명을 입력하세요.'
+    } else if (
+      this.institution == undefined &&
+      this.segmentValue == 'institution'
+    ) {
+      this.error_msg = '기관명을 입력하세요.';
     } else {
       this.error_msg = '';
 
@@ -141,6 +150,7 @@ export class ResPage implements OnInit {
               .doc(user.uid)
               .set({
                 userName: this.name,
+                userRank: this.rank,
                 userCompany: this.company,
                 userCompany_num: this.company_regist_num,
                 userID: this.email,
@@ -161,6 +171,7 @@ export class ResPage implements OnInit {
               .doc(user.uid)
               .set({
                 userName: this.name,
+                userRank: this.rank,
                 userInstitution: this.institution,
                 userID: this.email,
                 userPW: this.pw,

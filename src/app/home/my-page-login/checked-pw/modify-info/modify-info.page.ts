@@ -20,6 +20,7 @@ export class ModifyInfoPage implements OnInit {
   pw: string;
   check_pw: string;
   name: string;
+  rank: string;
   date: string;
   call_num: number;
   company: string;

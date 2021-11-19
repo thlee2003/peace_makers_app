@@ -13,9 +13,14 @@
   <div class="title">
     <ion-input type="text" placeholder="제목" [(ngModel)]="title"></ion-input>
   </div>
-  <div class="text">
-    <ion-textarea placeholder="본문" [(ngModel)]="text"></ion-textarea>
-  </div>
+  <ion-item class="text" lines="none">
+    <ion-textarea
+      cols="10"
+      autoGrow="true"
+      placeholder="본문"
+      [(ngModel)]="text"
+    ></ion-textarea>
+  </ion-item>
   <div class="err">
     <p>{{ error_msg }}</p>
   </div>

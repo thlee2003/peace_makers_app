@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { WriteComponent } from 'src/app/components/write/write.component';
 
