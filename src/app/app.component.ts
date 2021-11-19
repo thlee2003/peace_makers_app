@@ -4,6 +4,7 @@ import {
   ToastController,
   IonRouterOutlet,
   AlertController,
+  NavController,
 } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common/';
@@ -20,44 +21,7 @@ import 'firebase/storage';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild(IonRouterOutlet, { static: true }) routerOutlet: IonRouterOutlet;
-  constructor(
-    private location: Location,
-    private platform: Platform,
-    private router: Router,
-    private alertController: AlertController
-  ) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      if (this.routerOutlet.canGoBack()) {
-        this.backButtonAlert();
-      } else {
-        this.location.back();
-      }
-    });
-  }
-  async backButtonAlert() {
-    const alert = await this.alertController.create({
-      message: '앱을 종료하시겠습니까?',
-      buttons: [
-        {
-          text: '취소',
-          role: 'Cancel',
-        },
-        {
-          text: '확인',
-          handler: () => {
-            navigator['app'].exitApp();
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
+  constructor(public router: Router) {}
   ngOnInit() {}
 }
 

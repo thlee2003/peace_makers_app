@@ -24,6 +24,7 @@ export class WriteComponent implements OnInit {
       this.error_msg = '내용을 입력하세요';
     } else {
       this.modalCtrl.dismiss();
+      window.location.reload();
     }
   }
 }

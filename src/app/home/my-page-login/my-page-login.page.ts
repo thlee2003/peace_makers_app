@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, Platform, ToastController } from '@ionic/angular';
 
 import firebase from 'firebase';
 
@@ -16,8 +16,12 @@ export class MyPageLoginPage implements OnInit {
   constructor(
     private router: Router,
     private toastController: ToastController,
-    private alertCtrl: AlertController
-  ) {}
+    private platform: Platform
+  ) {
+    platform.ready().then(() => {
+      this.backButtonEvent();
+    });
+  }
 
   async ngOnInit() {
     //현재 로그인한 사용자 정보 가져오기
@@ -26,7 +30,9 @@ export class MyPageLoginPage implements OnInit {
         const db = firebase.firestore();
         const docRef = db.collection('peace_makers').doc(user.uid);
 
-        docRef.get().then((doc) => {
+        docRef
+          .get()
+          .then((doc) => {
             if (doc.exists) {
               // 이름은 사용자 이름
               this.name = doc.data().userName;
@@ -44,6 +50,15 @@ export class MyPageLoginPage implements OnInit {
     });
   }
 
+  backButtonEvent() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.backButtonAlert();
+    });
+  }
+  async backButtonAlert() {
+    this.router.navigate(['home', 'main']);
+  }
+
   //인증카드
   moveToAuth() {
     this.router.navigate(['home', 'my-page-login', 'auth-card']);
@@ -56,8 +71,7 @@ export class MyPageLoginPage implements OnInit {
 
   //결제정보 확인하기
   moveToPayment_info() {
-
-    alert("준비 중인 기능입니다.")
+    alert('준비 중인 기능입니다.');
     // this.router.navigate(['home', 'my-page-login', 'payment-info']);
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import firebase from 'firebase';
 
 @Component({
@@ -9,7 +9,15 @@ import firebase from 'firebase';
   styleUrls: ['./support.page.scss'],
 })
 export class SupportPage implements OnInit {
-  constructor(private router: Router, private alertCtrl: AlertController) {}
+  constructor(
+    private router: Router,
+    private alertCtrl: AlertController,
+    private platform: Platform
+  ) {
+    platform.ready().then(() => {
+      this.backButtonEvent();
+    });
+  }
 
   async ngOnInit() {
     const container3 = document.querySelector('.container3');
@@ -53,5 +61,15 @@ export class SupportPage implements OnInit {
           .then((res) => res.present());
       }
     });
+  }
+
+  backButtonEvent() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.backButtonAlert();
+    });
+  }
+
+  async backButtonAlert() {
+    this.router.navigate(['home', 'main']);
   }
 }
