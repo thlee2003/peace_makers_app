@@ -19,8 +19,10 @@ export class NewsPage implements OnInit {
 
   async ngOnInit() {
     const db = firebase.firestore();
-    db.collection("writing").doc().onSnapshot((doc) => {
-      console.log(doc.id, "=>", doc.data())
+    db.collection("writing").get().then((query) => {
+      query.forEach((doc) => {
+        this.users.push(doc.data())
+      });
     })
   }
 
