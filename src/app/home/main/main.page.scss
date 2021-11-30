@@ -1,6 +1,6 @@
 .swiper {
   width: 100%;
-  // height: 50%;
+  height: 95%;
 }
 
 .swiper-slide {
@@ -39,11 +39,7 @@
 .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 25px;
-  color: #1597e5;
-}
-
-img {
-  object-fit: contain;
+  color: #fff;
 }
 
 .exp {
@@ -60,7 +56,6 @@ img {
   width: 100%;
   margin-top: 20px;
   background: linear-gradient(#fff 50%, #eeeeee 50%);
-  // border-bottom: 1px solid black;
 }
 
 .two img {
@@ -77,31 +72,67 @@ img {
 }
 
 .grp {
+  background-color: #1597e5;
   h2 {
-    text-align: center;
+    color: white;
+    margin-left: 20px;
   }
-}
-
-p {
-  // border: 1px solid rebeccapurple;
-  width: 94%;
-  margin-left: 3%;
+  p {
+    color: white;
+    margin-left: 20px;
+  }
 }
 
 .news {
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-top: 1px solid var(--ion-color-medium);
+  margin-bottom: 10px;
   h2 {
-    margin-left: 10px;
+    width: 60px;
+    font-size: 18px;
+    text-align: right;
+    color: #1597e5;
+    border-bottom: 1px solid #1597e5;
   }
   p {
-    margin-bottom: 0%;
-    font-size: 16px;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;
   }
   img {
     width: 90%;
     margin-left: 5%;
   }
+}
+
+.support {
+  width: 100%;
+  margin-bottom: 10px;
+  h2 {
+    font-size: 18px;
+    width: 60px;
+    text-align: right;
+    color: #1597e5;
+    border-bottom: 1px solid #1597e5;
+  }
+}
+
+#area {
+  position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
+  width: 90%;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  margin-left: 5%;
+  margin-bottom: 0%;
+}
+
+#video {
+  position: absolute;
+  width: 100%; /* 부모에 맞게 꽉 채운다. */
+  height: 100%;
+}
+
+ion-button {
+  width: 80%;
+  height: 45px;
+  font-size: 1.3rem;
+  margin: 10px 10%;
 }

@@ -35,14 +35,43 @@
       <img src="assets/imgs/img2.jpg" />
       <p>{{peacetext2}}</p>
     </div>
+
     <div class="grp">
       <h2>후원금은 이렇게 사용됩니다.</h2>
+      <p>
+        후원금의 80% 이상은 반드시<br />
+        교육을 위해 사용합니다
+      </p>
       <img src="../../../assets/imgs/graph.PNG" />
     </div>
+
     <div class="news">
       <h2>뉴스</h2>
       <p>접경지역 주민들 “한반도 종전협정 위해 시민평화외교 운동”</p>
       <a href="http://naver.me/xYQHj0VM"><img src="assets/imgs/img12.jpg" /></a>
+    </div>
+
+    <div class="support">
+      <h2>후원</h2>
+
+      <div id="group">
+        <div id="area">
+          <div id="video" class="container4">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/0JQ3L6M1Lb8"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <ion-button (click)="onClick()" expand="block" color="main">
+        후원하기
+      </ion-button>
     </div>
   </div>
   <app-footer></app-footer>
