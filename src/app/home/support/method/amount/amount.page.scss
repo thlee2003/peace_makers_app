@@ -40,23 +40,10 @@ ion-icon {
   }
 }
 
-.btn {
+ion-button {
   width: 80%;
-  margin-top: 10%;
-  margin-left: 10%;
-  p {
-    font-size: 0.8rem;
-    color: red;
-  }
-}
-
-.btn p {
-  font-size: 0.8rem;
-  color: red;
-}
-
-.btn ion-button {
-  height: 50px;
   height: 45px;
   font-size: 1.3em;
+  margin-left: 10%;
+  vertical-align: middle;
 }

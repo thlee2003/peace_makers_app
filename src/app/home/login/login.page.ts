@@ -148,6 +148,7 @@ export class LoginPage implements OnInit {
             toast.present();
             this.email = null;
             (this.pw = null), (this.error_msg = null);
+            this.error_msg = null;
             this.router.navigate(['home', 'main']);
           } else {
             await this.alertCtrl
@@ -159,6 +160,7 @@ export class LoginPage implements OnInit {
                   {
                     text: '확인',
                     handler: async (res) => {
+                      this.error_msg = null;
                       this.router.navigate(['home', 'login']);
                     },
                   },
@@ -183,10 +185,12 @@ export class LoginPage implements OnInit {
     }
   }
   moveToRes() {
+    this.error_msg = null;
     this.router.navigate(['home', 'login', 'res']);
   }
   // 비밀번호 찾기로 이동
   moveToFind_email_pw() {
+    this.error_msg = null;
     this.router.navigate(['home', 'login', 'find-email-pw']);
   }
 }

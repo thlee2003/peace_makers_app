@@ -13,11 +13,7 @@ export class SupportPage implements OnInit {
     private router: Router,
     private alertCtrl: AlertController,
     private platform: Platform
-  ) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
+  ) {}
 
   async ngOnInit() {
     const container3 = document.querySelector('.container3');
@@ -58,15 +54,5 @@ export class SupportPage implements OnInit {
           .then((res) => res.present());
       }
     });
-  }
-
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      this.backButtonAlert();
-    });
-  }
-
-  async backButtonAlert() {
-    this.router.navigate(['home', 'main']);
   }
 }
