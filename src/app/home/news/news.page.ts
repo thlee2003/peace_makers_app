@@ -5,25 +5,32 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { WriteComponent } from 'src/app/components/write/write.component';
 
 import firebase from 'firebase';
-
 @Component({
   selector: 'app-news',
   templateUrl: './news.page.html',
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
+  login = false;
   users = [];
-  constructor(
-    private modalCtrl: ModalController
-  ) {}
+  constructor(private modalCtrl: ModalController) {}
 
   async ngOnInit() {
     const db = firebase.firestore();
-    db.collection("writing").get().then((query) => {
-      query.forEach((doc) => {
-        this.users.push(doc.data())
+    db.collection('writing')
+      .get()
+      .then((query) => {
+        query.forEach((doc) => {
+          this.users.push(doc.data());
+        });
       });
-    })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.login = true;
+      } else {
+        this.login = false;
+      }
+    });
   }
 
   //게시글 관련 부분들
@@ -44,16 +51,9 @@ export class NewsPage implements OnInit {
 
   // 글 작성 버튼 클릭시
   async write() {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      if(user){
-        const modal = await this.modalCtrl.create({
-          component: WriteComponent,
-        });
-        await modal.present();
-      }
-      else{
-        alert("로그인 이후 게시글 작성이 가능합니다.")
-      }
-    })
+    const modal = await this.modalCtrl.create({
+      component: WriteComponent,
+    });
+    await modal.present();
   }
 }
