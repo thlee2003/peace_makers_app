@@ -17,11 +17,7 @@ export class MyPageLoginPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private platform: Platform
-  ) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
+  ) {}
 
   async ngOnInit() {
     //현재 로그인한 사용자 정보 가져오기
@@ -48,15 +44,6 @@ export class MyPageLoginPage implements OnInit {
         // User is signed out
       }
     });
-  }
-
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      this.backButtonAlert();
-    });
-  }
-  async backButtonAlert() {
-    this.router.navigate(['home', 'main']);
   }
 
   //인증카드

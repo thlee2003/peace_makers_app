@@ -4,23 +4,24 @@
   align-items: center;
 }
 
-ion-text {
-  //   border: 1px solid red;
-  width: 90%;
-  font-size: 1.1rem;
-  margin-top: 5px;
+p {
+  width: 300px;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
-.out {
-  margin-top: 20px;
+ion-text {
+  font-size: 20px;
+  //   border: 1px solid red;
+  border-bottom: 1px solid #c4c4c4;
+  width: 300px;
+  font-size: 1.1rem;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 4px;
 }
 
 .del {
   color: red;
-  padding-bottom: 15px;
-  border-bottom: 1px solid black;
-}
-
-.auth {
-  margin-top: 20px;
 }

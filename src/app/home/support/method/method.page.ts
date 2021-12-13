@@ -9,13 +9,20 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 export class MethodPage implements OnInit {
   selectTabs: string = 'temporary';
   pay: number;
-  error_msg: boolean;
+  error: boolean;
+  error_msg: string;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
+  ngOnInit() {}
+
   moveToMy_info() {
     if (this.pay == undefined) {
-      this.error_msg = true;
+      this.error = true;
+      this.error_msg = '금액을 입력하세요';
+    } else if (this.pay < 5000) {
+      this.error = true;
+      this.error_msg = '5000원 이상 입력하세요';
     } else {
       let navigationExtras: NavigationExtras = {
         state: {
@@ -27,10 +34,8 @@ export class MethodPage implements OnInit {
         ['home', 'support', 'method', 'amount'],
         navigationExtras
       );
-      this.error_msg = false;
+      this.error = false;
       this.pay = undefined;
     }
   }
-
-  ngOnInit() {}
 }

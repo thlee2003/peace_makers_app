@@ -1,3 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .text {
   h1 {
     margin-top: 45px;
@@ -13,17 +20,20 @@
 }
 
 ion-segment {
-  width: 90%;
+  border: 1px solid rgba($color: #c4c4c4, $alpha: 0.5);
+  background-color: white;
+  width: 84%;
+  height: 40px;
   margin-top: 20px;
-  margin-left: 5%;
-  // --background: none;
+  font-size: 16px;
   ion-segment-button {
     font-size: 1rem;
+    margin: 0px;
     --border-width: 0;
-    --padding-start: 8px;
-    --padding-bottom: 5px;
-    --padding-end: 8px;
-    --padding-top: 5px;
+    --padding-start: 0px;
+    --padding-bottom: 0px;
+    --padding-end: 0px;
+    --padding-top: 0px;
     --background-checked: var(--ion-color-blue);
     --indicator-color: transparent !important;
     --color-checked: var(--ion-color-white);
@@ -31,33 +41,45 @@ ion-segment {
 }
 
 .pay {
-  width: 90%;
-  margin-left: 5%;
-  margin-top: 16px;
-  height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--ion-color-medium);
-  border-radius: 15px;
-  ion-input {
-    text-align: center;
-    font-size: 1em;
-    width: 300px;
-    height: 40px;
-    background-color: #f4f5f7;
-    color: black;
-    margin-top: 10px;
-    // margin-bottom: 18px;
+  width: 84%;
+  height: 120px;
+  border: 1px solid rgba($color: #c4c4c4, $alpha: 0.5);
+  margin-top: 16px;
+  border-radius: 10px;
+}
+
+.input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-size: 18px;
+    margin-left: 12px;
+    margin-right: 12px;
   }
-  ion-button {
-    margin-top: 18px;
-    margin-bottom: 10px;
-    width: 300px;
-    height: 40px;
-    font-size: 24px;
-  }
+}
+
+.inp {
+  width: 256px;
+  height: 40px;
+  background-color: #f4f5f7;
+  border-radius: 10px;
+  margin-left: 11px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+ion-button {
+  width: 280px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .err {

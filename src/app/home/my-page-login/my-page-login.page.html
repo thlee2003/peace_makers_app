@@ -1,24 +1,43 @@
 <ion-content>
   <div class="top">
-    <img src="assets/icon/Asset 22.svg" alt="" />
+    <img src="assets/icon/Asset 7.svg" alt="" />
     <div class="profile">
       <h1>{{name}}</h1>
       <p>누적 후원금 : {{points}}원</p>
     </div>
   </div>
   <div class="bottom">
-    <div class="_top" (click)="moveToAuth()">
-      <p>인증 카드</p>
-      <ion-icon slot="start" name="chevron-forward-outline"></ion-icon>
-    </div>
-    <div (click)="moveToPayment_info()">
-      <p>결제 정보</p>
-    </div>
-    <div (click)="moveToModifiy_info()">
-      <p>기본정보 수정</p>
-    </div>
-    <div class="_bottom" (click)="moveToSetting()">
-      <p>설정</p>
-    </div>
+    <ion-button
+      (click)="moveToAuth()"
+      expand="block"
+      fill="outline"
+      color="bark"
+    >
+      인증 카드
+    </ion-button>
+    <ion-button
+      (click)="moveToPayment_info()"
+      expand="block"
+      fill="outline"
+      color="bark"
+    >
+      후원 현황
+    </ion-button>
+    <ion-button
+      (click)="moveToModifiy_info()"
+      expand="block"
+      fill="outline"
+      color="bark"
+    >
+      정보 수정
+    </ion-button>
+    <ion-button
+      (click)="moveToSetting()"
+      expand="block"
+      fill="outline"
+      color="bark"
+    >
+      설정
+    </ion-button>
   </div>
 </ion-content>

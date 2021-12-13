@@ -1,52 +1,40 @@
 .top {
-  height: 35%;
+  background-color: #44a4e0;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border-radius: 0 0 20px 20px;
   img {
     width: 70%;
     margin-top: 20px;
   }
-
   .profile {
+    color: white;
     margin-top: 10px;
-    width: 70%;
     h1 {
-      color: #44a4e0;
-      font-size: 40px;
-      text-align: left;
+      font-size: 36px;
+      margin-bottom: 6px;
     }
     p {
-      text-align: left;
+      margin-top: 0px;
       font-size: 20px;
     }
   }
 }
 
 .bottom {
-  div {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  ion-button {
+    width: 300px;
     height: 40px;
-    border-top: 1px solid #c4c4c4;
-    border-bottom: 1px solid #c4c4c4;
-    p {
-      margin: 0px;
-      font-size: 18px;
-      // margin-top: 10px;
-      margin-left: 16px;
-      vertical-align: middle;
-    }
-  }
-  ._top {
-    border-top: 2px solid #c4c4c4;
-    display: flex;
-    align-items: center;
-  }
-  ._bottom {
-    border-bottom: 2px solid #c4c4c4;
-  }
-  ion-icon {
-    font-size: 24px;
+    font-size: 18px;
+    margin-top: 24px;
+    color: rgb(75, 75, 75);
+    border-radius: 10px;
   }
 }
