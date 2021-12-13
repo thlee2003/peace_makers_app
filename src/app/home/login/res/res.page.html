@@ -21,7 +21,7 @@
   <!-- 일반 회원 -->
   <!-- 이메일 -->
   <div class="res">
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="mail-outline"></ion-icon>
       <ion-input
         type="url"
@@ -30,7 +30,7 @@
       ></ion-input>
     </ion-item>
     <!-- 비밀번호 -->
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
       <ion-input
         [type]="showPw ? 'text' : 'password' "
@@ -45,7 +45,7 @@
       ></ion-icon>
     </ion-item>
     <!-- 비밀번호 확인 -->
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="bag-check-outline"></ion-icon>
       <ion-input
         [type]="showPw ? 'text' : 'password' "
@@ -60,17 +60,17 @@
       ></ion-icon>
     </ion-item>
     <!-- 이름 -->
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="person-outline"></ion-icon>
       <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
     </ion-item>
     <!-- 직급 -->
-    <ion-item lines="none" *ngIf="selectTabs!=='personal'">
+    <ion-item lines="none" color="input" *ngIf="selectTabs!=='personal'">
       <ion-icon slot="start" name="pricetag-outline"></ion-icon>
       <ion-input type="text" placeholder="직급" [(ngModel)]="rank"></ion-input>
     </ion-item>
     <!-- 생년월일 -->
-    <ion-item lines="none" *ngIf="selectTabs==='personal' ">
+    <ion-item lines="none" color="input" *ngIf="selectTabs==='personal' ">
       <ion-icon slot="start" name="calendar-number-outline"></ion-icon>
       <ion-label>생년월일</ion-label>
       <ion-datetime
@@ -82,7 +82,7 @@
       ></ion-datetime>
     </ion-item>
     <!-- 전화번호 -->
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="call-outline"></ion-icon>
       <ion-input
         type="number"
@@ -92,7 +92,7 @@
     </ion-item>
     <!-- 사업자 회원 -->
     <!-- 회사명 -->
-    <ion-item lines="none" *ngIf="selectTabs==='company' ">
+    <ion-item lines="none" color="input" *ngIf="selectTabs==='company' ">
       <ion-icon slot="start" name="briefcase-outline"></ion-icon>
       <ion-input
         type="text"
@@ -101,7 +101,7 @@
       ></ion-input>
     </ion-item>
     <!-- 사업자등록번호 -->
-    <ion-item lines="none" *ngIf="selectTabs==='company' ">
+    <ion-item lines="none" color="input" *ngIf="selectTabs==='company' ">
       <ion-icon slot="start" name="documents-outline"></ion-icon>
       <ion-input
         type="number"
@@ -111,7 +111,7 @@
     </ion-item>
     <!-- institution -->
     <!-- 기관명 -->
-    <ion-item lines="none" *ngIf="selectTabs==='institution' ">
+    <ion-item lines="none" color="input" *ngIf="selectTabs==='institution' ">
       <ion-icon slot="start" name="business-outline"></ion-icon>
       <ion-input
         type="text"

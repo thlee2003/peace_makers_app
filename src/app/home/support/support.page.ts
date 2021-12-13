@@ -37,22 +37,6 @@ export class SupportPage implements OnInit {
   }
 
   async moveToMethod() {
-    // 로그인 유무 확인
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user && user.emailVerified) {
-        this.router.navigate(['home', 'support', 'method']);
-      } else {
-        this.alertCtrl
-          .create({
-            header: '로그인 후에 가능합니다.',
-            buttons: [
-              {
-                text: '확인',
-              },
-            ],
-          })
-          .then((res) => res.present());
-      }
-    });
+    this.router.navigate(['home', 'support', 'method']);
   }
 }

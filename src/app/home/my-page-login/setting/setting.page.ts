@@ -39,7 +39,7 @@ export class SettingPage implements OnInit {
                 .auth()
                 .signOut()
                 .then(() => {
-                  this.router.navigate(['home', 'my-page', 'login']);
+                  this.router.navigate(['home', 'login']);
                 })
                 .catch((error) => {});
             },

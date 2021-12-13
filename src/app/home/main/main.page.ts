@@ -36,9 +36,8 @@ export class MainPage implements OnInit, AfterContentChecked {
   }
   @ViewChild('swiper') swiper: SwiperComponent;
   config: SwiperOptions = {
-    slidesPerView: 2,
-    spaceBetween: 50,
-    pagination: true,
+    slidesPerView: 1.4,
+    spaceBetween: 18,
   };
 
   peace1: string;
