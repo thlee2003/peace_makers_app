@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 import { ToastController } from '@ionic/angular';
@@ -23,11 +23,12 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private toastController: ToastController,
     private alertCtrl: AlertController
   ) {}
 
-  async ngOnInit() {}
+  ngOnInit() {}
 
   // 아이콘 변경
   togglepw() {
@@ -102,12 +103,12 @@ export class LoginPage implements OnInit {
           firebase.auth().onAuthStateChanged((user) => {
             if (user && user.emailVerified) {
               this.uid = user.uid;
-              // console.log(this.uid)
+              console.log(this.uid);
             }
           });
 
           const db = firebase.firestore();
-
+          console.log(this.pw);
           db.collection('peace_makers')
             .get()
             .then((querySnapshot) => {
@@ -115,9 +116,12 @@ export class LoginPage implements OnInit {
                 if (doc.id === this.uid) {
                   if (this.pw == doc.data().userPW) {
                     console.log('맞아요');
+                    this.email = null;
+                    this.pw = null;
+                    this.error_msg = null;
                   } else {
                     console.log('틀려요');
-                    // console.log(this.pw)
+                    console.log(this.pw);
                     db.collection('peace_makers')
                       .doc(user.uid)
                       .update({
@@ -125,6 +129,9 @@ export class LoginPage implements OnInit {
                       })
                       .then(() => {
                         console.log('Document successfully updated!');
+                        this.email = null;
+                        this.pw = null;
+                        this.error_msg = null;
                       })
                       .catch((error) => {
                         // The document probably doesn't exist.
@@ -146,9 +153,6 @@ export class LoginPage implements OnInit {
               duration: 2000,
             });
             toast.present();
-            this.email = null;
-            (this.pw = null), (this.error_msg = null);
-            this.error_msg = null;
             this.router.navigate(['home', 'main']);
           } else {
             await this.alertCtrl

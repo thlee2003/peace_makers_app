@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import firebase from 'firebase';
 
@@ -39,7 +39,13 @@ export class SettingPage implements OnInit {
                 .auth()
                 .signOut()
                 .then(() => {
-                  this.router.navigate(['home', 'login']);
+                  let navigationExtras: NavigationExtras = {
+                    state: {
+                      email: null,
+                      pw: null,
+                    },
+                  };
+                  this.router.navigate(['home', 'login'], navigationExtras);
                 })
                 .catch((error) => {});
             },
@@ -78,6 +84,7 @@ export class SettingPage implements OnInit {
                       toast.present();
                     })
                     .catch((err) => {});
+
                   this.router.navigate(['home', 'main']);
                 })
                 .catch((err) => {

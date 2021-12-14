@@ -4,21 +4,8 @@
   align-items: center;
 }
 
-#area {
-  position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
-  width: 300px;
-  padding-bottom: 56.25%; /* 16:9 비율 */
-  // margin-left: 8%;
-  margin-top: 36px;
-}
-
-#video {
-  position: absolute;
-  width: 100%; /* 부모에 맞게 꽉 채운다. */
-  height: 100%;
-}
-
 .article {
+  width: 300px;
   h1 {
     text-align: center;
     font-weight: bold;
@@ -180,5 +167,46 @@
     margin-bottom: 15px;
     padding: 0 50px 0 15px;
     transition: 0.3s opacity, 0.6s max-height;
+  }
+}
+
+.video {
+  width: 100%;
+  margin-top: 24px;
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    color: #44a4e0;
+    margin-top: 0px;
+    margin-left: 30px;
+    margin-bottom: 6px;
+  }
+  .line {
+    margin-top: 0px;
+    margin-bottom: 8px;
+    width: 128px;
+    border: 1px solid #44a4e0;
+  }
+}
+
+.video2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // width: 300px;
+  #area {
+    position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
+    width: 300px;
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    // margin-left: 8%;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+
+  #video {
+    position: absolute;
+    width: 100%; /* 부모에 맞게 꽉 채운다. */
+    height: 100%;
   }
 }
