@@ -17,7 +17,7 @@
       </ion-button>
     </div>
     <div class="input">
-      <ion-input type="text" placeholder="제목"></ion-input>
+      <ion-input type="text" placeholder="제목" [(ngModel)]="title"></ion-input>
       <!-- <ion-icon start="end" name="attach-outline"></ion-icon> -->
     </div>
     <div class="article">
@@ -25,6 +25,7 @@
         type="text"
         placeholder="내용을 입력해주세요"
         rows="23"
+        [(ngModel)]="text"
       ></ion-textarea>
     </div>
   </div>
