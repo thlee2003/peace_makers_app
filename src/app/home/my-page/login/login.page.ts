@@ -53,17 +53,60 @@ export class LoginPage implements OnInit {
       this.error_msg = '';
       // 로그인
       firebase.auth().languageCode = 'ko';
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.pw)
+      firebase.auth().signInWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
           // Signed in
-          const user = userCredential.user;
+          const user = userCredential.user;  
+
+          console.log(this.pw)
+
+          //비밀번호를 변경하였을 경우 DB에 업데이트 되는 내용//
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user && user.emailVerified) {
+              this.uid = user.uid;
+              console.log(this.uid) // true
+            }
+          });
+
+          const db = firebase.firestore();
+
+          db.collection('peace_makers').get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              if (doc.id === this.uid) {
+                if(doc.data().userPW != this.pw && this.pw != null) {
+                  db.collection('peace_makers').doc(user.uid).update({
+                    userPW: this.pw
+                  })
+                  .then(() => {
+                    console.log('업데이트 완료')
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                  });
+                }
+                else if(doc.data().userPW === null && this.pw != null) {
+                  db.collection('peace_makers').doc(user.uid).update({
+                    userPW: this.pw
+                  })
+                  .then(() => {
+                    console.log('업데이트 완료')
+                  })
+                  .catch((error) => {
+                    console.log(error)
+                  });
+                }
+                // else if(this.pw === null) {
+                //   console.log("업데이트 안합니다.")
+                // }
+              }
+            });
+          });
+          //-------------------------------------------------//
+
           //자동로그인 구현
           if (this.isDisabled == true) {
-            firebase
-              .auth()
-              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
               .then(() => {
                 return firebase
                   .auth()
@@ -97,44 +140,6 @@ export class LoginPage implements OnInit {
                 console.log(errorMessage);
               });
           }
-
-          //비밀번호를 변경하였을 경우 DB에 업데이트 되는 내용//
-          firebase.auth().onAuthStateChanged((user) => {
-            if (user && user.emailVerified) {
-              this.uid = user.uid;
-              // console.log(this.uid)
-            }
-          });
-
-          const db = firebase.firestore();
-
-          db.collection('peace_makers')
-            .get()
-            .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
-                if (doc.id === this.uid) {
-                  if (this.pw == doc.data().userPW) {
-                    console.log('맞아요');
-                  } else {
-                    console.log('틀려요');
-                    // console.log(this.pw)
-                    db.collection('peace_makers')
-                      .doc(user.uid)
-                      .update({
-                        userPW: this.pw,
-                      })
-                      .then(() => {
-                        console.log('Document successfully updated!');
-                      })
-                      .catch((error) => {
-                        // The document probably doesn't exist.
-                        console.error('Error updating document: ', error);
-                      });
-                  }
-                }
-              });
-            });
-          //-------------------------------------------------//
 
           //화면 이동
           if (user.emailVerified) {
