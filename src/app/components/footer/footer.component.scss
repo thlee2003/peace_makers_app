@@ -7,11 +7,12 @@ ion-footer {
 .top {
   font-size: 11px;
   display: flex;
-  justify-content: space-between;
-  width: 296px;
-  margin-left: 34px;
+  justify-content: center;
+  align-items: center;
   p {
     padding-top: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .border {
     height: 20px;
@@ -31,6 +32,7 @@ ion-footer {
   p {
     margin-top: 0px;
     font-size: 10px;
+    text-align: center;
   }
 }
 

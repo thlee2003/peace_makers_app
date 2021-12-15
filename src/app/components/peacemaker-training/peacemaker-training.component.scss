@@ -6,10 +6,12 @@ ion-header {
     height: 50px;
     --background: #44a4e0;
     img {
-      width: 50%;
+      width: 200px;
+      height: 34px;
       margin-left: 25%;
     }
     ion-buttons {
+      text-align: center;
       width: 100%;
       position: absolute;
       ion-icon {
@@ -103,6 +105,7 @@ ion-header {
     font-size: 16px;
   }
   dd {
+    margin-left: 20px;
     margin-bottom: 10px;
   }
 }

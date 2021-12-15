@@ -1,44 +1,6 @@
 <app-header></app-header>
 
 <ion-content>
-  <!-- <div class="text">
-    <ion-text class="ion-text-center">
-      <h3>{{sp_method}}</h3>
-    </ion-text>
-    <ion-text class="ion-text-center">
-      <h3>{{pay}}원</h3>
-    </ion-text>
-  </div>
-  <div class="input">
-    <ion-item lines="none" color="input">
-      <ion-icon slot="start" name="person-outline"></ion-icon>
-      <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item lines="none" color="input">
-      <ion-icon slot="start" name="call-outline"></ion-icon>
-      <ion-input
-        type="number"
-        placeholder="전화번호"
-        [(ngModel)]="phone"
-      ></ion-input>
-    </ion-item>
-    <ion-item lines="none" color="input">
-      <ion-icon slot="start" name="mail-outline"></ion-icon>
-      <ion-input
-        type="email"
-        placeholder="이메일"
-        [(ngModel)]="email"
-      ></ion-input>
-    </ion-item>
-    <div class="err">
-      <p>{{error_msg}}</p>
-    </div>
-  </div>
-  <div class="btn">
-    <ion-button (click)="moveToConsent()" expand="block" color="main">
-      후원하기
-    </ion-button>
-  </div> -->
   <div class="content">
     <div class="info">
       <h3 class="h3">후원방법:{{sp_method}}</h3>
@@ -61,7 +23,7 @@
           [(ngModel)]="phone"
         ></ion-input>
       </div>
-      <div class="inp">
+      <div class="inp2">
         <ion-icon slot="start" name="mail-outline"></ion-icon>
         <ion-input
           type="email"
