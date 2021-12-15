@@ -42,7 +42,7 @@
       <div class="line"></div>
       <swiper #swiper [config]="config">
         <ng-template swiperSlide>
-          <img src="/assets/imgs/main1.jpg" alt="" />
+          <img src="../../../assets/imgs/training.jpg" alt="" />
           <div class="main">
             <p class="title">피스메이커 교육</p>
             <p class="text">
@@ -56,7 +56,7 @@
         </ng-template>
 
         <ng-template swiperSlide>
-          <img src="/assets/imgs/main1.jpg" alt="" />
+          <img src="../../../assets/imgs/student.jpg" alt="" />
           <div class="main">
             <p class="title">학생평화통일교육</p>
             <p class="text">
@@ -70,7 +70,7 @@
         </ng-template>
 
         <ng-template swiperSlide>
-          <img src="/assets/imgs/main1.jpg" alt="" />
+          <img src="../../../assets/imgs/citizen.jpg" alt="" />
           <div class="main">
             <p class="title">시민평화통일교육</p>
             <p class="text">
@@ -86,12 +86,14 @@
     </div>
 
     <div class="grp">
-      <p class="head">후원금은 이렇게 사용됩니다.</p>
-      <p>
-        후원금의 80% 이상은 반드시<br />
-        교육을 위해 사용합니다
-      </p>
-      <img src="../../../assets/imgs/graph.PNG" />
+      <div>
+        <p class="head">후원금은 이렇게 사용됩니다.</p>
+        <p>
+          후원금의 80% 이상은 반드시<br />
+          교육을 위해 사용합니다
+        </p>
+        <img src="../../../assets/imgs/graph.PNG" />
+      </div>
     </div>
 
     <div class="support">
@@ -112,9 +114,11 @@
           </div>
         </div>
       </div>
-      <ion-button (click)="onClick()" expand="block" color="main">
-        후원하기
-      </ion-button>
+      <div class="btn">
+        <ion-button (click)="moveToSupport()" expand="block" color="main">
+          후원하기
+        </ion-button>
+      </div>
     </div>
 
     <div class="news">

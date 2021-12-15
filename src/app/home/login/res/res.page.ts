@@ -30,6 +30,8 @@ export class ResPage implements OnInit {
   call_num: number;
   company: string;
   company_regist_num: number;
+  representative: string;
+  open_date: number;
   institution: string;
   films: Observable<any>;
   selectTabs = 'personal';
@@ -44,13 +46,26 @@ export class ResPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    // axios
-    //   .post(
-    //     'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D'
-    //   )
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   });
+    fetch(
+      'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D',
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businesses: [
+            {
+              b_no: '8678601065',
+              start_dt: '20180123',
+              p_nm: '이원익',
+            },
+          ],
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+      });
   }
 
   segmentChanged(e) {

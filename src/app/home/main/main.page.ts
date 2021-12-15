@@ -112,6 +112,10 @@ export class MainPage implements OnInit, AfterContentChecked {
     await alert.present();
   }
 
+  moveToSupport() {
+    this.router.navigate(['home', 'support']);
+  }
+
   async moveTostudy1() {
     console.log('a');
     const modal = await this.modalCtrl.create({

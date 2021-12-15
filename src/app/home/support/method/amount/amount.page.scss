@@ -55,12 +55,19 @@
   margin-bottom: 18px;
 }
 
-.inp ion-input {
-  padding-left: 0px;
+.inp2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 40px;
+  background-color: #f4f5f7;
+  border-radius: 10px;
+  margin-bottom: 0px;
 }
 
-.inp2 {
-  margin-bottom: 0px;
+.inp ion-input {
+  padding-left: 0px;
 }
 
 ion-icon {
@@ -89,13 +96,6 @@ ion-icon {
   margin-bottom: 0%;
   p {
     margin: 0px;
+    margin-bottom: 12px;
   }
 }
-
-// ion-button {
-//   width: 80%;
-//   height: 45px;
-//   font-size: 1.3em;
-//   margin-left: 10%;
-//   vertical-align: middle;
-// }

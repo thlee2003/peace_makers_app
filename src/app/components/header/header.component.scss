@@ -2,9 +2,11 @@ ion-header {
   ion-toolbar {
     height: 50px;
     --background: #44a4e0;
+    text-align: center;
     img {
-      width: 50%;
-      margin-left: 25%;
+      width: 200px;
+      height: 34px;
+      // margin-left: 25%;
     }
   }
 }

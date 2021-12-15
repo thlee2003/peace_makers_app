@@ -46,7 +46,7 @@ ion-segment {
   align-items: center;
   justify-content: center;
   width: 84%;
-  height: 120px;
+  height: auto;
   border: 1px solid rgba($color: #c4c4c4, $alpha: 0.5);
   margin-top: 16px;
   border-radius: 10px;
@@ -86,4 +86,5 @@ ion-button {
   color: red;
   font-size: 12px;
   margin: 0px;
+  margin-bottom: 12px;
 }

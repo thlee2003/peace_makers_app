@@ -138,6 +138,35 @@
           [(ngModel)]="company_regist_num"
         ></ion-input>
       </div>
+      <!-- 대표자명 -->
+      <div
+        class="inp"
+        lines="none"
+        color="input"
+        *ngIf="selectTabs==='company' "
+      >
+        <ion-icon slot="start" name="documents-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="대표자명"
+          [(ngModel)]="representative"
+        ></ion-input>
+      </div>
+      <!-- 개업일자 -->
+      <div
+        class="inp"
+        lines="none"
+        color="input"
+        *ngIf="selectTabs==='company' "
+      >
+        <ion-icon slot="start" name="documents-outline"></ion-icon>
+        <ion-input
+          class="opne_date"
+          type="number"
+          placeholder="개업일자"
+          [(ngModel)]="open_date"
+        ></ion-input>
+      </div>
       <!-- institution -->
       <!-- 기관명 -->
       <div
