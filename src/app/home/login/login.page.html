@@ -7,7 +7,7 @@
 
     <!-- 입력 -->
     <div class="input">
-      <ion-item lines="none">
+      <div class="inp" lines="none" color="input">
         <ion-icon slot="start" name="mail-outline"></ion-icon>
         <ion-input
           type="email"
@@ -15,9 +15,9 @@
           size="6"
           [(ngModel)]="email"
         ></ion-input>
-      </ion-item>
+      </div>
 
-      <ion-item class="ion-margin-vertical" lines="none">
+      <div class="inp" lines="none" color="input">
         <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
         <ion-input
           [type]="showPw ? 'text' : 'password' "
@@ -26,11 +26,12 @@
           [(ngModel)]="pw"
         ></ion-input>
         <ion-icon
+          class="eye"
           slot="end"
           [name]="PwToggleIcon"
           (click)="togglepw()"
         ></ion-icon>
-      </ion-item>
+      </div>
     </div>
 
     <div class="err">
@@ -39,39 +40,31 @@
 
     <!-- 부가 기능 -->
     <div class="addons">
-      <ion-item lines="none">
+      <div class="autologin">
         <ion-icon
           slot="start"
           [name]="checkmark"
           (click)="togglecheck()"
         ></ion-icon>
         <p class="auto">자동 로그인</p>
-      </ion-item>
-
-      <p (click)="moveToFind_email_pw()">아이디/비밀번호 찾기</p>
+      </div>
+      <p (click)="moveToFind_email_pw()">아이디/비밀번호 찾기 ></p>
     </div>
 
     <!-- 버튼 -->
     <div class="btn">
       <ion-button
         class="login"
-        color="blue"
-        expand="block"
-        shape="round"
         (click)="moveToMain()"
+        expand="block"
+        color="main"
       >
         로그인
       </ion-button>
-      <ion-button
-        class="res"
-        expand="block"
-        color="blue"
-        shape="round"
-        fill="outline"
-        (click)="moveToRes()"
-      >
-        회원가입
-      </ion-button>
+    </div>
+    <div class="res">
+      계정이 없으신가요?
+      <p (click)="moveToRes()">회원가입하기</p>
     </div>
   </div>
 </ion-content>

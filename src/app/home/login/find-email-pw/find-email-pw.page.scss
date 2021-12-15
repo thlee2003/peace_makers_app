@@ -1,15 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 ion-segment {
-  width: 90%;
+  border: 1px solid rgba($color: #c4c4c4, $alpha: 0.5);
+  background-color: white;
+  width: 300px;
+  height: 40px;
   margin-top: 20px;
-  margin-left: 5%;
-  // --background: none;
   ion-segment-button {
     font-size: 1rem;
+    margin: 0px;
     --border-width: 0;
-    --padding-start: 8px;
-    --padding-bottom: 5px;
-    --padding-end: 8px;
-    --padding-top: 5px;
+    --padding-start: 0px;
+    --padding-bottom: 0px;
+    --padding-end: 0px;
+    --padding-top: 0px;
     --background-checked: var(--ion-color-blue);
     --indicator-color: transparent !important;
     --color-checked: var(--ion-color-white);
@@ -27,18 +36,22 @@ ion-segment {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
-  ion-item {
-    width: 90%;
-    margin: 10px 0 10px 0;
-    border: 1px solid black;
+  .inp {
+    width: 300px;
+    background-color: #f4f5f7;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 10px;
-  }
-
-  ion-icon {
-    margin: 0%;
-    margin-right: 5px;
-    font-size: 24px;
+    ion-icon {
+      zoom: 1.5;
+      color: #c4c4c4;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -49,6 +62,7 @@ ion-segment {
   color: red;
   margin-top: -5px;
   p {
+    font-size: 12px;
     margin-top: 0%;
   }
 }
@@ -59,8 +73,8 @@ ion-segment {
   align-content: center;
   justify-content: center;
   ion-button {
-    width: 80%;
-    height: 45px;
-    font-size: 1.3rem;
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
   }
 }

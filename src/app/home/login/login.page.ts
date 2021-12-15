@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 import { ToastController } from '@ionic/angular';
@@ -23,11 +23,12 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private toastController: ToastController,
     private alertCtrl: AlertController
   ) {}
 
-  async ngOnInit() {}
+  ngOnInit() {}
 
   // 아이콘 변경
   togglepw() {
@@ -151,8 +152,6 @@ export class LoginPage implements OnInit {
               duration: 2000,
             });
             toast.present();
-            this.email = null;
-            (this.pw = null), (this.error_msg = null);
             this.router.navigate(['home', 'main']);
           } else {
             await this.alertCtrl
@@ -164,7 +163,8 @@ export class LoginPage implements OnInit {
                   {
                     text: '확인',
                     handler: async (res) => {
-                      this.router.navigate(['home', 'my-page', 'login']);
+                      this.error_msg = null;
+                      this.router.navigate(['home', 'login']);
                     },
                   },
                 ],
@@ -188,10 +188,12 @@ export class LoginPage implements OnInit {
     }
   }
   moveToRes() {
-    this.router.navigate(['home', 'my-page', 'login', 'res']);
+    this.error_msg = null;
+    this.router.navigate(['home', 'login', 'res']);
   }
   // 비밀번호 찾기로 이동
   moveToFind_email_pw() {
-    this.router.navigate(['home', 'my-page', 'login', 'find-email-pw']);
+    this.error_msg = null;
+    this.router.navigate(['home', 'login', 'find-email-pw']);
   }
 }

@@ -52,14 +52,12 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'my-page/login',
+        path: 'login',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('./my-page/login/login.module').then(
-                (m) => m.LoginPageModule
-              ),
+              import('./login/login.module').then((m) => m.LoginPageModule),
           },
         ],
       },

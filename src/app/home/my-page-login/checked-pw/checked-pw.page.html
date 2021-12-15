@@ -2,7 +2,7 @@
 <ion-content>
   <div class="container">
     <h2>비밀번호 재확인</h2>
-    <ion-item class="ion-margin-vertical" lines="none">
+    <div class="ion-margin-vertical" lines="none" color="input">
       <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
       <ion-input
         [type]="showPw ? 'text' : 'password' "
@@ -15,16 +15,11 @@
         [name]="PwToggleIcon"
         (click)="togglepw()"
       ></ion-icon>
-    </ion-item>
+    </div>
     <div class="err">
       <p>{{error_msg}}</p>
     </div>
-    <ion-button
-      expand="block"
-      shape="round"
-      color="blue"
-      (click)="moveToinfo()"
-    >
+    <ion-button expand="block" color="blue" (click)="moveToinfo()">
       수정 하기
     </ion-button>
   </div>

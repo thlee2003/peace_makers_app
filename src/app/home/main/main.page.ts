@@ -6,6 +6,11 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { PeacemakerTrainingComponent } from 'src/app/components/peacemaker-training/peacemaker-training.component';
+import { StudentUnificationComponent } from 'src/app/components/student-unification/student-unification.component';
+import { CitizenUnificationComponent } from 'src/app/components/citizen-unification/citizen-unification.component';
 
 import firebase from 'firebase';
 import { SwiperOptions } from 'swiper';
@@ -17,7 +22,7 @@ import SwiperCore, {
   Keyboard,
   Autoplay,
 } from 'swiper';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController, Platform, ModalController } from '@ionic/angular';
 
 SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
 
@@ -28,19 +33,6 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
   encapsulation: ViewEncapsulation.None,
 })
 export class MainPage implements OnInit, AfterContentChecked {
-  public get alertController(): AlertController {
-    return this._alertController;
-  }
-  public set alertController(value: AlertController) {
-    this._alertController = value;
-  }
-  @ViewChild('swiper') swiper: SwiperComponent;
-  config: SwiperOptions = {
-    slidesPerView: 2,
-    spaceBetween: 50,
-    pagination: true,
-  };
-
   peace1: string;
   peacetext1: string;
   peace2: string;
@@ -50,12 +42,26 @@ export class MainPage implements OnInit, AfterContentChecked {
 
   constructor(
     private platform: Platform,
-    private _alertController: AlertController
+    private _alertController: AlertController,
+    private modalCtrl: ModalController,
+    private router: Router
   ) {
     platform.ready().then(() => {
       this.backButtonEvent();
     });
   }
+
+  public get alertController(): AlertController {
+    return this._alertController;
+  }
+  public set alertController(value: AlertController) {
+    this._alertController = value;
+  }
+  @ViewChild('swiper') swiper: SwiperComponent;
+  config: SwiperOptions = {
+    slidesPerView: 1.4,
+    spaceBetween: 18,
+  };
 
   ngAfterContentChecked() {
     if (this.swiper) {
@@ -104,5 +110,27 @@ export class MainPage implements OnInit, AfterContentChecked {
       ],
     });
     await alert.present();
+  }
+
+  async moveTostudy1() {
+    console.log('a');
+    const modal = await this.modalCtrl.create({
+      component: PeacemakerTrainingComponent,
+    });
+    await modal.present();
+  }
+  async moveTostudy2() {
+    console.log('a');
+    const modal = await this.modalCtrl.create({
+      component: StudentUnificationComponent,
+    });
+    await modal.present();
+  }
+  async moveTostudy3() {
+    console.log('a');
+    const modal = await this.modalCtrl.create({
+      component: CitizenUnificationComponent,
+    });
+    await modal.present();
   }
 }

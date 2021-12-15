@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content>
-  <div class="text">
+  <!-- <div class="text">
     <ion-text class="ion-text-center">
       <h3>{{sp_method}}</h3>
     </ion-text>
@@ -10,11 +10,11 @@
     </ion-text>
   </div>
   <div class="input">
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="person-outline"></ion-icon>
       <ion-input type="text" placeholder="이름" [(ngModel)]="name"></ion-input>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="call-outline"></ion-icon>
       <ion-input
         type="number"
@@ -22,7 +22,7 @@
         [(ngModel)]="phone"
       ></ion-input>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" color="input">
       <ion-icon slot="start" name="mail-outline"></ion-icon>
       <ion-input
         type="email"
@@ -35,13 +35,56 @@
     </div>
   </div>
   <div class="btn">
-    <ion-button
-      (click)="moveToConsent()"
-      expand="block"
-      shape="round"
-      color="blue"
-    >
+    <ion-button (click)="moveToConsent()" expand="block" color="main">
       후원하기
     </ion-button>
+  </div> -->
+  <div class="content">
+    <div class="info">
+      <h3 class="h3">후원방법:{{sp_method}}</h3>
+      <h3>금액:{{pay}}</h3>
+    </div>
+    <div class="input">
+      <div class="inp">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-input
+          type="text"
+          placeholder="이름"
+          [(ngModel)]="name"
+        ></ion-input>
+      </div>
+      <div class="inp">
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        <ion-input
+          type="number"
+          placeholder="전화번호"
+          [(ngModel)]="phone"
+        ></ion-input>
+      </div>
+      <div class="inp">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-input
+          type="email"
+          placeholder="이메일"
+          [(ngModel)]="email"
+        ></ion-input>
+      </div>
+      <div class="err">
+        <p>{{error_msg}}</p>
+      </div>
+      <div class="btn">
+        <ion-button
+          (click)="moveToBack()"
+          expand="block"
+          fill="outline"
+          color="main"
+        >
+          이전
+        </ion-button>
+        <ion-button (click)="moveToConsent()" expand="block" color="main">
+          다음
+        </ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>

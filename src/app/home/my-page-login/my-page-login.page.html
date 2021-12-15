@@ -7,29 +7,37 @@
     </div>
   </div>
   <div class="bottom">
-    <ion-button (click)="moveToAuth()" expand="block" shape="round" color="blue"
-      >인증 카드</ion-button
-    >
     <ion-button
-      (click)="moveToModifiy_info()"
+      (click)="moveToAuth()"
       expand="block"
-      shape="round"
-      color="blue"
-      >기본정보 수정</ion-button
+      fill="outline"
+      color="bark"
     >
+      인증 카드
+    </ion-button>
     <ion-button
       (click)="moveToPayment_info()"
       expand="block"
-      shape="round"
-      color="blue"
-      >결제 정보</ion-button
+      fill="outline"
+      color="bark"
     >
+      후원 현황
+    </ion-button>
+    <ion-button
+      (click)="moveToModifiy_info()"
+      expand="block"
+      fill="outline"
+      color="bark"
+    >
+      정보 수정
+    </ion-button>
     <ion-button
       (click)="moveToSetting()"
       expand="block"
-      shape="round"
-      color="blue"
-      >설정</ion-button
+      fill="outline"
+      color="bark"
     >
+      설정
+    </ion-button>
   </div>
 </ion-content>

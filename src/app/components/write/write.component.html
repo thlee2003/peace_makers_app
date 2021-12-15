@@ -10,28 +10,22 @@
 </ion-header>
 
 <ion-content>
-  <div class="title">
-    <ion-input type="text" placeholder="제목" [(ngModel)]="title"></ion-input>
-  </div>
-  <ion-item class="text" lines="none">
-    <ion-textarea
-      cols="10"
-      autoGrow="true"
-      placeholder="본문"
-      [(ngModel)]="text"
-    ></ion-textarea>
-  </ion-item>
-  <div class="err">
-    <p>{{ error_msg }}</p>
-  </div>
-  <div class="btn">
-    <ion-button
-      (click)="Enrollment()"
-      expand="block"
-      shape="round"
-      color="main"
-    >
-      등록
-    </ion-button>
+  <div class="content">
+    <div class="btn">
+      <ion-button (click)="onClick()" expand="block" color="main">
+        등록
+      </ion-button>
+    </div>
+    <div class="input">
+      <ion-input type="text" placeholder="제목"></ion-input>
+      <!-- <ion-icon start="end" name="attach-outline"></ion-icon> -->
+    </div>
+    <div class="article">
+      <ion-textarea
+        type="text"
+        placeholder="내용을 입력해주세요"
+        rows="23"
+      ></ion-textarea>
+    </div>
   </div>
 </ion-content>

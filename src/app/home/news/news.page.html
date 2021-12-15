@@ -1,22 +1,25 @@
 <app-header></app-header>
 
 <ion-content>
-  <div class="body" *ngFor="let user of users" (click)="openModal(user)">
+  <!-- <div class="body" *ngFor="let user of users" (click)="openModal(user)">
     <p class="name">{{user.title}}</p>
     <p class="text">{{user.text}}</p>
-    <!-- <div class="img">
-      <img [src]="user.img[0]" alt="" />
-      <img [src]="user.img[1]" alt="" />
-    </div>
-    <div class="good">
-      <ion-item lines="none">
-        <ion-icon name="heart-sharp" color="red"></ion-icon>
-        <p>{{user.good}}</p>
-      </ion-item>
-    </div> -->
     <div class="bottom"></div>
+  </div> -->
+  <div class="content">
+    <div class="body" *ngFor="let user of users" (click)="openModal(user)">
+      <!-- <img src="../../../assets/imgs/img1.jpg" alt="" /> -->
+      <p class="title">{{ user.title }}</p>
+      <div class="bottom">
+        <div class="name">
+          <p class="name">이름</p>
+          <ion-icon name="chatbubble-outline"></ion-icon>
+        </div>
+        <p class="date">2021-10-11</p>
+      </div>
+    </div>
   </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="login">
     <ion-fab-button color="main" (click)="write()">
       <ion-icon name="pencil-outline"></ion-icon>
     </ion-fab-button>

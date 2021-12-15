@@ -18,51 +18,49 @@
 
     <div class="all">
       <div class="input">
-        <ion-item lines="none" *ngIf="selectTabs==='pw'">
+        <div class="inp" lines="none" *ngIf="selectTabs==='pw'">
           <ion-icon slot="start" name="mail-outline"></ion-icon>
           <ion-input
             type="email"
             placeholder="이메일"
             [(ngModel)]="email"
           ></ion-input>
-        </ion-item>
+        </div>
 
-        <ion-item lines="none">
+        <div class="inp" lines="none">
           <ion-icon slot="start" name="person-outline"></ion-icon>
           <ion-input
             type="text"
             placeholder="이름"
             [(ngModel)]="name"
           ></ion-input>
-        </ion-item>
+        </div>
 
-        <ion-item lines="none">
+        <div class="inp" lines="none">
           <ion-icon slot="start" name="call-outline"></ion-icon>
           <ion-input
             type="number"
             placeholder="전화번호(-없이 입력을 해주세요.)"
             [(ngModel)]="call_num"
           ></ion-input>
-        </ion-item>
+        </div>
       </div>
       <div class="err">
         <p>{{error_msg}}</p>
       </div>
       <div class="btn">
         <ion-button
-          expand="block"
-          shape="round"
-          color="blue"
           (click)="Find_email()"
+          expand="block"
+          color="main"
           *ngIf="selectTabs==='email' "
         >
           아이디 찾기
         </ion-button>
         <ion-button
-          expand="block"
-          shape="round"
-          color="blue"
           (click)="Find_pw()"
+          expand="block"
+          color="main"
           *ngIf="selectTabs==='pw' "
         >
           비밀번호 찾기

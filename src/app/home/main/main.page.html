@@ -2,6 +2,7 @@
 
 <ion-content>
   <swiper
+    #swiper
     [slidesPerView]="1"
     [spaceBetween]="30"
     [centeredSlides]="true"
@@ -35,13 +36,94 @@
       <img src="assets/imgs/img2.jpg" />
       <p>{{peacetext2}}</p>
     </div>
+
+    <div class="study">
+      <h2>피스메이커 교육</h2>
+      <div class="line"></div>
+      <swiper #swiper [config]="config">
+        <ng-template swiperSlide>
+          <img src="/assets/imgs/main1.jpg" alt="" />
+          <div class="main">
+            <p class="title">피스메이커 교육</p>
+            <p class="text">
+              피스메이커는 남북한의 평화 건설을 휘한 평화 통일 운동가, 평화
+              교육가, 구호봉사활동가로 일합니다.
+            </p>
+            <ion-button fill="outline" color="white" (click)="moveTostudy1()">
+              더보기
+            </ion-button>
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <img src="/assets/imgs/main1.jpg" alt="" />
+          <div class="main">
+            <p class="title">학생평화통일교육</p>
+            <p class="text">
+              학생들이 직접 참여하고 느끼고 평화상상력을 키우는
+              학생(청소년)참여형 평화통일체험교육 프로그램입니다.
+            </p>
+            <ion-button fill="outline" color="white" (click)="moveTostudy2()">
+              더보기
+            </ion-button>
+          </div>
+        </ng-template>
+
+        <ng-template swiperSlide>
+          <img src="/assets/imgs/main1.jpg" alt="" />
+          <div class="main">
+            <p class="title">시민평화통일교육</p>
+            <p class="text">
+              시민 남북한 평화통일 희망 회복, 평화의식 증진, DMZ생태계 보전의식
+              교육을 목표로 합니다.
+            </p>
+            <ion-button fill="outline" color="white" (click)="moveTostudy3()">
+              더보기
+            </ion-button>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+
     <div class="grp">
-      <h2>후원금은 이렇게 사용됩니다.</h2>
+      <p class="head">후원금은 이렇게 사용됩니다.</p>
+      <p>
+        후원금의 80% 이상은 반드시<br />
+        교육을 위해 사용합니다
+      </p>
       <img src="../../../assets/imgs/graph.PNG" />
     </div>
+
+    <div class="support">
+      <h2>후원</h2>
+      <div class="line"></div>
+      <div id="group">
+        <div id="area">
+          <div id="video" class="container4">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/0JQ3L6M1Lb8"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <ion-button (click)="onClick()" expand="block" color="main">
+        후원하기
+      </ion-button>
+    </div>
+
     <div class="news">
       <h2>뉴스</h2>
-      <p>접경지역 주민들 “한반도 종전협정 위해 시민평화외교 운동”</p>
+      <div class="line"></div>
+      <p>
+        접경지역 주민들<br />
+        “한반도 종전협정 위해 시민평화외교 운동”
+      </p>
       <a href="http://naver.me/xYQHj0VM"><img src="assets/imgs/img12.jpg" /></a>
     </div>
   </div>

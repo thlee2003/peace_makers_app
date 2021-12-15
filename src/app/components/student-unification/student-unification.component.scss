@@ -1,0 +1,21 @@
+ion-header {
+  ion-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    --background: #44a4e0;
+    img {
+      width: 50%;
+      margin-left: 25%;
+    }
+    ion-buttons {
+      width: 100%;
+      position: absolute;
+      ion-icon {
+        margin-left: 40px;
+        font-size: 36px;
+      }
+    }
+  }
+}

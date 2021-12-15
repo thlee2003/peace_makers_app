@@ -1,6 +1,6 @@
 .swiper {
   width: 100%;
-  // height: 50%;
+  height: 95%;
 }
 
 .swiper-slide {
@@ -39,69 +39,191 @@
 .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 25px;
-  color: #1597e5;
-}
-
-img {
-  object-fit: contain;
+  color: #fff;
 }
 
 .exp {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 36px;
 }
 
 .one,
 .two {
   img {
-    width: 90%;
+    width: 76%;
+    // height: 202px;
+  }
+  p {
+    width: 236px;
+    font-size: 14px;
   }
   width: 100%;
   margin-top: 20px;
   background: linear-gradient(#fff 50%, #eeeeee 50%);
-  // border-bottom: 1px solid black;
 }
 
-.two img {
-  margin-left: 10%;
+.one img {
+  margin-left: 24%;
+}
+
+.one p {
+  margin-left: 30px;
 }
 
 .two p {
   float: right;
-}
-
-.asdf img {
-  margin-left: 5%;
-  width: 90%;
+  margin-right: 30px;
 }
 
 .grp {
-  h2 {
-    text-align: center;
+  margin-top: 36px;
+  background-color: #1597e5;
+  .head {
+    font-size: 24px;
+    color: white;
+    margin-left: 30px;
+  }
+  p {
+    font-size: 16px;
+    color: white;
+    margin-left: 30px;
   }
 }
 
-p {
-  // border: 1px solid rebeccapurple;
-  width: 94%;
-  margin-left: 3%;
+.study {
+  margin-top: 36px;
+  width: 100%;
+  h2 {
+    font-size: 24px;
+    color: #44a4e0;
+    margin-top: 0px;
+    margin-left: 30px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .line {
+    margin-top: 0px;
+    margin-bottom: 26px;
+    width: 193px;
+    border: 1px solid #44a4e0;
+  }
+  .swiper-wrapper {
+    margin-left: 30px;
+  }
+  .swiper-slide {
+    width: 220px;
+    height: 300px;
+    img {
+      width: 220px;
+      height: 300px;
+      border-radius: 10px;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 220px;
+      height: 300px;
+      border-radius: 10px;
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      position: absolute;
+      p {
+        text-align: left;
+        color: white;
+      }
+      .title {
+        margin-top: 16px;
+        margin-bottom: 0px;
+        width: 200px;
+        margin-left: 10px;
+        font-size: 20px;
+      }
+      .text {
+        width: 200px;
+        height: 70px;
+        margin-top: 12px;
+        margin-bottom: 120px;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+      ion-button {
+        width: 170px;
+        height: 34px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.support {
+  margin-top: 36px;
+  width: 100%;
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #44a4e0;
+    margin-top: 0px;
+    margin-left: 30px;
+    margin-bottom: 6px;
+  }
+  .line {
+    margin-top: 0px;
+    margin-bottom: 26px;
+    width: 78px;
+    border: 1px solid #44a4e0;
+  }
+  ion-button {
+    margin-top: 18px;
+    margin-left: 32px;
+    width: 300px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+#area {
+  position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
+  width: 84%;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  margin-left: 8%;
+  margin-bottom: 0%;
+}
+
+#video {
+  position: absolute;
+  width: 100%; /* 부모에 맞게 꽉 채운다. */
+  height: 100%;
 }
 
 .news {
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-top: 1px solid var(--ion-color-medium);
   h2 {
-    margin-left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #44a4e0;
+    margin-top: 24px;
+    margin-left: 30px;
+    margin-bottom: 6px;
+  }
+  .line {
+    margin-top: 0px;
+    margin-bottom: 26px;
+    width: 78px;
+    border: 1px solid #44a4e0;
   }
   p {
-    margin-bottom: 0%;
-    font-size: 16px;
-  }
-  img {
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
     width: 90%;
     margin-left: 5%;
+    margin-bottom: 5px;
   }
+  img {
+    width: 84%;
+    margin-left: 8%;
+  }
+  margin-bottom: 36px;
 }

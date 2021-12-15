@@ -28,7 +28,6 @@
           type="url"
           placeholder="이메일"
           [(ngModel)]="email"
-          disabled
         ></ion-input>
       </div>
       <!-- 비밀번호 -->
@@ -160,11 +159,12 @@
       </div>
       <ion-button
         class="btn"
-        (click)="moveToChange()"
+        (click)="moveToLogin()"
         expand="block"
+        fill="outline"
         color="main"
       >
-        수정하기
+        회원가입
       </ion-button>
     </div>
   </div>

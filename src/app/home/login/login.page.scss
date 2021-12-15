@@ -1,5 +1,6 @@
-.content {
+.all {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -25,18 +26,28 @@
   align-items: center;
   justify-content: center;
 
-  ion-item {
-    width: 90%;
+  div {
+    width: 300px;
     margin: 10px 0 10px 0;
-    border: 1px solid var(--ion-color-medium);
     border-radius: 10px;
-    ion-icon {
-      margin: 5px;
-    }
   }
 
-  ion-item:nth-child(2) {
+  div:nth-child(2) {
     margin-bottom: var(--ion-margin, 0);
+  }
+
+  .inp {
+    background-color: #f4f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ion-icon {
+    zoom: 1.5;
+    color: #c4c4c4;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
 
@@ -46,30 +57,30 @@
   text-align: center;
   color: red;
   p {
+    font-size: 12px;
     margin-top: 5px;
     margin-bottom: 0%;
   }
 }
 
 .addons {
-  width: 90%;
+  width: 300px;
   margin-top: 0%;
-  margin-left: 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 14px;
+  margin-top: -10px;
 
-  ion-item {
+  .autologin {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    font-size: 14px;
     width: 50%;
     ion-icon {
       color: var(--ion-color-medium);
-      margin: 0%;
-      margin-left: -18px;
-    }
-    p {
-      color: var(--ion-color-medium);
-      width: 100%;
-      text-align: left;
+      zoom: 1.6;
     }
   }
 
@@ -87,12 +98,18 @@
   justify-content: center;
 
   ion-button {
-    width: 80%;
-    height: 45px;
-    font-size: 1.3em;
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
   }
-
-  .res {
-    margin-top: 15%;
+}
+.res {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  font-size: 14px;
+  p {
+    color: #44a4e0;
   }
 }

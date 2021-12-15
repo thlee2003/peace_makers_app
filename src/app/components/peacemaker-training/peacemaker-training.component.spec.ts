@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MyPagePage } from './my-page.page';
+import { PeacemakerTrainingComponent } from './peacemaker-training.component';
 
-describe('MyPagePage', () => {
-  let component: MyPagePage;
-  let fixture: ComponentFixture<MyPagePage>;
+describe('PeacemakerTrainingComponent', () => {
+  let component: PeacemakerTrainingComponent;
+  let fixture: ComponentFixture<PeacemakerTrainingComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyPagePage ],
+      declarations: [ PeacemakerTrainingComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MyPagePage);
+    fixture = TestBed.createComponent(PeacemakerTrainingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

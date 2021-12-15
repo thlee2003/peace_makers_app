@@ -3,45 +3,117 @@
   padding: 0;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.head {
+  width: 100%;
+  height: 180px;
+  img {
+    width: 100%;
+    height: 180px;
+  }
+  .main {
+    width: 100%;
+    height: 180px;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    position: absolute;
+  }
+  p {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-left: 30px;
+    margin-top: 40px;
+  }
+}
+
+.grp {
+  border: 1px solid #44a4e0;
+  background-color: #44a4e0;
+  .head2 {
+    font-size: 24px;
+    color: white;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  p {
+    font-size: 16px;
+    color: white;
+    margin-left: 30px;
+  }
+}
+
+.support {
+  width: 100%;
+  margin-top: 36px;
+  h2 {
+    font-size: 24px;
+    color: #44a4e0;
+    margin-top: 0px;
+    margin-left: 30px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .line {
+    margin-top: 0px;
+    margin-bottom: 26px;
+    border: 1px solid #44a4e0;
+    width: 124px;
+  }
+  ion-button {
+    margin-top: 18px;
+    margin-left: 32px;
+    margin-bottom: 36px;
+    width: 300px;
+    height: 36px;
+    font-size: 20px;
+  }
 }
 
 #group {
-  border: 2px solid black;
-  h1 {
-    text-align: center;
-    margin: 2%;
+  #area {
+    position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
+    width: 84%;
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    margin-left: 8%;
+    margin-bottom: 18px;
   }
-  margin-top: 2.5%;
-  width: 95%;
-}
-#area {
-  position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 비율 */
-  margin-bottom: 0%;
+
+  #video {
+    position: absolute;
+    width: 100%; /* 부모에 맞게 꽉 채운다. */
+    height: 100%;
+  }
 }
 
-#video {
-  position: absolute;
-  width: 100%; /* 부모에 맞게 꽉 채운다. */
-  height: 100%;
-}
+// .head div {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   border-radius: 10px;
+//   background-color: rgba($color: #000000, $alpha: 0.3);
+//   position: absolute;
+// }
 
-.news {
-  width: 90%;
-  margin-top: 20px;
-}
-.news p {
-  font-size: 20px;
-}
+// .container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   h1 {
+//     margin-top: 15px;
+//   }
+// }
 
-ion-button {
-  width: 80%;
-  height: 45px;
-  font-size: 1.3rem;
-  margin: 20px 0;
-}
+// .news {
+//   width: 90%;
+//   margin-top: 20px;
+// }
+// .news p {
+//   font-size: 20px;
+// }
+
+// ion-button {
+//   width: 80%;
+//   height: 45px;
+//   font-size: 1.3rem;
+//   margin: 20px 0;
+//   margin-top: 0px;
+// }
