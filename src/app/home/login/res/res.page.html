@@ -1,4 +1,16 @@
-<app-header></app-header>
+<!-- <app-backheader> </app-backheader> -->
+<ion-header>
+  <ion-toolbar>
+    <div class="back2">
+      <img src="assets/icon/Asset 7.svg" alt="" />
+    </div>
+    <div class="back">
+      <ion-buttons slot="start">
+        <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="content">
@@ -145,7 +157,7 @@
         color="input"
         *ngIf="selectTabs==='company' "
       >
-        <ion-icon slot="start" name="documents-outline"></ion-icon>
+        <ion-icon slot="start" name="man-outline"></ion-icon>
         <ion-input
           type="text"
           placeholder="대표자명"
@@ -159,11 +171,11 @@
         color="input"
         *ngIf="selectTabs==='company' "
       >
-        <ion-icon slot="start" name="documents-outline"></ion-icon>
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
         <ion-input
           class="opne_date"
           type="number"
-          placeholder="개업일자"
+          placeholder="개업일자(숫자만 입력)"
           [(ngModel)]="open_date"
         ></ion-input>
       </div>
