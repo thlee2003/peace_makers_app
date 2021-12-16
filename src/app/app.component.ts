@@ -20,6 +20,7 @@ const firebaseConfig = {
   apiKey: 'AIzaSyA49tnwn4Y8ca7EY_7pO2mPAuVGH01l2gI',
   authDomain: 'peace-makers-f2530.firebaseapp.com',
   projectId: 'peace-makers-f2530',
+  databaseURL: 'https://peace-makers-f2530-default-rtdb.asia-southeast1.firebasedatabase.app/',
   storageBucket: 'peace-makers-f2530.appspot.com',
   messagingSenderId: '23931604864',
   appId: '1:23931604864:web:3a1f1e00c4d4ceb93d3b65',
