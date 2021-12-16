@@ -29,10 +29,17 @@ ion-toolbar {
   position: absolute;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .policy {
   h1 {
     text-align: center;
   }
-  width: 90%;
-  margin-left: 5%;
+  width: 300px;
+  // margin-left: 5%;
 }

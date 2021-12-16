@@ -1,3 +1,10 @@
+.content {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .all {
   display: flex;
   flex-direction: column;
@@ -16,7 +23,7 @@
   justify-content: center;
   margin-bottom: 10px;
   img {
-    width: 85%;
+    width: 300px;
   }
 }
 

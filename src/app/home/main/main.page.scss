@@ -85,15 +85,37 @@
   justify-content: center;
   margin-top: 36px;
   background-color: #1597e5;
+  .info {
+    width: 300px;
+  }
   .head {
     font-size: 24px;
     color: white;
-    margin-left: 30px;
+    font-weight: bold;
   }
   p {
     font-size: 16px;
     color: white;
-    margin-left: 30px;
+  }
+  .img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    height: 320px;
+    .text {
+      position: absolute;
+      text-align: center;
+      p,
+      h1 {
+        color: white;
+        margin: 0px;
+      }
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+      }
+    }
   }
 }
 
@@ -187,7 +209,7 @@
   }
   ion-button {
     margin-top: 18px;
-    margin-bottom: 36px;
+    margin-bottom: 0px;
     width: 300px;
     height: 40px;
     font-size: 20px;
@@ -210,11 +232,12 @@
 
 .news {
   width: 100%;
+  margin-top: 36px;
   h2 {
     font-size: 24px;
     font-weight: bold;
     color: #44a4e0;
-    margin-top: 24px;
+    margin-top: 0px;
     margin-left: 30px;
     margin-bottom: 6px;
   }
