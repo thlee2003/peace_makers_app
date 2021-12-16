@@ -46,11 +46,7 @@ export class CampaginPage implements OnInit, AfterContentChecked {
   A2: string;
   A3: string;
 
-  constructor(private platform: Platform, private router: Router) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
+  constructor(private platform: Platform, private router: Router) {}
 
   async ngOnInit() {
     //유튜브 영상 가져오기 + DB 연동
@@ -78,16 +74,6 @@ export class CampaginPage implements OnInit, AfterContentChecked {
         container2.innerHTML = template2;
       }
     });
-  }
-
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      this.backButtonAlert();
-    });
-  }
-
-  async backButtonAlert() {
-    this.router.navigate(['home', 'main']);
   }
 
   ngAfterContentChecked() {

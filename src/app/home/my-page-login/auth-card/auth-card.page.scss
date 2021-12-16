@@ -9,6 +9,37 @@
 //   }
 // }
 
+ion-toolbar {
+  height: 50px;
+  --background: #44a4e0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  img {
+    width: 200px;
+    height: 34px;
+    // margin-left: 25%;
+  }
+  ion-back-button {
+    color: white;
+    font-size: 18px;
+  }
+}
+
+.back {
+  height: 50px;
+  background-color: #44a4e0;
+}
+
+.back2 {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
 .div {
   display: flex;
   align-items: center;
@@ -18,6 +49,7 @@
 ion-card {
   border: 1px solid #44a4e0;
   width: 90%;
+  height: 90%;
   margin-left: 5%;
 }
 

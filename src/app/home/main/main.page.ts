@@ -41,15 +41,10 @@ export class MainPage implements OnInit, AfterContentChecked {
   peacetext3: string;
 
   constructor(
-    private platform: Platform,
     private _alertController: AlertController,
     private modalCtrl: ModalController,
     private router: Router
-  ) {
-    platform.ready().then(() => {
-      this.backButtonEvent();
-    });
-  }
+  ) {}
 
   public get alertController(): AlertController {
     return this._alertController;
@@ -85,31 +80,6 @@ export class MainPage implements OnInit, AfterContentChecked {
       .catch((error) => {
         console.log('Error getting document:', error);
       });
-  }
-
-  backButtonEvent() {
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      this.backButtonAlert();
-    });
-  }
-
-  async backButtonAlert() {
-    const alert = await this.alertController.create({
-      message: '앱을 종료하시겠습니까?',
-      buttons: [
-        {
-          text: '취소',
-          role: 'Cancel',
-        },
-        {
-          text: '확인',
-          handler: () => {
-            navigator['app'].exitApp();
-          },
-        },
-      ],
-    });
-    await alert.present();
   }
 
   moveToSupport() {
