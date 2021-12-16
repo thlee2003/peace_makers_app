@@ -46,26 +46,27 @@ export class ResPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    fetch(
-      'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D',
-      {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          businesses: [
-            {
-              b_no: '8678601065',
-              start_dt: '20180123',
-              p_nm: '이원익',
-            },
-          ],
-        }),
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      });
+    // fetch(
+    //   'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D',
+    //   {
+    //     method: 'post',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //       businesses: [
+    //         {
+    //           b_no: this.company_regist_num,
+    //           start_dt: this.open_date,
+    //           p_nm: this.representative,
+    //         },
+    //       ],
+    //     }),
+    //   }
+    // )
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log(res)
+    //     console.log(res.data[0].valid);
+    //   });
   }
 
   segmentChanged(e) {
@@ -86,6 +87,31 @@ export class ResPage implements OnInit {
   }
 
   async moveToLogin() {
+    fetch(
+      'https://api.odcloud.kr/api/nts-businessman/v1/validate?serviceKey=Bj4ox2avWwiO9K6C%2F2zmpE9xbtfGnWi%2BW%2ByRYiGJ0P5QOTAXsRqXTEr%2BlHImSxQN3bYlRFGMY9csmnw%2Fmw%2BoeQ%3D%3D',
+      {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businesses: [
+            {
+              b_no: this.company_regist_num,
+              start_dt: this.open_date,
+              p_nm: this.representative,
+            },
+          ],
+        }),
+      }
+    )
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res.data[0].valid);
+      if(res.data[0].vaild === 2) {
+        this.error_msg = '등록된 사업자 정보가 없습니다.'
+      } else if(res.data[0].vaild === 1) {
+        this.error_msg = ''
+      }
+    });
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
     } else if (this.email.includes('@') == false) {
