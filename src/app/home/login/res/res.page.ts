@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
+// import { request } from 'http';
 
 import { ToastController } from '@ionic/angular';
 
@@ -65,6 +66,9 @@ export class ResPage implements OnInit {
   }
 
   async moveToLogin() {
+    console.log(
+      this.segmentValue === 'personal' || this.segmentValue === undefined
+    );
     if (this.email == undefined) {
       this.error_msg = '이메일을 입력하세요.';
     } else if (this.email.includes('@') == false) {
@@ -81,7 +85,7 @@ export class ResPage implements OnInit {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';
-    } else if (this.rank == undefined && this.segmentValue !== 'personal') {
+    } else if (this.rank == undefined && this.segmentValue === 'company') {
       this.error_msg = '직급을 입력하세요.';
     } else if (this.date == undefined && this.segmentValue === 'personal') {
       this.error_msg = '생년월일을 입력하세요.';

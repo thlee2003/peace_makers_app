@@ -6,16 +6,18 @@ import { SettingPage } from './setting.page';
 const routes: Routes = [
   {
     path: '',
-    component: SettingPage
-  },  {
+    component: SettingPage,
+  },
+  {
     path: 'terms',
-    loadChildren: () => import('./terms/terms.module').then( m => m.TermsPageModule)
+    loadChildren: () =>
+      import('./terms/terms.module').then((m) => m.TermsPageModule),
   },
   {
     path: 'policy',
-    loadChildren: () => import('./policy/policy.module').then( m => m.PolicyPageModule)
-  }
-
+    loadChildren: () =>
+      import('./policy/policy.module').then((m) => m.PolicyPageModule),
+  },
 ];
 
 @NgModule({

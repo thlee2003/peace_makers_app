@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class FooterComponent implements OnInit {
   constructor(private router: Router) {}
 
+  ngOnInit() {}
+
   moveToTerms() {
     this.router.navigate(['home', 'my-page-login', 'setting', 'terms']);
   }
@@ -16,6 +18,4 @@ export class FooterComponent implements OnInit {
   moveToPolicy() {
     this.router.navigate(['home', 'my-page-login', 'setting', 'policy']);
   }
-
-  ngOnInit() {}
 }

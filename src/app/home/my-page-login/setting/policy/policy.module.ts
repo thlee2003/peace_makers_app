@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { PolicyPageRoutingModule } from './policy-routing.module';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 import { PolicyPage } from './policy.page';
 
