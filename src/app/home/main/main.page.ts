@@ -83,7 +83,7 @@ export class MainPage implements OnInit, AfterContentChecked {
   }
 
   moveToSupport() {
-    this.router.navigate(['home', 'support']);
+    this.router.navigate(['home', 'support', 'method']);
   }
 
   async moveTostudy1() {
