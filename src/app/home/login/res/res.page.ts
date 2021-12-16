@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
-
 import { ToastController } from '@ionic/angular';
 
 import firebase from 'firebase';
-
-import axios from 'axios';
 
 import { Observable } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -15,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './res.page.html',
   styleUrls: ['./res.page.scss'],
 })
+
 export class ResPage implements OnInit {
   error_msg: string;
   showPw: boolean = false;
@@ -77,7 +75,7 @@ export class ResPage implements OnInit {
       this.error_msg = '비밀번호 확인을 입력하세요.';
     } else if (this.name == undefined) {
       this.error_msg = '이름을 입력하세요.';
-    } else if (this.rank == undefined && this.segmentValue === 'personal') {
+    } else if (this.rank == undefined && this.segmentValue === 'company') {
       this.error_msg = '직급을 입력하세요.';
     } else if (this.date == undefined && this.segmentValue === 'personal') {
       this.error_msg = '생년월일을 입력하세요.';
@@ -183,7 +181,7 @@ export class ResPage implements OnInit {
         })
       } 
       // 개인
-      else if(this.segmentValue === 'personal' || this.segmentValue === '') {
+      else if(this.segmentValue === 'personal' || this.segmentValue === undefined) {
         //회원가입
         const result = firebase.auth().createUserWithEmailAndPassword(this.email, this.pw)
         .then(async (userCredential) => {
