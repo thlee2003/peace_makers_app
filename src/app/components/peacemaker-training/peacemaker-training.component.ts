@@ -15,7 +15,7 @@ export class PeacemakerTrainingComponent implements OnInit {
   }
 
   moveToSupport() {
-    this.router.navigate(['home', 'support']);
+    this.router.navigate(['home', 'support', 'method']);
     this.modalCtrl.dismiss();
   }
 
