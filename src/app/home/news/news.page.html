@@ -1,30 +1,16 @@
 <app-header></app-header>
 
 <ion-content>
-  <!-- <div class="body" *ngFor="let user of users" (click)="openModal(user)">
-    <p class="name">{{user.title}}</p>
-    <p class="text">{{user.text}}</p>
-    <div class="bottom"></div>
-  </div> -->
   <div class="content">
-    <div class="body" *ngFor="let user of users" (click)="openModal(user)">
-      <!-- <img src="../../../assets/imgs/img1.jpg" alt="" /> -->
-      <p class="title">{{ user.title }}</p>
+    <div class="box">
+      <div class="img">
+        <img src="../../../assets/imgs/news.jfif" alt="" />
+      </div>
       <div class="bottom">
-        <div class="name">
-          <p class="name">이름</p>
-          <ion-icon name="chatbubble-outline"></ion-icon>
-        </div>
-        <p class="date">2021-10-11</p>
+        <p class="title">2021 ZOOM 시민평화아카데미</p>
+        <p class="date">2021-11-04</p>
       </div>
     </div>
   </div>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="login">
-    <ion-fab-button color="main" (click)="write()">
-      <ion-icon name="pencil-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <div class="footer">
-    <app-footer></app-footer>
-  </div>
+  <app-footer></app-footer>
 </ion-content>
