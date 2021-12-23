@@ -33,9 +33,7 @@ export class CampaginPage implements OnInit, AfterContentChecked {
     pagination: true,
   };
 
-  campaign1: string;
   campaigntext1: string;
-  campaign2: string;
   campaigntext2: string;
 
   Q1: string;
@@ -46,6 +44,8 @@ export class CampaginPage implements OnInit, AfterContentChecked {
   A2: string;
   A3: string;
 
+  image1;
+
   constructor(private platform: Platform, private router: Router) {}
 
   async ngOnInit() {
@@ -53,15 +53,14 @@ export class CampaginPage implements OnInit, AfterContentChecked {
     const container1 = document.querySelector('.container1');
     const container2 = document.querySelector('.container2');
     const db = firebase.firestore();
+    const storage = firebase.storage().ref();
     const docRof = db.collection('admin').doc('campaign');
     docRof.get().then((doc) => {
       if (doc.exists) {
         const video1 = doc.data().video1;
         const video2 = doc.data().video2;
-        this.campaign1 = doc.data().campaign1;
-        this.campaigntext1 = doc.data().campaigntext1;
-        this.campaign2 = doc.data().campaign2;
-        this.campaigntext2 = doc.data().campaigntext2;
+        this.campaigntext1 = doc.data().campaign1;
+        this.campaigntext2 = doc.data().campaign2;
         this.Q1 = doc.data().Q1text;
         this.A1 = doc.data().A1text;
         this.Q2 = doc.data().Q2text;
@@ -72,6 +71,9 @@ export class CampaginPage implements OnInit, AfterContentChecked {
         let template2 = video2;
         container1.innerHTML = template1;
         container2.innerHTML = template2;
+        this.image1 = this.image1 = storage.child('campagin/'+doc.data().images).getDownloadURL().then(function(url) {
+          console.log(url)
+        })
       }
     });
   }

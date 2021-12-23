@@ -37,6 +37,6 @@ export class SupportPage implements OnInit {
   }
 
   async moveToMethod() {
-    this.router.navigate(['home', 'support', 'method']);
+    alert("후원금은 현재 계좌로 받고 있습니다.")
   }
 }

@@ -15,8 +15,8 @@ export class PeacemakerTrainingComponent implements OnInit {
   }
 
   moveToSupport() {
-    this.router.navigate(['home', 'support', 'method']);
-    this.modalCtrl.dismiss();
+    alert("후원금은 현재 계좌로 받고 있습니다.")
+    // this.modalCtrl.dismiss();
   }
 
   ngOnInit() {}

@@ -33,12 +33,25 @@ SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
   encapsulation: ViewEncapsulation.None,
 })
 export class MainPage implements OnInit, AfterContentChecked {
-  peace1: string;
   peacetext1: string;
-  peace2: string;
   peacetext2: string;
-  peace3: string;
-  peacetext3: string;
+  edutitle1: string;
+  edutitle2: string;
+  edutitle3: string;
+  edutext1: string;
+  edutext2: string;
+  edutext3: string;
+  newstitle: string;
+  newsUrl;
+  image1;
+  image2;
+  image3;
+  image4;
+  image5;
+  image6;
+  image7;
+  image8;
+  image9;
 
   constructor(
     private _alertController: AlertController,
@@ -67,14 +80,55 @@ export class MainPage implements OnInit, AfterContentChecked {
   async ngOnInit() {
     //firestore에서 해당 db 가져오기
     const db = firebase.firestore();
+    //storage 연결
+    const storage = firebase.storage().ref();
     const docRef = db.collection('admin').doc('mainpage');
 
     docRef
       .get()
       .then((doc) => {
         if (doc.exists) {
-          this.peacetext1 = doc.data().text1;
-          this.peacetext2 = doc.data().text2;
+          //text 가져오기
+          this.peacetext1 = doc.data().maintext1;
+          this.peacetext2 = doc.data().maintext2;
+          this.edutitle1 = doc.data().edutitle1;
+          this.edutitle2 = doc.data().edutitle2;
+          this.edutitle3 = doc.data().edutitle3;
+          this.edutext1 = doc.data().edutext1;
+          this.edutext2 = doc.data().edutext2;
+          this.edutext3 = doc.data().edutext3;
+          this.newstitle = doc.data().newstitle;
+          //url 가져오기
+          this.newsUrl = doc.data().newslink;
+          console.log(doc.data().images.img1)
+          //사진 들고오기 db+storage
+          this.image1 = storage.child('main_page/'+doc.data().images.img1).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image2 = storage.child('main_page/'+doc.data().images.img2).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image3 = storage.child('main_page/'+doc.data().images.img3).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image4 = storage.child('main_page/'+doc.data().images.img4).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image5 = storage.child('main_page/'+doc.data().images.img5).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image6 = storage.child('main_page/'+doc.data().images.img6).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image7 = storage.child('main_page/'+doc.data().images.img7).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image8 = storage.child('main_page/'+doc.data().images.img8).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
+          this.image9 = storage.child('main_page/'+doc.data().images.img9).getDownloadURL().then(function(url) {
+            console.log(url)
+          })
         }
       })
       .catch((error) => {
@@ -83,7 +137,7 @@ export class MainPage implements OnInit, AfterContentChecked {
   }
 
   moveToSupport() {
-    this.router.navigate(['home', 'support', 'method']);
+    alert("후원금은 현재 계좌로 받고 있습니다.")
   }
 
   async moveTostudy1() {
