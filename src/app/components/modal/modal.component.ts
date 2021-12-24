@@ -23,8 +23,8 @@ export class ModalComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  writeComment() {
-    console.log(this.comment);
-    this.comment = null;
-  }
+  // writeComment() {
+  //   console.log(this.comment);
+  //   this.comment = null;
+  // }
 }
