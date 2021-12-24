@@ -17,7 +17,7 @@ export class NewsPage implements OnInit {
 
   async ngOnInit() {
     const db = firebase.firestore();
-    db.collection('writing')
+    db.collection('admin_news')
       .get()
       .then((query) => {
         query.forEach((doc) => {
