@@ -21,7 +21,6 @@ import { MainPage } from './main.page';
     FormsModule,
     IonicModule,
     MainPageRoutingModule,
-
     SwiperModule,
   ],
   declarations: [

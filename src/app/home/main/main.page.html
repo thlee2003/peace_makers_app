@@ -18,22 +18,22 @@
     class="mySwiper"
   >
     <ng-template swiperSlide>
-      <img src={{image1}} alt="" />
+      <img src="{{image.img1}}" alt="" />
     </ng-template>
     <ng-template swiperSlide>
-      <img href={{image2}} alt="" />
+      <img src="{{image.img2}}" alt="" />
     </ng-template>
     <ng-template swiperSlide>
-      <img href={{image3}} alt="" />
+      <img src="{{image.img3}}" alt="" />
     </ng-template>
   </swiper>
   <div class="exp">
     <div class="one">
-      <img href={{image4}} />
+      <img src="{{image.img4}}" />
       <p>{{peacetext1}}</p>
     </div>
     <div class="two">
-      <img href={{image5}} />
+      <img src="{{image.img5}}" />
       <p>{{peacetext2}}</p>
     </div>
 
@@ -42,12 +42,10 @@
       <div class="line"></div>
       <swiper #swiper [config]="config">
         <ng-template swiperSlide>
-          <img href={{image6}} alt="" />
+          <img src="{{image.img6}}" alt="" />
           <div class="main">
             <p class="title">{{edutitle1}}</p>
-            <p class="text">
-              {{edutext1}}
-            </p>
+            <p class="text">{{edutext1}}</p>
             <ion-button fill="outline" color="white" (click)="moveTostudy1()">
               더보기
             </ion-button>
@@ -55,12 +53,10 @@
         </ng-template>
 
         <ng-template swiperSlide>
-          <img href={{image7}} alt="" />
+          <img src="{{image.img7}}" alt="" />
           <div class="main">
             <p class="title">{{edutitle2}}</p>
-            <p class="text">
-              {{edutext2}}
-            </p>
+            <p class="text">{{edutext2}}</p>
             <ion-button fill="outline" color="white" (click)="moveTostudy2()">
               더보기
             </ion-button>
@@ -68,12 +64,10 @@
         </ng-template>
 
         <ng-template swiperSlide>
-          <img href={{image8}} alt="" />
+          <img src="{{image.img8}}" alt="" />
           <div class="main">
             <p class="title">{{edutitle3}}</p>
-            <p class="text">
-              {{edutext3}}
-            </p>
+            <p class="text">{{edutext3}}</p>
             <ion-button fill="outline" color="white" (click)="moveTostudy3()">
               더보기
             </ion-button>
@@ -107,17 +101,7 @@
       <div class="line"></div>
       <div id="group">
         <div id="area">
-          <div id="video" class="container4">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/0JQ3L6M1Lb8"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
+          <div id="video" class="container4"></div>
         </div>
       </div>
       <div class="btn">
@@ -130,10 +114,8 @@
     <div class="news">
       <h2>뉴스</h2>
       <div class="line"></div>
-      <p>
-        {{newstitle}}
-      </p>
-      <a href="{{newsUrl}}"><img href={{image9}} /></a>
+      <p>{{newstitle}}</p>
+      <a href="{{newsUrl}}"><img src="{{image.img9}}" /></a>
     </div>
   </div>
   <app-footer></app-footer>

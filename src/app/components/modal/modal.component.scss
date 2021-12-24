@@ -49,6 +49,13 @@ ion-header {
   font-size: 12px;
 }
 
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px;
+}
+
 .bottom {
   width: 100%;
   height: 10px;

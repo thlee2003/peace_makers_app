@@ -22,10 +22,11 @@
 }
 
 .img {
+  width: 100%;
   margin-bottom: 24px;
   .text {
-    position: absolute;
     color: white;
+    position: absolute;
     width: 100%;
     height: 180px;
     background-color: rgba($color: #000000, $alpha: 0.3);
@@ -41,6 +42,7 @@
       margin-top: 18px;
     }
     p {
+      object-fit: cover;
       width: 300px;
       font-size: 14px;
       text-align: center;
@@ -72,6 +74,7 @@
 
 // qaf 디자인
 #faq {
+  width: 100%;
   h1 {
     font-size: 24px;
     font-weight: bold;
@@ -240,7 +243,8 @@
   margin-bottom: 18px;
 }
 
-#video {
+#video1,
+#video2 {
   position: absolute;
   width: 100%; /* 부모에 맞게 꽉 채운다. */
   height: 100%;

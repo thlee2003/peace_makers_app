@@ -9,6 +9,11 @@ import firebase from 'firebase';
   styleUrls: ['./support.page.scss'],
 })
 export class SupportPage implements OnInit {
+  image: string;
+  video1: string;
+  video2: string;
+  outVideo1: string;
+  outVideo2: string;
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
@@ -16,27 +21,49 @@ export class SupportPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const container3 = document.querySelector('.container3');
-    const container4 = document.querySelector('.container4');
-    const container5 = document.querySelector('.container5');
+    //firestore에서 해당 db 가져오기
     const db = firebase.firestore();
-    const getdb = db.collection('admin').doc('participation');
-    getdb.get().then((doc) => {
+    //storage 연결
+    const storage = firebase.storage().ref();
+    const docRef = db.collection('admin').doc('support');
+    docRef.get().then((doc) => {
       if (doc.exists) {
-        const a = doc.data().video1;
-        const b = doc.data().video2;
-        const c = doc.data().video3;
-        let templeta3 = a;
-        let templeta4 = b;
-        let templeta5 = c;
-        container3.innerHTML = templeta3;
-        container4.innerHTML = templeta4;
-        container5.innerHTML = templeta5;
+        this.video1 = doc.data().video1;
+        this.video2 = doc.data().video2;
+        this.outVideo1 =
+          'https://www.youtube.com/embed/' + this.video1.split('.be/')[1];
+        this.outVideo2 =
+          'https://www.youtube.com/embed/' + this.video2.split('.be/')[1];
+        storage
+          .child(`support/${doc.data().images}`)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            this.image = url;
+          });
+        document.getElementById('video1').innerHTML = `<iframe
+          width="100%"
+          height="100%"
+          src=${this.outVideo1}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ></iframe>`;
+        document.getElementById('video2').innerHTML = `<iframe
+          width="100%"
+          height="100%"
+          src=${this.outVideo2}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          ></iframe>`;
       }
     });
   }
 
   async moveToMethod() {
-    alert("후원금은 현재 계좌로 받고 있습니다.")
+    alert('후원금은 현재 계좌로 받고 있습니다.');
   }
 }

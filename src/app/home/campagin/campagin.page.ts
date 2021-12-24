@@ -32,20 +32,29 @@ export class CampaginPage implements OnInit, AfterContentChecked {
     spaceBetween: 50,
     pagination: true,
   };
-
   campaigntext1: string;
   campaigntext2: string;
-
+  video1: string;
+  video2: string;
+  outVideo1: string;
+  outVideo2: string;
   Q1: string;
   Q2: string;
   Q3: string;
-
   A1: string;
   A2: string;
   A3: string;
-
-  image1;
-
+  image = {
+    img1: null,
+    img2: null,
+    img3: null,
+    img4: null,
+    img5: null,
+    img6: null,
+    img7: null,
+    img8: null,
+    img9: null,
+  };
   constructor(private platform: Platform, private router: Router) {}
 
   async ngOnInit() {
@@ -57,8 +66,12 @@ export class CampaginPage implements OnInit, AfterContentChecked {
     const docRof = db.collection('admin').doc('campaign');
     docRof.get().then((doc) => {
       if (doc.exists) {
-        const video1 = doc.data().video1;
-        const video2 = doc.data().video2;
+        this.video1 = doc.data().video1;
+        this.outVideo1 =
+          'https://www.youtube.com/embed/' + this.video1.split('.be/')[1];
+        this.video2 = doc.data().video2;
+        this.outVideo2 =
+          'https://www.youtube.com/embed/' + this.video2.split('.be/')[1];
         this.campaigntext1 = doc.data().campaign1;
         this.campaigntext2 = doc.data().campaign2;
         this.Q1 = doc.data().Q1text;
@@ -67,13 +80,31 @@ export class CampaginPage implements OnInit, AfterContentChecked {
         this.A2 = doc.data().A2text;
         this.Q3 = doc.data().Q3text;
         this.A3 = doc.data().A3text;
-        let template1 = video1;
-        let template2 = video2;
-        container1.innerHTML = template1;
-        container2.innerHTML = template2;
-        this.image1 = this.image1 = storage.child('campagin/'+doc.data().images).getDownloadURL().then(function(url) {
-          console.log(url)
-        })
+        storage
+          .child('campagin/' + doc.data().images)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            this.image.img1 = url;
+          });
+        document.getElementById('video1').innerHTML = `<iframe
+              width="100%"
+              height="100%"
+              src=${this.outVideo1}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>`;
+        document.getElementById('video2').innerHTML = `<iframe
+              width="100%"
+              height="100%"
+              src=${this.outVideo2}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>`;
       }
     });
   }

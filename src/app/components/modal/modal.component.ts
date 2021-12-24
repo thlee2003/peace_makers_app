@@ -9,14 +9,14 @@ import { ModalController } from '@ionic/angular';
 export class ModalComponent implements OnInit {
   @Input() name: string;
   @Input() text: string;
-  @Input() imgs;
+  @Input() image;
   @Input() good: string;
   @Input() comments;
   comment: string;
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
-    console.log(this.imgs, this.comments);
+    console.log(this.image, this.comments);
   }
 
   dismissModal() {
